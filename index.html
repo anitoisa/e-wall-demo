@@ -1294,6 +1294,272 @@ function connect(){
 &lt;/html&gt;
 "></iframe></div><span class="tag"><b>27"</b> · S6 · 系統卡 6</span><span class="route" style="--pc:var(--dp3)">DP3 · C-2</span></div>
 <div class="cell" data-id="ipad"><div class="frame"><iframe srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;zh-Hant&quot; data-mode=&quot;idle&quot; style=&quot;--sy:46%;--sr:-24deg&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover&quot;&gt;
+&lt;meta name=&quot;apple-mobile-web-app-capable&quot; content=&quot;yes&quot;&gt;
+&lt;meta name=&quot;apple-mobile-web-app-status-bar-style&quot; content=&quot;black-translucent&quot;&gt;
+&lt;meta name=&quot;apple-mobile-web-app-title&quot; content=&quot;ANLB 導覽端&quot;&gt;
+&lt;title&gt;寶舖 E 區・導覽端(輸出頁)&lt;/title&gt;
+&lt;style&gt;
+  /* 輸出用介面 — 導覽端正式對外版(iPad 橫式 1194×834)。
+     「光縫」視覺系統,與十面副螢同一套語言;功能只留三件事:切模式、拉年份、回全景。
+     模式高亮全走 CSS(html[data-mode]),外部(導播牆展示版)直接改 dataset 即可驅動。 */
+  :root{--ink:#06080B;--air:#F2F1EC;--haze:#9AA3AE;--dim:#6A7480;--line:rgba(242,241,236,.14);--ok:#57C99B}
+  html[data-mode=idle]{--h:#E9E7DF}
+  html[data-mode=life]{--h:#FFA61A}
+  html[data-mode=bim] {--h:#FF2E1E}
+  html[data-mode=data]{--h:#18DCB9}
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;height:100%;background:var(--ink);color:var(--air);
+    font-family:-apple-system,&quot;PingFang TC&quot;,&quot;Noto Sans TC&quot;,sans-serif;
+    -webkit-font-smoothing:antialiased;overflow:hidden;overscroll-behavior:none}
+  button{appearance:none;font-family:inherit;border:0;background:none;color:inherit;
+    user-select:none;-webkit-user-select:none;touch-action:manipulation;cursor:pointer}
+  button:focus-visible{outline:1.5px solid var(--h);outline-offset:3px}
+
+  /* ── 光場 ── */
+  #field{position:fixed;inset:0;overflow:hidden}
+  #field i{position:absolute;display:block;transition:background 1s ease,opacity 1s ease}
+  .tint{inset:0;background:
+    radial-gradient(120% 95% at 82% 6%, color-mix(in oklab, var(--h) 15%, transparent), transparent 60%),
+    radial-gradient(150% 110% at 6% 44%, color-mix(in oklab, var(--h) 8%, transparent), transparent 56%)}
+  .bloom{left:-14%;bottom:-30%;width:76%;height:88%;
+    background:radial-gradient(closest-side, color-mix(in oklab, var(--h) 58%, #FFFFFF 16%),
+      color-mix(in oklab, var(--h) 24%, transparent) 48%, transparent 74%);
+    opacity:.30;filter:blur(34px)}
+  .seam{left:-30%;top:calc(var(--sy) - 17%);width:160%;height:34%;transform:rotate(var(--sr));
+    background:linear-gradient(to bottom, transparent 0%,
+      color-mix(in oklab, var(--h) 30%, transparent) 33%,
+      color-mix(in oklab, var(--h) 52%, #FFF 26%) 49%,
+      rgba(255,255,255,.82) 50%,
+      color-mix(in oklab, var(--h) 52%, #FFF 26%) 51%,
+      color-mix(in oklab, var(--h) 30%, transparent) 67%, transparent 100%);
+    opacity:.4;filter:blur(28px);animation:breath 9s ease-in-out infinite}
+  .core{left:-30%;top:calc(var(--sy) - .8%);width:160%;height:1.6%;transform:rotate(var(--sr));
+    background:linear-gradient(90deg, transparent 4%, rgba(255,255,255,.92) 30% 70%, transparent 96%);
+    opacity:.55;filter:blur(4px);animation:breath 9s ease-in-out infinite}
+  @keyframes breath{0%,100%{opacity:.46}50%{opacity:.24}}
+  .veil{inset:0;background:linear-gradient(180deg, rgba(6,8,11,.5), rgba(6,8,11,.08) 42%, rgba(6,8,11,.4) 94%)}
+
+  /* ── 骨架:左=當前輸出,右=模式選擇 ── */
+  .app{position:relative;display:flex;height:100dvh}
+  main{flex:1;min-width:0;position:relative}
+  section{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;
+    padding:0 4% 0 6.5%;opacity:0;transition:opacity .7s ease;pointer-events:none}
+  html[data-mode=idle] section.idle, html[data-mode=life] section.life,
+  html[data-mode=bim]  section.bim,  html[data-mode=data] section.data{opacity:1;pointer-events:auto}
+
+  .eyebrow{font-size:17px;letter-spacing:.5em;color:var(--h);transition:color 1s}
+  h1{margin:20px 0 0;font-weight:200;letter-spacing:.13em;font-size:88px;line-height:1.14}
+  .en{margin-top:16px;font-size:15px;letter-spacing:.52em;color:var(--haze)}
+  .lead{margin-top:30px;display:flex;align-items:center;gap:18px;font-size:19px;
+    font-weight:300;letter-spacing:.18em;color:var(--haze)}
+  .lead::before{content:&quot;&quot;;width:74px;height:1px;background:var(--h);box-shadow:0 0 16px var(--h);
+    transition:background 1s,box-shadow 1s;flex:none}
+  .num{font-variant-numeric:tabular-nums}
+
+  .pulse{margin-top:44px;display:flex;gap:60px}
+  .pulse div{font-size:30px;font-weight:200}
+  .pulse span{display:block;font-size:12px;letter-spacing:.3em;color:var(--dim);margin-bottom:8px}
+
+  /* 生命週期:年份+時間軸 */
+  .yearline{margin-top:8px;display:flex;align-items:baseline;gap:22px}
+  #ybig{font-size:150px;font-weight:100;line-height:1}
+  .yunit{font-size:26px;color:var(--haze);font-weight:300}
+  #yphase{margin-left:auto;margin-right:2%;font-size:15px;letter-spacing:.34em;color:var(--h);
+    border:1px solid color-mix(in oklab, var(--h) 55%, transparent);border-radius:999px;
+    padding:10px 22px;transition:color 1s,border-color 1s}
+  .track{margin-top:34px;padding-right:2%}
+  input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:56px;background:none;margin:0}
+  input[type=range]::-webkit-slider-runnable-track{height:3px;border-radius:2px;
+    background:linear-gradient(90deg, var(--h) var(--p,0%), rgba(242,241,236,.16) var(--p,0%));
+    box-shadow:0 0 12px color-mix(in oklab, var(--h) 40%, transparent)}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:30px;height:30px;border-radius:50%;
+    background:#FFFFFF;box-shadow:0 0 18px color-mix(in oklab, var(--h) 80%, #fff 10%),0 2px 8px rgba(0,0,0,.6);
+    margin-top:-13.5px}
+  .ticks{display:flex;justify-content:space-between;font-size:12px;color:var(--dim);
+    letter-spacing:.2em;margin-top:6px;padding-right:2%}
+  .hint{margin-top:26px;font-size:13px;color:var(--dim);letter-spacing:.14em}
+
+  /* BIM 六面向/匯流六階段(純顯示) */
+  .facets{margin-top:40px;display:flex;flex-wrap:wrap;gap:12px;max-width:640px}
+  .facets span{border:1px solid var(--line);border-radius:999px;padding:10px 20px;
+    font-size:15px;letter-spacing:.16em;color:var(--haze)}
+  .stages{margin-top:44px;display:flex;align-items:center;gap:0;max-width:660px}
+  .stages div{flex:1;text-align:center;position:relative;font-size:12.5px;letter-spacing:.1em;color:var(--dim)}
+  .stages div::before{content:&quot;&quot;;display:block;width:9px;height:9px;border-radius:50%;
+    margin:0 auto 10px;background:rgba(242,241,236,.2)}
+  .stages div::after{content:&quot;&quot;;position:absolute;top:4px;left:calc(50% + 10px);right:calc(-50% + 10px);
+    height:1px;background:rgba(242,241,236,.14)}
+  .stages div:last-child::after{display:none}
+  .stages div.done{color:var(--haze)}
+  .stages div.done::before{background:var(--h);box-shadow:0 0 10px var(--h)}
+  .stages div.now{color:var(--air)}
+  .stages div.now::before{background:#fff;box-shadow:0 0 14px var(--h),0 0 4px #fff}
+
+  /* ── 右欄:模式選擇+工具 ── */
+  aside{width:308px;flex:none;display:flex;flex-direction:column;gap:10px;
+    padding:calc(26px + env(safe-area-inset-top)) calc(26px + env(safe-area-inset-right)) calc(22px + env(safe-area-inset-bottom)) 0}
+  .brandmini{text-align:right;padding:0 6px 14px}
+  .brandmini b{display:block;font-size:13.5px;font-weight:500;letter-spacing:.22em}
+  .brandmini span{font-size:8px;letter-spacing:.34em;color:var(--dim)}
+  .mcard{position:relative;text-align:left;border:1px solid var(--line);border-radius:16px;
+    padding:17px 20px 15px;background:rgba(255,255,255,.03);
+    transition:border-color .5s,background .5s;overflow:hidden}
+  .mcard em{font-style:normal;display:block;font-size:9px;letter-spacing:.3em;color:var(--dim);margin-bottom:6px;transition:color .5s}
+  .mcard b{font-size:20px;font-weight:400;letter-spacing:.14em}
+  .mcard .pip{position:absolute;left:0;top:0;bottom:0;width:3px;background:transparent;transition:background .5s,box-shadow .5s}
+  html[data-mode=idle] .mcard[data-m=idle], html[data-mode=life] .mcard[data-m=life],
+  html[data-mode=bim]  .mcard[data-m=bim],  html[data-mode=data] .mcard[data-m=data]{
+    border-color:color-mix(in oklab, var(--h) 60%, transparent);background:color-mix(in oklab, var(--h) 10%, transparent)}
+  html[data-mode=idle] .mcard[data-m=idle] em, html[data-mode=life] .mcard[data-m=life] em,
+  html[data-mode=bim]  .mcard[data-m=bim] em,  html[data-mode=data] .mcard[data-m=data] em{color:var(--h)}
+  html[data-mode=idle] .mcard[data-m=idle] .pip, html[data-mode=life] .mcard[data-m=life] .pip,
+  html[data-mode=bim]  .mcard[data-m=bim] .pip,  html[data-mode=data] .mcard[data-m=data] .pip{
+    background:var(--h);box-shadow:0 0 12px var(--h)}
+  .mcard:active{transform:scale(.97);transition-duration:.06s}
+
+  .asfoot{margin-top:auto;display:flex;flex-direction:column;gap:12px}
+  #home{border:1px solid var(--line);border-radius:999px;padding:15px;text-align:center;
+    font-size:14.5px;letter-spacing:.3em;color:var(--haze);transition:color .3s,border-color .3s}
+  #home:active{transform:scale(.97)}
+  .conn{display:flex;align-items:center;justify-content:center;gap:8px;
+    font-size:8.5px;letter-spacing:.3em;color:var(--dim)}
+  #dot{width:7px;height:7px;border-radius:50%;background:#D96C6C}
+  #dot.on{background:var(--ok);box-shadow:0 0 8px rgba(87,201,155,.8)}
+
+  /* 直立提醒 */
+  #rotate{display:none}
+  @media (orientation:portrait){
+    .app{display:none}
+    #rotate{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;
+      justify-content:center;gap:18px;color:var(--haze);font-size:13px;letter-spacing:.3em;text-indent:.3em}
+    #rotate svg{width:46px;height:46px;stroke:var(--haze);fill:none;stroke-width:1.4;
+      stroke-linecap:round;stroke-linejoin:round;animation:tilt 2.8s ease-in-out infinite}
+    @keyframes tilt{0%,18%{transform:rotate(0)}52%,100%{transform:rotate(-90deg)}}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;field&quot;&gt;&lt;i class=&quot;tint&quot;&gt;&lt;/i&gt;&lt;i class=&quot;bloom&quot;&gt;&lt;/i&gt;&lt;i class=&quot;seam&quot;&gt;&lt;/i&gt;&lt;i class=&quot;core&quot;&gt;&lt;/i&gt;&lt;i class=&quot;veil&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+
+&lt;div id=&quot;rotate&quot;&gt;
+  &lt;svg viewBox=&quot;0 0 24 24&quot;&gt;&lt;rect x=&quot;5&quot; y=&quot;2.6&quot; width=&quot;14&quot; height=&quot;18.8&quot; rx=&quot;2.2&quot;/&gt;&lt;path d=&quot;M10.4 18.4h3.2&quot;/&gt;&lt;/svg&gt;
+  &lt;span&gt;請將 iPad 轉為橫向&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;app&quot;&gt;
+&lt;main&gt;
+  &lt;section class=&quot;idle&quot;&gt;
+    &lt;span class=&quot;eyebrow&quot;&gt;ANLB · BAOPU EXHIBITION&lt;/span&gt;
+    &lt;h1&gt;第五代住宅宣言&lt;/h1&gt;
+    &lt;span class=&quot;en&quot;&gt;AI NATIVE LIVING BUILDING&lt;/span&gt;
+    &lt;div class=&quot;lead&quot;&gt;可持續 120 年的 OTA AI 健康建築&lt;/div&gt;
+    &lt;div class=&quot;pulse num&quot;&gt;
+      &lt;div&gt;&lt;span&gt;全棟脈動&lt;/span&gt;89 / 100&lt;/div&gt;
+      &lt;div&gt;&lt;span&gt;室內溫度&lt;/span&gt;27.8°C&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;section class=&quot;life&quot;&gt;
+    &lt;span class=&quot;eyebrow&quot;&gt;01 · LIFECYCLE · 全生命週期&lt;/span&gt;
+    &lt;div class=&quot;yearline num&quot;&gt;&lt;span id=&quot;ybig&quot;&gt;000&lt;/span&gt;&lt;span class=&quot;yunit&quot;&gt;/ 120 年&lt;/span&gt;&lt;span id=&quot;yphase&quot;&gt;建造&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;track&quot;&gt;&lt;input type=&quot;range&quot; id=&quot;year&quot; min=&quot;0&quot; max=&quot;120&quot; value=&quot;0&quot; aria-label=&quot;建築年份&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;ticks num&quot;&gt;&lt;span&gt;0&lt;/span&gt;&lt;span&gt;30&lt;/span&gt;&lt;span&gt;60&lt;/span&gt;&lt;span&gt;90&lt;/span&gt;&lt;span&gt;120&lt;/span&gt;&lt;/div&gt;
+    &lt;p class=&quot;hint&quot;&gt;拖動時間軸,看這棟建築如何走過 120 年——維養、更新、傳承&lt;/p&gt;
+  &lt;/section&gt;
+
+  &lt;section class=&quot;bim&quot;&gt;
+    &lt;span class=&quot;eyebrow&quot;&gt;02 · BIM TOUR&lt;/span&gt;
+    &lt;h1&gt;BIM 系統導覽&lt;/h1&gt;
+    &lt;span class=&quot;en&quot;&gt;SIX FACETS · LIVE&lt;/span&gt;
+    &lt;div class=&quot;facets&quot;&gt;
+      &lt;span&gt;即時預測&lt;/span&gt;&lt;span&gt;能源&lt;/span&gt;&lt;span&gt;人流&lt;/span&gt;
+      &lt;span&gt;環境數據&lt;/span&gt;&lt;span&gt;設備狀態&lt;/span&gt;&lt;span&gt;碳排放量&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;section class=&quot;data&quot;&gt;
+    &lt;span class=&quot;eyebrow&quot;&gt;03 · DATA FLOW&lt;/span&gt;
+    &lt;h1&gt;數據匯流&lt;/h1&gt;
+    &lt;span class=&quot;en&quot;&gt;ONE DIGITAL TWIN&lt;/span&gt;
+    &lt;div class=&quot;stages&quot;&gt;
+      &lt;div class=&quot;done&quot;&gt;工地現場&lt;/div&gt;&lt;div class=&quot;done&quot;&gt;結構封頂&lt;/div&gt;&lt;div class=&quot;done&quot;&gt;機電佈設&lt;/div&gt;
+      &lt;div class=&quot;done&quot;&gt;外牆完成&lt;/div&gt;&lt;div class=&quot;now&quot;&gt;投入使用&lt;/div&gt;&lt;div&gt;長期維護&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;lead&quot; style=&quot;margin-top:40px&quot;&gt;資料從第一天就開始累積&lt;/div&gt;
+  &lt;/section&gt;
+&lt;/main&gt;
+
+&lt;aside&gt;
+  &lt;div class=&quot;brandmini&quot;&gt;&lt;b&gt;建築中控台&lt;/b&gt;&lt;span&gt;ANLB · GUIDE CONSOLE&lt;/span&gt;&lt;/div&gt;
+  &lt;button class=&quot;mcard&quot; data-m=&quot;idle&quot;&gt;&lt;span class=&quot;pip&quot;&gt;&lt;/span&gt;&lt;em&gt;00 · IDLE&lt;/em&gt;&lt;b&gt;待機&lt;/b&gt;&lt;/button&gt;
+  &lt;button class=&quot;mcard&quot; data-m=&quot;life&quot;&gt;&lt;span class=&quot;pip&quot;&gt;&lt;/span&gt;&lt;em&gt;01 · LIFECYCLE&lt;/em&gt;&lt;b&gt;全生命週期&lt;/b&gt;&lt;/button&gt;
+  &lt;button class=&quot;mcard&quot; data-m=&quot;bim&quot;&gt;&lt;span class=&quot;pip&quot;&gt;&lt;/span&gt;&lt;em&gt;02 · BIM TOUR&lt;/em&gt;&lt;b&gt;BIM 導覽&lt;/b&gt;&lt;/button&gt;
+  &lt;button class=&quot;mcard&quot; data-m=&quot;data&quot;&gt;&lt;span class=&quot;pip&quot;&gt;&lt;/span&gt;&lt;em&gt;03 · DATA FLOW&lt;/em&gt;&lt;b&gt;數據匯流&lt;/b&gt;&lt;/button&gt;
+  &lt;div class=&quot;asfoot&quot;&gt;
+    &lt;button id=&quot;home&quot;&gt;回 全 景&lt;/button&gt;
+    &lt;span class=&quot;conn&quot;&gt;&lt;i id=&quot;dot&quot;&gt;&lt;/i&gt;CONSOLE LINK&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/aside&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+/* 導覽端:WS 直連中樞;同時鏡射 postMessage 給上層(導播牆展示版離線驅動用)。
+   模式高亮=純 CSS 讀 html[data-mode],外部改 dataset 即同步。 */
+let ws;
+const $ = s =&gt; document.querySelector(s);
+const PHASES = [&#x27;建造&#x27;,&#x27;成長&#x27;,&#x27;巔峰&#x27;,&#x27;成熟&#x27;,&#x27;老化&#x27;,&#x27;傳承&#x27;];
+
+function send(cmd, args = []){
+  if (ws &amp;&amp; ws.readyState === 1) ws.send(JSON.stringify({cmd, args}));
+  try{ if (parent !== window) parent.postMessage({type:&#x27;vb-output&#x27;, cmd, args}, &#x27;*&#x27;); }catch(e){}
+}
+function applyMode(m){ document.documentElement.dataset.mode = m; }
+function paintYear(y){
+  $(&#x27;#ybig&#x27;).textContent = String(y).padStart(3, &#x27;0&#x27;);
+  $(&#x27;#yphase&#x27;).textContent = PHASES[Math.min(5, Math.floor(y / 20))];
+  const r = $(&#x27;#year&#x27;); r.value = y;
+  r.style.setProperty(&#x27;--p&#x27;, (y / 120 * 100) + &#x27;%&#x27;);
+}
+window.onYear = y =&gt; paintYear(Math.round(y));   // 外部驅動掛勾(展示版/廣播共用)
+
+document.querySelectorAll(&#x27;.mcard&#x27;).forEach(b =&gt; b.onclick = () =&gt; {
+  applyMode(b.dataset.m);
+  send(&#x27;mode&#x27;, [b.dataset.m]);
+});
+$(&#x27;#year&#x27;).oninput = e =&gt; {
+  const y = +e.target.value;
+  paintYear(y);
+  send(&#x27;year&#x27;, [String(y)]);
+};
+$(&#x27;#home&#x27;).onclick = () =&gt; send(&#x27;home&#x27;);
+
+const q = new URLSearchParams(location.search).get(&#x27;mode&#x27;);   // 預覽用 ?mode=life
+if (q) applyMode(q);
+paintYear(0);
+
+function connect(){
+  try{
+    ws = new WebSocket(`ws://${location.hostname || &#x27;localhost&#x27;}:8790`);
+    ws.onopen = () =&gt; $(&#x27;#dot&#x27;).classList.add(&#x27;on&#x27;);
+    ws.onclose = () =&gt; { $(&#x27;#dot&#x27;).classList.remove(&#x27;on&#x27;); setTimeout(connect, 2000); };
+    ws.onmessage = e =&gt; {
+      const m = JSON.parse(e.data);
+      if (m.type === &#x27;light&#x27; &amp;&amp; m.mode) applyMode(m.mode);   // 與後台控制頁雙向同步
+      if (m.type === &#x27;year&#x27;) paintYear(+m.v);
+    };
+  }catch(err){}
+}
+/* demo:離線內嵌,不連 WS */
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe></div><span class="tag"><b>11"</b> · iPad · 導覽端</span><span class="route" style="--pc:var(--wifi)">Wi-Fi</span></div>
+<div class="cell" data-id="ipad2"><div class="frame"><iframe srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;zh-Hant&quot;&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;utf-8&quot;&gt;
@@ -1879,7 +2145,7 @@ if (location.hash){
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-"></iframe></div><span class="tag"><b>11"</b> · iPad · 控制端</span><span class="route" style="--pc:var(--wifi)">Wi-Fi</span></div>
+"></iframe></div><span class="tag"><b>11"</b> · iPad · 後台控制</span><span class="route" style="--pc:var(--wifi)">Wi-Fi</span></div>
 </div>
 
 <div class="station">
@@ -2192,7 +2458,7 @@ function connect(){
 </div>
 
 <script>
-const META = {a:{cm:[95.2,53.5],vp:[1920,1080],x:84,y:85,rot:0},b:{cm:[95.2,53.5],vp:[1920,1080],x:159.8,y:8,rot:0},c:{cm:[95.2,53.5],vp:[1920,1080],x:265,y:8,rot:0},d:{cm:[95.2,53.5],vp:[1920,1080],x:341,y:84,rot:0},s1:{cm:[59.8,33.6],vp:[1920,1080],x:128,y:171,rot:0},main:{cm:[143.9,80.9],vp:[0,0],x:188,y:73,rot:0},s2:{cm:[59.8,33.6],vp:[1920,1080],x:195,y:171,rot:0},s3:{cm:[59.8,33.6],vp:[1920,1080],x:262,y:171,rot:0},s4:{cm:[59.8,33.6],vp:[1920,1080],x:328,y:170,rot:0},s5:{cm:[59.8,33.6],vp:[1920,1080],x:119,y:8,rot:90},s6:{cm:[59.8,33.6],vp:[1920,1080],x:369,y:8,rot:90},ipad:{cm:[24.76,17.85],vp:[1194,834],x:423,y:186,rot:0}};
+const META = {a:{cm:[95.2,53.5],vp:[1920,1080],x:84,y:85,rot:0},b:{cm:[95.2,53.5],vp:[1920,1080],x:159.8,y:8,rot:0},c:{cm:[95.2,53.5],vp:[1920,1080],x:265,y:8,rot:0},d:{cm:[95.2,53.5],vp:[1920,1080],x:341,y:84,rot:0},s1:{cm:[59.8,33.6],vp:[1920,1080],x:128,y:171,rot:0},main:{cm:[143.9,80.9],vp:[0,0],x:188,y:73,rot:0},s2:{cm:[59.8,33.6],vp:[1920,1080],x:195,y:171,rot:0},s3:{cm:[59.8,33.6],vp:[1920,1080],x:262,y:171,rot:0},s4:{cm:[59.8,33.6],vp:[1920,1080],x:328,y:170,rot:0},s5:{cm:[59.8,33.6],vp:[1920,1080],x:119,y:8,rot:90},s6:{cm:[59.8,33.6],vp:[1920,1080],x:369,y:8,rot:90},ipad:{cm:[24.76,17.85],vp:[1194,834],x:423,y:186,rot:0},ipad2:{cm:[24.76,17.85],vp:[1194,834],x:449,y:186,rot:0}};
 const MODES = ['idle','life','bim','data'];
 const MODENAME = {idle:'待機', life:'全生命週期', bim:'BIM 導覽', data:'數據匯流'};
 const MODEHEX  = {idle:'#E9E7DF', life:'#FFA61A', bim:'#FF2E1E', data:'#18DCB9'};
