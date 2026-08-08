@@ -9,7 +9,7 @@
     --ink:#0A0D11; --air:#F0EFEA; --haze:#98A1AC; --dim:#69727D;
     --line:rgba(240,239,234,.13); --line2:rgba(240,239,234,.3);
     --hdmi:#F0EFEA; --dp1:#E8A13C; --dp2:#5BA8E0; --dp3:#B07FE0; --wifi:#3FC8B4;
-    --glow:#E9E7DF;
+    --glow:#3FB4F0;
   }
   *{box-sizing:border-box}
   html,body{margin:0;background:var(--ink);color:var(--air);
@@ -112,14 +112,14 @@
 
 <div id="stage"><span id="scalebar"><i></i>100 cm</span>
 <div class="cell" data-id="a"><div class="frame"><iframe srcdoc="&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;zh-Hant&quot; data-mode=&quot;idle&quot; style=&quot;--sy:46%;--sr:-27deg&quot;&gt;
+&lt;html lang=&quot;zh-Hant&quot; data-mode=&quot;idle&quot; style=&quot;--ax:70%;--ar:-20deg&quot;&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;utf-8&quot;&gt;
 &lt;meta name=&quot;viewport&quot; content=&quot;width=1920&quot;&gt;
 &lt;title&gt;E 區副螢 A · 主題卡&lt;/title&gt;
 &lt;style&gt;
-  :root{--ink:#06080B;--air:#F2F1EC;--haze:#9AA3AE;--dim:#6A7480;--line:rgba(242,241,236,.14)}
-  html[data-mode=idle]{--h:#E9E7DF}
+  :root{--ink:#0A1322;--air:#F2F5FA;--haze:#93A2B8;--dim:#5F6E85;--line:rgba(242,245,250,.14)}
+  html[data-mode=idle]{--h:#3FB4F0}
   html[data-mode=life]{--h:#FFA61A}
   html[data-mode=bim] {--h:#FF2E1E}
   html[data-mode=data]{--h:#18DCB9}
@@ -127,47 +127,61 @@
   html,body{margin:0;width:1920px;height:1080px;overflow:hidden;background:var(--ink);color:var(--air);
     font-family:-apple-system,&quot;PingFang TC&quot;,&quot;Noto Sans TC&quot;,sans-serif;-webkit-font-smoothing:antialiased}
 
-  /* ── 光場:色調沉底+光縫+光暈(全部隨模式色 1s 過渡) ── */
+  /* ── 光場 v2「光刃・透視」:深藍夜空+垂直光軸+弧刃+消失點光扇 ── */
   #field{position:absolute;inset:0;overflow:hidden}
-  #field i{position:absolute;display:block;transition:background 1s ease,opacity 1s ease}
+  #field i{position:absolute;display:block;transition:background 1s ease,opacity 1s ease,box-shadow 1s ease}
+  .ground{inset:0;background:linear-gradient(180deg,#08101E 0%,#0C1930 50%,#1D3054 100%)}
   .tint{inset:0;background:
-    radial-gradient(120% 95% at 82% 6%, color-mix(in oklab, var(--h) 15%, transparent), transparent 60%),
-    radial-gradient(150% 110% at 6% 44%, color-mix(in oklab, var(--h) 8%, transparent), transparent 56%)}
-  .bloom{left:-14%;bottom:-30%;width:76%;height:88%;
-    background:radial-gradient(closest-side, color-mix(in oklab, var(--h) 58%, #FFFFFF 16%),
-      color-mix(in oklab, var(--h) 24%, transparent) 48%, transparent 74%);
-    opacity:.32;filter:blur(34px)}
-  .seam{left:-30%;top:calc(var(--sy) - 17%);width:160%;height:34%;
-    transform:rotate(var(--sr));
-    background:linear-gradient(to bottom, transparent 0%,
-      color-mix(in oklab, var(--h) 30%, transparent) 33%,
-      color-mix(in oklab, var(--h) 52%, #FFF 26%) 49%,
-      rgba(255,255,255,.82) 50%,
-      color-mix(in oklab, var(--h) 52%, #FFF 26%) 51%,
-      color-mix(in oklab, var(--h) 30%, transparent) 67%, transparent 100%);
-    opacity:.44;filter:blur(28px);animation:breath 9s ease-in-out infinite}
-  .core{left:-30%;top:calc(var(--sy) - .8%);width:160%;height:1.6%;
-    transform:rotate(var(--sr));
-    background:linear-gradient(90deg, transparent 4%, rgba(255,255,255,.92) 30% 70%, transparent 96%);
-    opacity:.6;filter:blur(4px);animation:breath 9s ease-in-out infinite}
-  @keyframes breath{0%,100%{opacity:.5}50%{opacity:.26}}
-  .veil{inset:0;background:linear-gradient(180deg, rgba(6,8,11,.52), rgba(6,8,11,.08) 42%, rgba(6,8,11,.42) 94%)}
+    radial-gradient(130% 85% at 76% 0%, color-mix(in oklab, var(--h) 20%, transparent), transparent 58%),
+    radial-gradient(130% 70% at var(--ax) 100%, color-mix(in oklab, var(--h) 16%, transparent), transparent 60%)}
+  .fan{left:-25%;right:-25%;top:0;bottom:-30%;opacity:.34;filter:blur(2px);
+    background:
+      radial-gradient(52% 40% at var(--ax) 86%, color-mix(in oklab, var(--h) 34%, #FFF 8%), transparent 70%),
+      repeating-conic-gradient(from 240deg at var(--ax) 86%,
+        transparent 0deg 9deg,
+        color-mix(in oklab, var(--h) 15%, transparent) 9.6deg 10.4deg,
+        transparent 11deg 20deg)}
+  .axis{top:-4%;bottom:-4%;left:calc(var(--ax) - 90px);width:180px;opacity:.62;filter:blur(7px);
+    background:linear-gradient(90deg, transparent 0%,
+      color-mix(in oklab, var(--h) 30%, transparent) 36%,
+      color-mix(in oklab, var(--h) 58%, #FFF 26%) 49%,
+      rgba(255,255,255,.9) 50%,
+      color-mix(in oklab, var(--h) 58%, #FFF 26%) 51%,
+      color-mix(in oklab, var(--h) 30%, transparent) 64%, transparent 100%);
+    animation:brA 8s ease-in-out infinite}
+  .core{top:-4%;bottom:-4%;left:calc(var(--ax) - 1.5px);width:3px;opacity:.85;filter:blur(.6px);
+    background:linear-gradient(180deg,transparent 2%,rgba(255,255,255,.96) 20% 80%,transparent 98%);
+    animation:brA 8s ease-in-out infinite}
+  .arc{width:320%;aspect-ratio:1;border-radius:50%;left:calc(var(--ax) - 235%);top:-26%;
+    border-top:3px solid rgba(255,255,255,.82);opacity:.5;filter:blur(1.6px);
+    box-shadow:0 -8px 30px color-mix(in oklab, var(--h) 65%, transparent),
+               0 -2px 10px color-mix(in oklab, var(--h) 80%, #FFF 10%);
+    transform:rotate(var(--ar));animation:brB 8s ease-in-out infinite}
+  @keyframes brA{0%,100%{opacity:.62}50%{opacity:.34}}
+  @keyframes brB{0%,100%{opacity:.5}50%{opacity:.24}}
+  .veil{inset:0;background:linear-gradient(180deg, rgba(8,14,26,.55), rgba(8,14,26,.1) 40%, rgba(8,14,26,.48) 94%)}
 
   section{position:absolute;inset:0;opacity:0;transition:opacity .7s ease;pointer-events:none}
   html[data-mode=idle] section.idle, html[data-mode=life] section.life,
   html[data-mode=bim]  section.bim,  html[data-mode=data] section.data{opacity:1}
 
-  .eyebrow{font-size:25px;letter-spacing:.52em;color:var(--h);transition:color 1s}
+  .eyebrow{font-size:25px;letter-spacing:.52em;color:var(--h);transition:color 1s;font-weight:500}
   .en{font-size:23px;letter-spacing:.56em;color:var(--haze)}
   .idstamp{position:absolute;right:46px;bottom:38px;font-size:17px;letter-spacing:.3em;color:var(--dim);z-index:5}
   .num{font-variant-numeric:tabular-nums}
   @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 
   section{display:flex;flex-direction:column;justify-content:center;padding:0 0 0 150px}
-  h1{margin:26px 0 0;font-weight:200;letter-spacing:.14em;font-size:158px;line-height:1.16}
-  h1 b{font-weight:400}
-  .sub{margin-top:30px;font-size:38px;font-weight:300;letter-spacing:.2em;color:var(--air)}
-  .claim{margin-top:56px;display:flex;align-items:center;gap:26px;font-size:30px;
+  h1{margin:24px 0 0;font-weight:600;letter-spacing:.1em;font-size:132px;line-height:1.22}
+  .logo{display:flex;align-items:flex-start;gap:16px;margin:8px 0 6px}
+  .logo b{font-size:210px;font-weight:800;letter-spacing:.015em;line-height:.95}
+  .logo i{font-style:normal;font-size:26px;letter-spacing:.34em;color:var(--haze);
+    writing-mode:vertical-rl;margin-top:16px}
+  .dates{margin-top:44px;display:flex;align-items:baseline;gap:20px;font-size:30px;font-weight:300;color:var(--haze)}
+  .dates b{font-size:52px;font-weight:500;color:var(--air)}
+  .addr{margin-top:14px;font-size:22px;letter-spacing:.14em;color:var(--dim)}
+  .sub{margin-top:26px;font-size:38px;font-weight:400;letter-spacing:.2em;color:var(--air)}
+  .claim{margin-top:52px;display:flex;align-items:center;gap:26px;font-size:30px;
     font-weight:300;letter-spacing:.22em;color:var(--haze)}
   .claim::before{content:&quot;&quot;;width:110px;height:1px;background:var(--h);
     box-shadow:0 0 18px var(--h);transition:background 1s,box-shadow 1s}
@@ -175,31 +189,32 @@
 &lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
-&lt;div id=&quot;field&quot;&gt;&lt;i class=&quot;tint&quot;&gt;&lt;/i&gt;&lt;i class=&quot;bloom&quot;&gt;&lt;/i&gt;&lt;i class=&quot;seam&quot;&gt;&lt;/i&gt;&lt;i class=&quot;core&quot;&gt;&lt;/i&gt;&lt;i class=&quot;veil&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+&lt;div id=&quot;field&quot;&gt;&lt;i class=&quot;ground&quot;&gt;&lt;/i&gt;&lt;i class=&quot;tint&quot;&gt;&lt;/i&gt;&lt;i class=&quot;fan&quot;&gt;&lt;/i&gt;&lt;i class=&quot;axis&quot;&gt;&lt;/i&gt;&lt;i class=&quot;core&quot;&gt;&lt;/i&gt;&lt;i class=&quot;arc&quot;&gt;&lt;/i&gt;&lt;i class=&quot;veil&quot;&gt;&lt;/i&gt;&lt;/div&gt;
 
 &lt;section class=&quot;idle&quot;&gt;
-  &lt;span class=&quot;eyebrow&quot;&gt;ANLB · BAOPU EXHIBITION&lt;/span&gt;
-  &lt;h1&gt;第五代住宅宣言&lt;br&gt;&lt;b&gt;AI 原生建築生命體&lt;/b&gt;&lt;/h1&gt;
-  &lt;span class=&quot;en2&quot;&gt;AI NATIVE LIVING BUILDING&lt;/span&gt;
-  &lt;div class=&quot;claim&quot;&gt;可持續 120 年的 OTA AI 健康建築&lt;/div&gt;
+  &lt;span class=&quot;eyebrow&quot;&gt;寶舖建設 · BAOPU EXHIBITION&lt;/span&gt;
+  &lt;div class=&quot;logo&quot;&gt;&lt;b&gt;ANLB&lt;/b&gt;&lt;i&gt;INSIDE&lt;/i&gt;&lt;/div&gt;
+  &lt;h1&gt;第五代住宅宣言&lt;br&gt;AI 原生建築生命體&lt;/h1&gt;
+  &lt;div class=&quot;dates num&quot;&gt;2026 &lt;b&gt;9.1&lt;/b&gt; —— 2027 &lt;b&gt;9.1&lt;/b&gt;&lt;/div&gt;
+  &lt;div class=&quot;addr&quot;&gt;展覽地點 —— 臺北市大安區信義路四段 30 巷 27 弄 1 號&lt;/div&gt;
 &lt;/section&gt;
 &lt;section class=&quot;life&quot;&gt;
   &lt;span class=&quot;eyebrow&quot;&gt;01 · LIFECYCLE&lt;/span&gt;
-  &lt;h1&gt;&lt;b&gt;全生命週期&lt;/b&gt;&lt;/h1&gt;
+  &lt;h1&gt;全生命週期&lt;/h1&gt;
   &lt;span class=&quot;en2&quot;&gt;FULL LIFECYCLE&lt;/span&gt;
   &lt;div class=&quot;sub&quot;&gt;五大系統 · 為百年而設計&lt;/div&gt;
   &lt;div class=&quot;claim&quot;&gt;120 年不是壽命,是設計目標&lt;/div&gt;
 &lt;/section&gt;
 &lt;section class=&quot;bim&quot;&gt;
   &lt;span class=&quot;eyebrow&quot;&gt;02 · BIM TOUR&lt;/span&gt;
-  &lt;h1&gt;&lt;b&gt;BIM 系統導覽&lt;/b&gt;&lt;/h1&gt;
+  &lt;h1&gt;BIM 系統導覽&lt;/h1&gt;
   &lt;span class=&quot;en2&quot;&gt;BIM SYSTEM TOUR&lt;/span&gt;
   &lt;div class=&quot;sub&quot;&gt;六大面向 · 即時透視&lt;/div&gt;
   &lt;div class=&quot;claim&quot;&gt;這棟樓,正在被 AI 管理&lt;/div&gt;
 &lt;/section&gt;
 &lt;section class=&quot;data&quot;&gt;
   &lt;span class=&quot;eyebrow&quot;&gt;03 · DATA FLOW&lt;/span&gt;
-  &lt;h1&gt;&lt;b&gt;數據匯流&lt;/b&gt;&lt;/h1&gt;
+  &lt;h1&gt;數據匯流&lt;/h1&gt;
   &lt;span class=&quot;en2&quot;&gt;DATA CONFLUENCE&lt;/span&gt;
   &lt;div class=&quot;sub&quot;&gt;從工地到營運 · 同一份數位分身&lt;/div&gt;
   &lt;div class=&quot;claim&quot;&gt;資料從第一天就開始累積&lt;/div&gt;
@@ -227,14 +242,14 @@ function connect(){
 &lt;/html&gt;
 "></iframe></div><span class="tag"><b>43"</b> · A · 主題卡</span><span class="route" style="--pc:var(--dp1)">DP1 · A-1</span></div>
 <div class="cell" data-id="b"><div class="frame"><iframe srcdoc="&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;zh-Hant&quot; data-mode=&quot;idle&quot; style=&quot;--sy:40%;--sr:-22deg&quot;&gt;
+&lt;html lang=&quot;zh-Hant&quot; data-mode=&quot;idle&quot; style=&quot;--ax:76%;--ar:-15deg&quot;&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;utf-8&quot;&gt;
 &lt;meta name=&quot;viewport&quot; content=&quot;width=1920&quot;&gt;
 &lt;title&gt;E 區副螢 B · 核心數字&lt;/title&gt;
 &lt;style&gt;
-  :root{--ink:#06080B;--air:#F2F1EC;--haze:#9AA3AE;--dim:#6A7480;--line:rgba(242,241,236,.14)}
-  html[data-mode=idle]{--h:#E9E7DF}
+  :root{--ink:#0A1322;--air:#F2F5FA;--haze:#93A2B8;--dim:#5F6E85;--line:rgba(242,245,250,.14)}
+  html[data-mode=idle]{--h:#3FB4F0}
   html[data-mode=life]{--h:#FFA61A}
   html[data-mode=bim] {--h:#FF2E1E}
   html[data-mode=data]{--h:#18DCB9}
@@ -242,37 +257,45 @@ function connect(){
   html,body{margin:0;width:1920px;height:1080px;overflow:hidden;background:var(--ink);color:var(--air);
     font-family:-apple-system,&quot;PingFang TC&quot;,&quot;Noto Sans TC&quot;,sans-serif;-webkit-font-smoothing:antialiased}
 
-  /* ── 光場:色調沉底+光縫+光暈(全部隨模式色 1s 過渡) ── */
+  /* ── 光場 v2「光刃・透視」:深藍夜空+垂直光軸+弧刃+消失點光扇 ── */
   #field{position:absolute;inset:0;overflow:hidden}
-  #field i{position:absolute;display:block;transition:background 1s ease,opacity 1s ease}
+  #field i{position:absolute;display:block;transition:background 1s ease,opacity 1s ease,box-shadow 1s ease}
+  .ground{inset:0;background:linear-gradient(180deg,#08101E 0%,#0C1930 50%,#1D3054 100%)}
   .tint{inset:0;background:
-    radial-gradient(120% 95% at 82% 6%, color-mix(in oklab, var(--h) 15%, transparent), transparent 60%),
-    radial-gradient(150% 110% at 6% 44%, color-mix(in oklab, var(--h) 8%, transparent), transparent 56%)}
-  .bloom{left:-14%;bottom:-30%;width:76%;height:88%;
-    background:radial-gradient(closest-side, color-mix(in oklab, var(--h) 58%, #FFFFFF 16%),
-      color-mix(in oklab, var(--h) 24%, transparent) 48%, transparent 74%);
-    opacity:.32;filter:blur(34px)}
-  .seam{left:-30%;top:calc(var(--sy) - 17%);width:160%;height:34%;
-    transform:rotate(var(--sr));
-    background:linear-gradient(to bottom, transparent 0%,
-      color-mix(in oklab, var(--h) 30%, transparent) 33%,
-      color-mix(in oklab, var(--h) 52%, #FFF 26%) 49%,
-      rgba(255,255,255,.82) 50%,
-      color-mix(in oklab, var(--h) 52%, #FFF 26%) 51%,
-      color-mix(in oklab, var(--h) 30%, transparent) 67%, transparent 100%);
-    opacity:.44;filter:blur(28px);animation:breath 9s ease-in-out infinite}
-  .core{left:-30%;top:calc(var(--sy) - .8%);width:160%;height:1.6%;
-    transform:rotate(var(--sr));
-    background:linear-gradient(90deg, transparent 4%, rgba(255,255,255,.92) 30% 70%, transparent 96%);
-    opacity:.6;filter:blur(4px);animation:breath 9s ease-in-out infinite}
-  @keyframes breath{0%,100%{opacity:.5}50%{opacity:.26}}
-  .veil{inset:0;background:linear-gradient(180deg, rgba(6,8,11,.52), rgba(6,8,11,.08) 42%, rgba(6,8,11,.42) 94%)}
+    radial-gradient(130% 85% at 76% 0%, color-mix(in oklab, var(--h) 20%, transparent), transparent 58%),
+    radial-gradient(130% 70% at var(--ax) 100%, color-mix(in oklab, var(--h) 16%, transparent), transparent 60%)}
+  .fan{left:-25%;right:-25%;top:0;bottom:-30%;opacity:.34;filter:blur(2px);
+    background:
+      radial-gradient(52% 40% at var(--ax) 86%, color-mix(in oklab, var(--h) 34%, #FFF 8%), transparent 70%),
+      repeating-conic-gradient(from 240deg at var(--ax) 86%,
+        transparent 0deg 9deg,
+        color-mix(in oklab, var(--h) 15%, transparent) 9.6deg 10.4deg,
+        transparent 11deg 20deg)}
+  .axis{top:-4%;bottom:-4%;left:calc(var(--ax) - 90px);width:180px;opacity:.62;filter:blur(7px);
+    background:linear-gradient(90deg, transparent 0%,
+      color-mix(in oklab, var(--h) 30%, transparent) 36%,
+      color-mix(in oklab, var(--h) 58%, #FFF 26%) 49%,
+      rgba(255,255,255,.9) 50%,
+      color-mix(in oklab, var(--h) 58%, #FFF 26%) 51%,
+      color-mix(in oklab, var(--h) 30%, transparent) 64%, transparent 100%);
+    animation:brA 8s ease-in-out infinite}
+  .core{top:-4%;bottom:-4%;left:calc(var(--ax) - 1.5px);width:3px;opacity:.85;filter:blur(.6px);
+    background:linear-gradient(180deg,transparent 2%,rgba(255,255,255,.96) 20% 80%,transparent 98%);
+    animation:brA 8s ease-in-out infinite}
+  .arc{width:320%;aspect-ratio:1;border-radius:50%;left:calc(var(--ax) - 235%);top:-26%;
+    border-top:3px solid rgba(255,255,255,.82);opacity:.5;filter:blur(1.6px);
+    box-shadow:0 -8px 30px color-mix(in oklab, var(--h) 65%, transparent),
+               0 -2px 10px color-mix(in oklab, var(--h) 80%, #FFF 10%);
+    transform:rotate(var(--ar));animation:brB 8s ease-in-out infinite}
+  @keyframes brA{0%,100%{opacity:.62}50%{opacity:.34}}
+  @keyframes brB{0%,100%{opacity:.5}50%{opacity:.24}}
+  .veil{inset:0;background:linear-gradient(180deg, rgba(8,14,26,.55), rgba(8,14,26,.1) 40%, rgba(8,14,26,.48) 94%)}
 
   section{position:absolute;inset:0;opacity:0;transition:opacity .7s ease;pointer-events:none}
   html[data-mode=idle] section.idle, html[data-mode=life] section.life,
   html[data-mode=bim]  section.bim,  html[data-mode=data] section.data{opacity:1}
 
-  .eyebrow{font-size:25px;letter-spacing:.52em;color:var(--h);transition:color 1s}
+  .eyebrow{font-size:25px;letter-spacing:.52em;color:var(--h);transition:color 1s;font-weight:500}
   .en{font-size:23px;letter-spacing:.56em;color:var(--haze)}
   .idstamp{position:absolute;right:46px;bottom:38px;font-size:17px;letter-spacing:.3em;color:var(--dim);z-index:5}
   .num{font-variant-numeric:tabular-nums}
@@ -289,7 +312,7 @@ function connect(){
 &lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
-&lt;div id=&quot;field&quot;&gt;&lt;i class=&quot;tint&quot;&gt;&lt;/i&gt;&lt;i class=&quot;bloom&quot;&gt;&lt;/i&gt;&lt;i class=&quot;seam&quot;&gt;&lt;/i&gt;&lt;i class=&quot;core&quot;&gt;&lt;/i&gt;&lt;i class=&quot;veil&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+&lt;div id=&quot;field&quot;&gt;&lt;i class=&quot;ground&quot;&gt;&lt;/i&gt;&lt;i class=&quot;tint&quot;&gt;&lt;/i&gt;&lt;i class=&quot;fan&quot;&gt;&lt;/i&gt;&lt;i class=&quot;axis&quot;&gt;&lt;/i&gt;&lt;i class=&quot;core&quot;&gt;&lt;/i&gt;&lt;i class=&quot;arc&quot;&gt;&lt;/i&gt;&lt;i class=&quot;veil&quot;&gt;&lt;/i&gt;&lt;/div&gt;
 &lt;section class=&quot;idle&quot;&gt;
   &lt;span class=&quot;eyebrow&quot;&gt;全棟脈動 · BUILDING PULSE&lt;/span&gt;
   &lt;div class=&quot;hero num&quot;&gt;&lt;span class=&quot;v&quot; &gt;89&lt;/span&gt;&lt;span class=&quot;u&quot;&gt;/ 100&lt;/span&gt;&lt;/div&gt;
@@ -335,14 +358,14 @@ function onYear(y){
 &lt;/html&gt;
 "></iframe></div><span class="tag"><b>43"</b> · B · 核心數字</span><span class="route" style="--pc:var(--dp1)">DP1 · A-2</span></div>
 <div class="cell" data-id="c"><div class="frame"><iframe srcdoc="&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;zh-Hant&quot; data-mode=&quot;idle&quot; style=&quot;--sy:34%;--sr:-30deg&quot;&gt;
+&lt;html lang=&quot;zh-Hant&quot; data-mode=&quot;idle&quot; style=&quot;--ax:88%;--ar:-24deg&quot;&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;utf-8&quot;&gt;
 &lt;meta name=&quot;viewport&quot; content=&quot;width=1920&quot;&gt;
 &lt;title&gt;E 區副螢 C · 趨勢圖&lt;/title&gt;
 &lt;style&gt;
-  :root{--ink:#06080B;--air:#F2F1EC;--haze:#9AA3AE;--dim:#6A7480;--line:rgba(242,241,236,.14)}
-  html[data-mode=idle]{--h:#E9E7DF}
+  :root{--ink:#0A1322;--air:#F2F5FA;--haze:#93A2B8;--dim:#5F6E85;--line:rgba(242,245,250,.14)}
+  html[data-mode=idle]{--h:#3FB4F0}
   html[data-mode=life]{--h:#FFA61A}
   html[data-mode=bim] {--h:#FF2E1E}
   html[data-mode=data]{--h:#18DCB9}
@@ -350,37 +373,45 @@ function onYear(y){
   html,body{margin:0;width:1920px;height:1080px;overflow:hidden;background:var(--ink);color:var(--air);
     font-family:-apple-system,&quot;PingFang TC&quot;,&quot;Noto Sans TC&quot;,sans-serif;-webkit-font-smoothing:antialiased}
 
-  /* ── 光場:色調沉底+光縫+光暈(全部隨模式色 1s 過渡) ── */
+  /* ── 光場 v2「光刃・透視」:深藍夜空+垂直光軸+弧刃+消失點光扇 ── */
   #field{position:absolute;inset:0;overflow:hidden}
-  #field i{position:absolute;display:block;transition:background 1s ease,opacity 1s ease}
+  #field i{position:absolute;display:block;transition:background 1s ease,opacity 1s ease,box-shadow 1s ease}
+  .ground{inset:0;background:linear-gradient(180deg,#08101E 0%,#0C1930 50%,#1D3054 100%)}
   .tint{inset:0;background:
-    radial-gradient(120% 95% at 82% 6%, color-mix(in oklab, var(--h) 15%, transparent), transparent 60%),
-    radial-gradient(150% 110% at 6% 44%, color-mix(in oklab, var(--h) 8%, transparent), transparent 56%)}
-  .bloom{left:-14%;bottom:-30%;width:76%;height:88%;
-    background:radial-gradient(closest-side, color-mix(in oklab, var(--h) 58%, #FFFFFF 16%),
-      color-mix(in oklab, var(--h) 24%, transparent) 48%, transparent 74%);
-    opacity:.32;filter:blur(34px)}
-  .seam{left:-30%;top:calc(var(--sy) - 17%);width:160%;height:34%;
-    transform:rotate(var(--sr));
-    background:linear-gradient(to bottom, transparent 0%,
-      color-mix(in oklab, var(--h) 30%, transparent) 33%,
-      color-mix(in oklab, var(--h) 52%, #FFF 26%) 49%,
-      rgba(255,255,255,.82) 50%,
-      color-mix(in oklab, var(--h) 52%, #FFF 26%) 51%,
-      color-mix(in oklab, var(--h) 30%, transparent) 67%, transparent 100%);
-    opacity:.44;filter:blur(28px);animation:breath 9s ease-in-out infinite}
-  .core{left:-30%;top:calc(var(--sy) - .8%);width:160%;height:1.6%;
-    transform:rotate(var(--sr));
-    background:linear-gradient(90deg, transparent 4%, rgba(255,255,255,.92) 30% 70%, transparent 96%);
-    opacity:.6;filter:blur(4px);animation:breath 9s ease-in-out infinite}
-  @keyframes breath{0%,100%{opacity:.5}50%{opacity:.26}}
-  .veil{inset:0;background:linear-gradient(180deg, rgba(6,8,11,.52), rgba(6,8,11,.08) 42%, rgba(6,8,11,.42) 94%)}
+    radial-gradient(130% 85% at 76% 0%, color-mix(in oklab, var(--h) 20%, transparent), transparent 58%),
+    radial-gradient(130% 70% at var(--ax) 100%, color-mix(in oklab, var(--h) 16%, transparent), transparent 60%)}
+  .fan{left:-25%;right:-25%;top:0;bottom:-30%;opacity:.34;filter:blur(2px);
+    background:
+      radial-gradient(52% 40% at var(--ax) 86%, color-mix(in oklab, var(--h) 34%, #FFF 8%), transparent 70%),
+      repeating-conic-gradient(from 240deg at var(--ax) 86%,
+        transparent 0deg 9deg,
+        color-mix(in oklab, var(--h) 15%, transparent) 9.6deg 10.4deg,
+        transparent 11deg 20deg)}
+  .axis{top:-4%;bottom:-4%;left:calc(var(--ax) - 90px);width:180px;opacity:.62;filter:blur(7px);
+    background:linear-gradient(90deg, transparent 0%,
+      color-mix(in oklab, var(--h) 30%, transparent) 36%,
+      color-mix(in oklab, var(--h) 58%, #FFF 26%) 49%,
+      rgba(255,255,255,.9) 50%,
+      color-mix(in oklab, var(--h) 58%, #FFF 26%) 51%,
+      color-mix(in oklab, var(--h) 30%, transparent) 64%, transparent 100%);
+    animation:brA 8s ease-in-out infinite}
+  .core{top:-4%;bottom:-4%;left:calc(var(--ax) - 1.5px);width:3px;opacity:.85;filter:blur(.6px);
+    background:linear-gradient(180deg,transparent 2%,rgba(255,255,255,.96) 20% 80%,transparent 98%);
+    animation:brA 8s ease-in-out infinite}
+  .arc{width:320%;aspect-ratio:1;border-radius:50%;left:calc(var(--ax) - 235%);top:-26%;
+    border-top:3px solid rgba(255,255,255,.82);opacity:.5;filter:blur(1.6px);
+    box-shadow:0 -8px 30px color-mix(in oklab, var(--h) 65%, transparent),
+               0 -2px 10px color-mix(in oklab, var(--h) 80%, #FFF 10%);
+    transform:rotate(var(--ar));animation:brB 8s ease-in-out infinite}
+  @keyframes brA{0%,100%{opacity:.62}50%{opacity:.34}}
+  @keyframes brB{0%,100%{opacity:.5}50%{opacity:.24}}
+  .veil{inset:0;background:linear-gradient(180deg, rgba(8,14,26,.55), rgba(8,14,26,.1) 40%, rgba(8,14,26,.48) 94%)}
 
   section{position:absolute;inset:0;opacity:0;transition:opacity .7s ease;pointer-events:none}
   html[data-mode=idle] section.idle, html[data-mode=life] section.life,
   html[data-mode=bim]  section.bim,  html[data-mode=data] section.data{opacity:1}
 
-  .eyebrow{font-size:25px;letter-spacing:.52em;color:var(--h);transition:color 1s}
+  .eyebrow{font-size:25px;letter-spacing:.52em;color:var(--h);transition:color 1s;font-weight:500}
   .en{font-size:23px;letter-spacing:.56em;color:var(--haze)}
   .idstamp{position:absolute;right:46px;bottom:38px;font-size:17px;letter-spacing:.3em;color:var(--dim);z-index:5}
   .num{font-variant-numeric:tabular-nums}
@@ -388,16 +419,16 @@ function onYear(y){
 
   section{display:flex;flex-direction:column;justify-content:center;padding:0 150px}
   .t{display:flex;align-items:baseline;gap:30px;margin:34px 0 8px}
-  .t b{font-size:44px;font-weight:300;letter-spacing:.16em}
+  .t b{font-size:44px;font-weight:500;letter-spacing:.14em}
   .t span{font-size:21px;letter-spacing:.4em;color:var(--haze)}
   svg{width:100%;height:600px;overflow:visible}
   .ln{fill:none;stroke:var(--h);stroke-width:4;transition:stroke 1s;
     filter:drop-shadow(0 0 16px color-mix(in oklab, var(--h) 75%, transparent))}
-  .ln2{fill:none;stroke:rgba(242,241,236,.30);stroke-width:3;stroke-dasharray:10 12}
-  .ar{fill:url(#gA);opacity:.16;transition:fill 1s}
-  .gr{stroke:rgba(242,241,236,.10);stroke-width:1}
-  .th{stroke:rgba(242,241,236,.22);stroke-width:1.5;stroke-dasharray:4 8}
-  .ax{font-size:22px;letter-spacing:.2em;fill:var(--dim);font-family:inherit}
+  .ln2{fill:none;stroke:rgba(242,245,250,.30);stroke-width:3;stroke-dasharray:10 12}
+  .ar2{fill:url(#gA);opacity:.16;transition:fill 1s}
+  .gr{stroke:rgba(242,245,250,.10);stroke-width:1}
+  .th{stroke:rgba(242,245,250,.22);stroke-width:1.5;stroke-dasharray:4 8}
+  .ax2{font-size:22px;letter-spacing:.2em;fill:var(--dim);font-family:inherit}
   .axh{fill:var(--haze)}
   .dot{fill:var(--h);transition:fill 1s;filter:drop-shadow(0 0 12px var(--h))}
   .cur{stroke:var(--h);stroke-width:2;opacity:.85;transition:stroke 1s}
@@ -405,11 +436,11 @@ function onYear(y){
   .lg i{font-style:normal;display:flex;align-items:center;gap:16px}
   .lg i::before{content:&quot;&quot;;width:44px;height:0;border-top:4px solid var(--h);transition:border-color 1s;
     box-shadow:0 0 12px color-mix(in oklab, var(--h) 60%, transparent)}
-  .lg i.d2::before{border-top:3px dashed rgba(242,241,236,.35);box-shadow:none}
+  .lg i.d2::before{border-top:3px dashed rgba(242,245,250,.35);box-shadow:none}
 &lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
-&lt;div id=&quot;field&quot;&gt;&lt;i class=&quot;tint&quot;&gt;&lt;/i&gt;&lt;i class=&quot;bloom&quot;&gt;&lt;/i&gt;&lt;i class=&quot;seam&quot;&gt;&lt;/i&gt;&lt;i class=&quot;core&quot;&gt;&lt;/i&gt;&lt;i class=&quot;veil&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+&lt;div id=&quot;field&quot;&gt;&lt;i class=&quot;ground&quot;&gt;&lt;/i&gt;&lt;i class=&quot;tint&quot;&gt;&lt;/i&gt;&lt;i class=&quot;fan&quot;&gt;&lt;/i&gt;&lt;i class=&quot;axis&quot;&gt;&lt;/i&gt;&lt;i class=&quot;core&quot;&gt;&lt;/i&gt;&lt;i class=&quot;arc&quot;&gt;&lt;/i&gt;&lt;i class=&quot;veil&quot;&gt;&lt;/i&gt;&lt;/div&gt;
 
 &lt;section class=&quot;idle&quot;&gt;
   &lt;span class=&quot;eyebrow&quot;&gt;TRENDS&lt;/span&gt;
@@ -423,12 +454,12 @@ function onYear(y){
   &lt;div class=&quot;t&quot;&gt;&lt;b&gt;50 年建築 vs 120 年建築&lt;/b&gt;&lt;span&gt;PERFORMANCE / 120 YEARS&lt;/span&gt;&lt;/div&gt;
   &lt;svg viewBox=&quot;0 0 1620 575&quot; preserveAspectRatio=&quot;none&quot;&gt;&lt;line class=&quot;gr&quot; x1=&quot;0&quot; y1=&quot;0&quot; x2=&quot;1620&quot; y2=&quot;0&quot;/&gt;&lt;line class=&quot;gr&quot; x1=&quot;0&quot; y1=&quot;130&quot; x2=&quot;1620&quot; y2=&quot;130&quot;/&gt;&lt;line class=&quot;gr&quot; x1=&quot;0&quot; y1=&quot;260&quot; x2=&quot;1620&quot; y2=&quot;260&quot;/&gt;&lt;line class=&quot;gr&quot; x1=&quot;0&quot; y1=&quot;390&quot; x2=&quot;1620&quot; y2=&quot;390&quot;/&gt;&lt;line class=&quot;gr&quot; x1=&quot;0&quot; y1=&quot;520&quot; x2=&quot;1620&quot; y2=&quot;520&quot;/&gt;
     &lt;line class=&quot;th&quot; x1=&quot;0&quot; y1=&quot;430&quot; x2=&quot;1620&quot; y2=&quot;430&quot;/&gt;
-    &lt;text class=&quot;ax&quot; x=&quot;8&quot; y=&quot;418&quot;&gt;安全線&lt;/text&gt;
+    &lt;text class=&quot;ax2&quot; x=&quot;8&quot; y=&quot;418&quot;&gt;安全線&lt;/text&gt;
     &lt;polyline class=&quot;ln2&quot; points=&quot;0,90 180,124 360,178 500,260 620,352 700,432 780,520 830,585&quot;/&gt;
     &lt;polyline class=&quot;ln&quot; points=&quot;0,90 200,110 380,132 380,104 620,138 620,112 860,148 860,120 1100,158 1100,130 1340,166 1340,140 1620,158&quot;/&gt;
     &lt;line id=&quot;cursor&quot; class=&quot;cur&quot; x1=&quot;0&quot; y1=&quot;20&quot; x2=&quot;0&quot; y2=&quot;520&quot;/&gt;
     &lt;circle class=&quot;dot&quot; cx=&quot;1620&quot; cy=&quot;158&quot; r=&quot;9&quot;/&gt;
-    &lt;g&gt;&lt;text class=&quot;ax axh&quot; x=&quot;385&quot; y=&quot;565&quot;&gt;30&lt;/text&gt;&lt;text class=&quot;ax axh&quot; x=&quot;790&quot; y=&quot;565&quot;&gt;60&lt;/text&gt;&lt;text class=&quot;ax axh&quot; x=&quot;1195&quot; y=&quot;565&quot;&gt;90&lt;/text&gt;&lt;text class=&quot;ax axh&quot; x=&quot;1560&quot; y=&quot;565&quot;&gt;120 年&lt;/text&gt;&lt;text class=&quot;ax&quot; x=&quot;0&quot; y=&quot;565&quot;&gt;0&lt;/text&gt;&lt;/g&gt;
+    &lt;g&gt;&lt;text class=&quot;ax2 axh&quot; x=&quot;385&quot; y=&quot;565&quot;&gt;30&lt;/text&gt;&lt;text class=&quot;ax2 axh&quot; x=&quot;790&quot; y=&quot;565&quot;&gt;60&lt;/text&gt;&lt;text class=&quot;ax2 axh&quot; x=&quot;1195&quot; y=&quot;565&quot;&gt;90&lt;/text&gt;&lt;text class=&quot;ax2 axh&quot; x=&quot;1560&quot; y=&quot;565&quot;&gt;120 年&lt;/text&gt;&lt;text class=&quot;ax2&quot; x=&quot;0&quot; y=&quot;565&quot;&gt;0&lt;/text&gt;&lt;/g&gt;
   &lt;/svg&gt;
   &lt;div class=&quot;lg&quot;&gt;&lt;i&gt;OTA AI 維養(每次維養回升)&lt;/i&gt;&lt;i class=&quot;d2&quot;&gt;無維養,50 年跌破安全線&lt;/i&gt;&lt;/div&gt;
 &lt;/section&gt;
@@ -438,7 +469,7 @@ function onYear(y){
   &lt;svg viewBox=&quot;0 0 1620 575&quot; preserveAspectRatio=&quot;none&quot;&gt;&lt;line class=&quot;gr&quot; x1=&quot;0&quot; y1=&quot;0&quot; x2=&quot;1620&quot; y2=&quot;0&quot;/&gt;&lt;line class=&quot;gr&quot; x1=&quot;0&quot; y1=&quot;130&quot; x2=&quot;1620&quot; y2=&quot;130&quot;/&gt;&lt;line class=&quot;gr&quot; x1=&quot;0&quot; y1=&quot;260&quot; x2=&quot;1620&quot; y2=&quot;260&quot;/&gt;&lt;line class=&quot;gr&quot; x1=&quot;0&quot; y1=&quot;390&quot; x2=&quot;1620&quot; y2=&quot;390&quot;/&gt;&lt;line class=&quot;gr&quot; x1=&quot;0&quot; y1=&quot;520&quot; x2=&quot;1620&quot; y2=&quot;520&quot;/&gt;
     &lt;polyline class=&quot;ln2&quot; points=&quot;0,470 135,462 270,395 405,355 540,375 675,320 810,300 945,325 1080,290 1215,350 1350,420 1485,455 1620,468&quot;/&gt;
     &lt;polyline class=&quot;ln&quot; points=&quot;0,420 135,428 270,330 405,240 540,205 675,235 810,180 945,205 1080,165 1215,225 1350,330 1485,405 1620,428&quot;/&gt;&lt;circle class=&quot;dot&quot; cx=&quot;1620&quot; cy=&quot;428&quot; r=&quot;9&quot;/&gt;
-    &lt;g&gt;&lt;text class=&quot;ax&quot; x=&quot;0&quot; y=&quot;565&quot;&gt;00:00&lt;/text&gt;&lt;text class=&quot;ax&quot; x=&quot;380&quot; y=&quot;565&quot;&gt;06:00&lt;/text&gt;&lt;text class=&quot;ax&quot; x=&quot;780&quot; y=&quot;565&quot;&gt;12:00&lt;/text&gt;&lt;text class=&quot;ax&quot; x=&quot;1180&quot; y=&quot;565&quot;&gt;18:00&lt;/text&gt;&lt;text class=&quot;ax&quot; x=&quot;1550&quot; y=&quot;565&quot;&gt;24:00&lt;/text&gt;&lt;/g&gt;
+    &lt;g&gt;&lt;text class=&quot;ax2&quot; x=&quot;0&quot; y=&quot;565&quot;&gt;00:00&lt;/text&gt;&lt;text class=&quot;ax2&quot; x=&quot;380&quot; y=&quot;565&quot;&gt;06:00&lt;/text&gt;&lt;text class=&quot;ax2&quot; x=&quot;780&quot; y=&quot;565&quot;&gt;12:00&lt;/text&gt;&lt;text class=&quot;ax2&quot; x=&quot;1180&quot; y=&quot;565&quot;&gt;18:00&lt;/text&gt;&lt;text class=&quot;ax2&quot; x=&quot;1550&quot; y=&quot;565&quot;&gt;24:00&lt;/text&gt;&lt;/g&gt;
   &lt;/svg&gt;
   &lt;div class=&quot;lg&quot;&gt;&lt;i&gt;能源負載&lt;/i&gt;&lt;i class=&quot;d2&quot;&gt;人流&lt;/i&gt;&lt;/div&gt;
 &lt;/section&gt;
@@ -449,9 +480,9 @@ function onYear(y){
     &lt;defs&gt;&lt;linearGradient id=&quot;gA&quot; x1=&quot;0&quot; y1=&quot;0&quot; x2=&quot;0&quot; y2=&quot;1&quot;&gt;
       &lt;stop offset=&quot;0&quot; stop-color=&quot;var(--h)&quot;/&gt;&lt;stop offset=&quot;1&quot; stop-color=&quot;transparent&quot;/&gt;
     &lt;/linearGradient&gt;&lt;/defs&gt;&lt;line class=&quot;gr&quot; x1=&quot;0&quot; y1=&quot;0&quot; x2=&quot;1620&quot; y2=&quot;0&quot;/&gt;&lt;line class=&quot;gr&quot; x1=&quot;0&quot; y1=&quot;130&quot; x2=&quot;1620&quot; y2=&quot;130&quot;/&gt;&lt;line class=&quot;gr&quot; x1=&quot;0&quot; y1=&quot;260&quot; x2=&quot;1620&quot; y2=&quot;260&quot;/&gt;&lt;line class=&quot;gr&quot; x1=&quot;0&quot; y1=&quot;390&quot; x2=&quot;1620&quot; y2=&quot;390&quot;/&gt;&lt;line class=&quot;gr&quot; x1=&quot;0&quot; y1=&quot;520&quot; x2=&quot;1620&quot; y2=&quot;520&quot;/&gt;
-    &lt;path class=&quot;ar&quot; d=&quot;M0,505 250,505 250,455 500,455 500,385 750,385 750,300 1000,300 1000,205 1270,205 1270,110 1620,95 1620,520 0,520 Z&quot;/&gt;
+    &lt;path class=&quot;ar2&quot; d=&quot;M0,505 250,505 250,455 500,455 500,385 750,385 750,300 1000,300 1000,205 1270,205 1270,110 1620,95 1620,520 0,520 Z&quot;/&gt;
     &lt;polyline class=&quot;ln&quot; points=&quot;0,505 250,505 250,455 500,455 500,385 750,385 750,300 1000,300 1000,205 1270,205 1270,110 1620,95&quot;/&gt;&lt;circle class=&quot;dot&quot; cx=&quot;1620&quot; cy=&quot;95&quot; r=&quot;9&quot;/&gt;
-    &lt;g&gt;&lt;text class=&quot;ax axh&quot; x=&quot;0&quot; y=&quot;565&quot;&gt;工地現場&lt;/text&gt;&lt;text class=&quot;ax axh&quot; x=&quot;255&quot; y=&quot;565&quot;&gt;結構封頂&lt;/text&gt;&lt;text class=&quot;ax axh&quot; x=&quot;505&quot; y=&quot;565&quot;&gt;機電佈設&lt;/text&gt;&lt;text class=&quot;ax axh&quot; x=&quot;755&quot; y=&quot;565&quot;&gt;外牆完成&lt;/text&gt;&lt;text class=&quot;ax axh&quot; x=&quot;1005&quot; y=&quot;565&quot;&gt;投入使用&lt;/text&gt;&lt;text class=&quot;ax axh&quot; x=&quot;1275&quot; y=&quot;565&quot;&gt;長期維護&lt;/text&gt;&lt;/g&gt;
+    &lt;g&gt;&lt;text class=&quot;ax2 axh&quot; x=&quot;0&quot; y=&quot;565&quot;&gt;工地現場&lt;/text&gt;&lt;text class=&quot;ax2 axh&quot; x=&quot;255&quot; y=&quot;565&quot;&gt;結構封頂&lt;/text&gt;&lt;text class=&quot;ax2 axh&quot; x=&quot;505&quot; y=&quot;565&quot;&gt;機電佈設&lt;/text&gt;&lt;text class=&quot;ax2 axh&quot; x=&quot;755&quot; y=&quot;565&quot;&gt;外牆完成&lt;/text&gt;&lt;text class=&quot;ax2 axh&quot; x=&quot;1005&quot; y=&quot;565&quot;&gt;投入使用&lt;/text&gt;&lt;text class=&quot;ax2 axh&quot; x=&quot;1275&quot; y=&quot;565&quot;&gt;長期維護&lt;/text&gt;&lt;/g&gt;
   &lt;/svg&gt;
   &lt;div class=&quot;lg&quot;&gt;&lt;i&gt;累積資料量(示意)&lt;/i&gt;&lt;/div&gt;
 &lt;/section&gt;
@@ -484,14 +515,14 @@ function onYear(y){
 &lt;/html&gt;
 "></iframe></div><span class="tag"><b>43"</b> · C · 趨勢圖</span><span class="route" style="--pc:var(--dp1)">DP1 · A-3</span></div>
 <div class="cell" data-id="d"><div class="frame"><iframe srcdoc="&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;zh-Hant&quot; data-mode=&quot;idle&quot; style=&quot;--sy:58%;--sr:-25deg&quot;&gt;
+&lt;html lang=&quot;zh-Hant&quot; data-mode=&quot;idle&quot; style=&quot;--ax:50%;--ar:-18deg&quot;&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;utf-8&quot;&gt;
 &lt;meta name=&quot;viewport&quot; content=&quot;width=1920&quot;&gt;
 &lt;title&gt;E 區副螢 D · 影像&lt;/title&gt;
 &lt;style&gt;
-  :root{--ink:#06080B;--air:#F2F1EC;--haze:#9AA3AE;--dim:#6A7480;--line:rgba(242,241,236,.14)}
-  html[data-mode=idle]{--h:#E9E7DF}
+  :root{--ink:#0A1322;--air:#F2F5FA;--haze:#93A2B8;--dim:#5F6E85;--line:rgba(242,245,250,.14)}
+  html[data-mode=idle]{--h:#3FB4F0}
   html[data-mode=life]{--h:#FFA61A}
   html[data-mode=bim] {--h:#FF2E1E}
   html[data-mode=data]{--h:#18DCB9}
@@ -499,37 +530,45 @@ function onYear(y){
   html,body{margin:0;width:1920px;height:1080px;overflow:hidden;background:var(--ink);color:var(--air);
     font-family:-apple-system,&quot;PingFang TC&quot;,&quot;Noto Sans TC&quot;,sans-serif;-webkit-font-smoothing:antialiased}
 
-  /* ── 光場:色調沉底+光縫+光暈(全部隨模式色 1s 過渡) ── */
+  /* ── 光場 v2「光刃・透視」:深藍夜空+垂直光軸+弧刃+消失點光扇 ── */
   #field{position:absolute;inset:0;overflow:hidden}
-  #field i{position:absolute;display:block;transition:background 1s ease,opacity 1s ease}
+  #field i{position:absolute;display:block;transition:background 1s ease,opacity 1s ease,box-shadow 1s ease}
+  .ground{inset:0;background:linear-gradient(180deg,#08101E 0%,#0C1930 50%,#1D3054 100%)}
   .tint{inset:0;background:
-    radial-gradient(120% 95% at 82% 6%, color-mix(in oklab, var(--h) 15%, transparent), transparent 60%),
-    radial-gradient(150% 110% at 6% 44%, color-mix(in oklab, var(--h) 8%, transparent), transparent 56%)}
-  .bloom{left:-14%;bottom:-30%;width:76%;height:88%;
-    background:radial-gradient(closest-side, color-mix(in oklab, var(--h) 58%, #FFFFFF 16%),
-      color-mix(in oklab, var(--h) 24%, transparent) 48%, transparent 74%);
-    opacity:.32;filter:blur(34px)}
-  .seam{left:-30%;top:calc(var(--sy) - 17%);width:160%;height:34%;
-    transform:rotate(var(--sr));
-    background:linear-gradient(to bottom, transparent 0%,
-      color-mix(in oklab, var(--h) 30%, transparent) 33%,
-      color-mix(in oklab, var(--h) 52%, #FFF 26%) 49%,
-      rgba(255,255,255,.82) 50%,
-      color-mix(in oklab, var(--h) 52%, #FFF 26%) 51%,
-      color-mix(in oklab, var(--h) 30%, transparent) 67%, transparent 100%);
-    opacity:.44;filter:blur(28px);animation:breath 9s ease-in-out infinite}
-  .core{left:-30%;top:calc(var(--sy) - .8%);width:160%;height:1.6%;
-    transform:rotate(var(--sr));
-    background:linear-gradient(90deg, transparent 4%, rgba(255,255,255,.92) 30% 70%, transparent 96%);
-    opacity:.6;filter:blur(4px);animation:breath 9s ease-in-out infinite}
-  @keyframes breath{0%,100%{opacity:.5}50%{opacity:.26}}
-  .veil{inset:0;background:linear-gradient(180deg, rgba(6,8,11,.52), rgba(6,8,11,.08) 42%, rgba(6,8,11,.42) 94%)}
+    radial-gradient(130% 85% at 76% 0%, color-mix(in oklab, var(--h) 20%, transparent), transparent 58%),
+    radial-gradient(130% 70% at var(--ax) 100%, color-mix(in oklab, var(--h) 16%, transparent), transparent 60%)}
+  .fan{left:-25%;right:-25%;top:0;bottom:-30%;opacity:.34;filter:blur(2px);
+    background:
+      radial-gradient(52% 40% at var(--ax) 86%, color-mix(in oklab, var(--h) 34%, #FFF 8%), transparent 70%),
+      repeating-conic-gradient(from 240deg at var(--ax) 86%,
+        transparent 0deg 9deg,
+        color-mix(in oklab, var(--h) 15%, transparent) 9.6deg 10.4deg,
+        transparent 11deg 20deg)}
+  .axis{top:-4%;bottom:-4%;left:calc(var(--ax) - 90px);width:180px;opacity:.62;filter:blur(7px);
+    background:linear-gradient(90deg, transparent 0%,
+      color-mix(in oklab, var(--h) 30%, transparent) 36%,
+      color-mix(in oklab, var(--h) 58%, #FFF 26%) 49%,
+      rgba(255,255,255,.9) 50%,
+      color-mix(in oklab, var(--h) 58%, #FFF 26%) 51%,
+      color-mix(in oklab, var(--h) 30%, transparent) 64%, transparent 100%);
+    animation:brA 8s ease-in-out infinite}
+  .core{top:-4%;bottom:-4%;left:calc(var(--ax) - 1.5px);width:3px;opacity:.85;filter:blur(.6px);
+    background:linear-gradient(180deg,transparent 2%,rgba(255,255,255,.96) 20% 80%,transparent 98%);
+    animation:brA 8s ease-in-out infinite}
+  .arc{width:320%;aspect-ratio:1;border-radius:50%;left:calc(var(--ax) - 235%);top:-26%;
+    border-top:3px solid rgba(255,255,255,.82);opacity:.5;filter:blur(1.6px);
+    box-shadow:0 -8px 30px color-mix(in oklab, var(--h) 65%, transparent),
+               0 -2px 10px color-mix(in oklab, var(--h) 80%, #FFF 10%);
+    transform:rotate(var(--ar));animation:brB 8s ease-in-out infinite}
+  @keyframes brA{0%,100%{opacity:.62}50%{opacity:.34}}
+  @keyframes brB{0%,100%{opacity:.5}50%{opacity:.24}}
+  .veil{inset:0;background:linear-gradient(180deg, rgba(8,14,26,.55), rgba(8,14,26,.1) 40%, rgba(8,14,26,.48) 94%)}
 
   section{position:absolute;inset:0;opacity:0;transition:opacity .7s ease;pointer-events:none}
   html[data-mode=idle] section.idle, html[data-mode=life] section.life,
   html[data-mode=bim]  section.bim,  html[data-mode=data] section.data{opacity:1}
 
-  .eyebrow{font-size:25px;letter-spacing:.52em;color:var(--h);transition:color 1s}
+  .eyebrow{font-size:25px;letter-spacing:.52em;color:var(--h);transition:color 1s;font-weight:500}
   .en{font-size:23px;letter-spacing:.56em;color:var(--haze)}
   .idstamp{position:absolute;right:46px;bottom:38px;font-size:17px;letter-spacing:.3em;color:var(--dim);z-index:5}
   .num{font-variant-numeric:tabular-nums}
@@ -537,18 +576,18 @@ function onYear(y){
 
   section{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:38px}
   .frame{width:1180px;padding:110px 60px;border:1px solid color-mix(in oklab, var(--h) 45%, transparent);
-    transition:border-color 1s;position:relative}
+    transition:border-color 1s;position:relative;background:rgba(8,14,26,.35)}
   .frame::before,.frame::after{content:&quot;&quot;;position:absolute;width:46px;height:46px;
     border:2px solid var(--h);transition:border-color 1s}
   .frame::before{left:-2px;top:-2px;border-right:0;border-bottom:0}
   .frame::after{right:-2px;bottom:-2px;border-left:0;border-top:0}
-  .frame b{display:block;font-size:64px;font-weight:200;letter-spacing:.2em}
+  .frame b{display:block;font-size:64px;font-weight:500;letter-spacing:.18em}
   .frame span{display:block;margin-top:26px;font-size:26px;color:var(--haze);letter-spacing:.14em;line-height:1.8}
   .st{font-size:22px;letter-spacing:.4em;color:var(--h);transition:color 1s}
 &lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
-&lt;div id=&quot;field&quot;&gt;&lt;i class=&quot;tint&quot;&gt;&lt;/i&gt;&lt;i class=&quot;bloom&quot;&gt;&lt;/i&gt;&lt;i class=&quot;seam&quot;&gt;&lt;/i&gt;&lt;i class=&quot;core&quot;&gt;&lt;/i&gt;&lt;i class=&quot;veil&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+&lt;div id=&quot;field&quot;&gt;&lt;i class=&quot;ground&quot;&gt;&lt;/i&gt;&lt;i class=&quot;tint&quot;&gt;&lt;/i&gt;&lt;i class=&quot;fan&quot;&gt;&lt;/i&gt;&lt;i class=&quot;axis&quot;&gt;&lt;/i&gt;&lt;i class=&quot;core&quot;&gt;&lt;/i&gt;&lt;i class=&quot;arc&quot;&gt;&lt;/i&gt;&lt;i class=&quot;veil&quot;&gt;&lt;/i&gt;&lt;/div&gt;
 &lt;section class=&quot;idle&quot;&gt;
   &lt;span class=&quot;eyebrow&quot;&gt;FOOTAGE&lt;/span&gt;
   &lt;div class=&quot;frame&quot;&gt;&lt;b&gt;建築外觀・空拍循環&lt;/b&gt;&lt;span&gt;寶舖/擷果 空拍或渲染動畫・預錄循環播放&lt;/span&gt;&lt;/div&gt;
@@ -587,14 +626,14 @@ function connect(){
 &lt;/html&gt;
 "></iframe></div><span class="tag"><b>43"</b> · D · 影像</span><span class="route" style="--pc:var(--dp1)">DP1 · A-4</span></div>
 <div class="cell" data-id="s1"><div class="frame"><iframe srcdoc="&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;zh-Hant&quot; data-mode=&quot;idle&quot; style=&quot;--sy:52%;--sr:-24deg&quot;&gt;
+&lt;html lang=&quot;zh-Hant&quot; data-mode=&quot;idle&quot; style=&quot;--ax:74%;--ar:-16deg&quot;&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;utf-8&quot;&gt;
 &lt;meta name=&quot;viewport&quot; content=&quot;width=1920&quot;&gt;
 &lt;title&gt;E 區副螢 S1 · 系統卡&lt;/title&gt;
 &lt;style&gt;
-  :root{--ink:#06080B;--air:#F2F1EC;--haze:#9AA3AE;--dim:#6A7480;--line:rgba(242,241,236,.14)}
-  html[data-mode=idle]{--h:#E9E7DF}
+  :root{--ink:#0A1322;--air:#F2F5FA;--haze:#93A2B8;--dim:#5F6E85;--line:rgba(242,245,250,.14)}
+  html[data-mode=idle]{--h:#3FB4F0}
   html[data-mode=life]{--h:#FFA61A}
   html[data-mode=bim] {--h:#FF2E1E}
   html[data-mode=data]{--h:#18DCB9}
@@ -602,44 +641,52 @@ function connect(){
   html,body{margin:0;width:1920px;height:1080px;overflow:hidden;background:var(--ink);color:var(--air);
     font-family:-apple-system,&quot;PingFang TC&quot;,&quot;Noto Sans TC&quot;,sans-serif;-webkit-font-smoothing:antialiased}
 
-  /* ── 光場:色調沉底+光縫+光暈(全部隨模式色 1s 過渡) ── */
+  /* ── 光場 v2「光刃・透視」:深藍夜空+垂直光軸+弧刃+消失點光扇 ── */
   #field{position:absolute;inset:0;overflow:hidden}
-  #field i{position:absolute;display:block;transition:background 1s ease,opacity 1s ease}
+  #field i{position:absolute;display:block;transition:background 1s ease,opacity 1s ease,box-shadow 1s ease}
+  .ground{inset:0;background:linear-gradient(180deg,#08101E 0%,#0C1930 50%,#1D3054 100%)}
   .tint{inset:0;background:
-    radial-gradient(120% 95% at 82% 6%, color-mix(in oklab, var(--h) 15%, transparent), transparent 60%),
-    radial-gradient(150% 110% at 6% 44%, color-mix(in oklab, var(--h) 8%, transparent), transparent 56%)}
-  .bloom{left:-14%;bottom:-30%;width:76%;height:88%;
-    background:radial-gradient(closest-side, color-mix(in oklab, var(--h) 58%, #FFFFFF 16%),
-      color-mix(in oklab, var(--h) 24%, transparent) 48%, transparent 74%);
-    opacity:.32;filter:blur(34px)}
-  .seam{left:-30%;top:calc(var(--sy) - 17%);width:160%;height:34%;
-    transform:rotate(var(--sr));
-    background:linear-gradient(to bottom, transparent 0%,
-      color-mix(in oklab, var(--h) 30%, transparent) 33%,
-      color-mix(in oklab, var(--h) 52%, #FFF 26%) 49%,
-      rgba(255,255,255,.82) 50%,
-      color-mix(in oklab, var(--h) 52%, #FFF 26%) 51%,
-      color-mix(in oklab, var(--h) 30%, transparent) 67%, transparent 100%);
-    opacity:.44;filter:blur(28px);animation:breath 9s ease-in-out infinite}
-  .core{left:-30%;top:calc(var(--sy) - .8%);width:160%;height:1.6%;
-    transform:rotate(var(--sr));
-    background:linear-gradient(90deg, transparent 4%, rgba(255,255,255,.92) 30% 70%, transparent 96%);
-    opacity:.6;filter:blur(4px);animation:breath 9s ease-in-out infinite}
-  @keyframes breath{0%,100%{opacity:.5}50%{opacity:.26}}
-  .veil{inset:0;background:linear-gradient(180deg, rgba(6,8,11,.52), rgba(6,8,11,.08) 42%, rgba(6,8,11,.42) 94%)}
+    radial-gradient(130% 85% at 76% 0%, color-mix(in oklab, var(--h) 20%, transparent), transparent 58%),
+    radial-gradient(130% 70% at var(--ax) 100%, color-mix(in oklab, var(--h) 16%, transparent), transparent 60%)}
+  .fan{left:-25%;right:-25%;top:0;bottom:-30%;opacity:.34;filter:blur(2px);
+    background:
+      radial-gradient(52% 40% at var(--ax) 86%, color-mix(in oklab, var(--h) 34%, #FFF 8%), transparent 70%),
+      repeating-conic-gradient(from 240deg at var(--ax) 86%,
+        transparent 0deg 9deg,
+        color-mix(in oklab, var(--h) 15%, transparent) 9.6deg 10.4deg,
+        transparent 11deg 20deg)}
+  .axis{top:-4%;bottom:-4%;left:calc(var(--ax) - 90px);width:180px;opacity:.62;filter:blur(7px);
+    background:linear-gradient(90deg, transparent 0%,
+      color-mix(in oklab, var(--h) 30%, transparent) 36%,
+      color-mix(in oklab, var(--h) 58%, #FFF 26%) 49%,
+      rgba(255,255,255,.9) 50%,
+      color-mix(in oklab, var(--h) 58%, #FFF 26%) 51%,
+      color-mix(in oklab, var(--h) 30%, transparent) 64%, transparent 100%);
+    animation:brA 8s ease-in-out infinite}
+  .core{top:-4%;bottom:-4%;left:calc(var(--ax) - 1.5px);width:3px;opacity:.85;filter:blur(.6px);
+    background:linear-gradient(180deg,transparent 2%,rgba(255,255,255,.96) 20% 80%,transparent 98%);
+    animation:brA 8s ease-in-out infinite}
+  .arc{width:320%;aspect-ratio:1;border-radius:50%;left:calc(var(--ax) - 235%);top:-26%;
+    border-top:3px solid rgba(255,255,255,.82);opacity:.5;filter:blur(1.6px);
+    box-shadow:0 -8px 30px color-mix(in oklab, var(--h) 65%, transparent),
+               0 -2px 10px color-mix(in oklab, var(--h) 80%, #FFF 10%);
+    transform:rotate(var(--ar));animation:brB 8s ease-in-out infinite}
+  @keyframes brA{0%,100%{opacity:.62}50%{opacity:.34}}
+  @keyframes brB{0%,100%{opacity:.5}50%{opacity:.24}}
+  .veil{inset:0;background:linear-gradient(180deg, rgba(8,14,26,.55), rgba(8,14,26,.1) 40%, rgba(8,14,26,.48) 94%)}
 
   section{position:absolute;inset:0;opacity:0;transition:opacity .7s ease;pointer-events:none}
   html[data-mode=idle] section.idle, html[data-mode=life] section.life,
   html[data-mode=bim]  section.bim,  html[data-mode=data] section.data{opacity:1}
 
-  .eyebrow{font-size:25px;letter-spacing:.52em;color:var(--h);transition:color 1s}
+  .eyebrow{font-size:25px;letter-spacing:.52em;color:var(--h);transition:color 1s;font-weight:500}
   .en{font-size:23px;letter-spacing:.56em;color:var(--haze)}
   .idstamp{position:absolute;right:46px;bottom:38px;font-size:17px;letter-spacing:.3em;color:var(--dim);z-index:5}
   .num{font-variant-numeric:tabular-nums}
   @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 
   section{display:flex;flex-direction:column;justify-content:center;padding:0 130px}
-  .tt{margin:30px 0 0;font-size:104px;font-weight:200;letter-spacing:.12em;line-height:1.1}
+  .tt{margin:30px 0 0;font-size:104px;font-weight:600;letter-spacing:.1em;line-height:1.1}
   .en3{margin-top:22px;font-size:23px;letter-spacing:.56em;color:var(--haze)}
   .kv{margin-top:64px;display:flex;align-items:baseline;gap:26px}
   .kv b{font-size:170px;font-weight:100;line-height:1}
@@ -649,14 +696,13 @@ function connect(){
   .rows span{display:block;font-size:20px;letter-spacing:.3em;color:var(--haze);margin-bottom:12px}
   .badge{position:absolute;right:130px;top:110px;font-size:24px;letter-spacing:.4em;color:var(--h);
     border:1px solid color-mix(in oklab, var(--h) 55%, transparent);padding:16px 30px;transition:color 1s,border-color 1s}
-  /* 待機感測牌 */
   .sv{margin-top:24px;font-size:330px;font-weight:100;line-height:1}
   .sv em{font-style:normal;font-size:70px;color:var(--haze);font-weight:200;margin-left:18px}
   .sl{margin-top:40px;font-size:34px;letter-spacing:.5em;color:var(--haze)}
 &lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
-&lt;div id=&quot;field&quot;&gt;&lt;i class=&quot;tint&quot;&gt;&lt;/i&gt;&lt;i class=&quot;bloom&quot;&gt;&lt;/i&gt;&lt;i class=&quot;seam&quot;&gt;&lt;/i&gt;&lt;i class=&quot;core&quot;&gt;&lt;/i&gt;&lt;i class=&quot;veil&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+&lt;div id=&quot;field&quot;&gt;&lt;i class=&quot;ground&quot;&gt;&lt;/i&gt;&lt;i class=&quot;tint&quot;&gt;&lt;/i&gt;&lt;i class=&quot;fan&quot;&gt;&lt;/i&gt;&lt;i class=&quot;axis&quot;&gt;&lt;/i&gt;&lt;i class=&quot;core&quot;&gt;&lt;/i&gt;&lt;i class=&quot;arc&quot;&gt;&lt;/i&gt;&lt;i class=&quot;veil&quot;&gt;&lt;/i&gt;&lt;/div&gt;
 &lt;section class=&quot;idle&quot;&gt;
   &lt;span class=&quot;eyebrow&quot;&gt;AMBIENT · TEMP&lt;/span&gt;
   &lt;div class=&quot;sv num&quot;&gt;27.8&lt;em&gt;°C&lt;/em&gt;&lt;/div&gt;
@@ -705,14 +751,14 @@ function connect(){
 "></iframe></div><span class="tag"><b>27"</b> · S1 · 系統卡 1</span><span class="route" style="--pc:var(--dp2)">DP2 · B-1</span></div>
 <div class="cell" data-id="main"><div class="frame"><div class="ph"><b>UE 即時 3D</b><span>主螢實機畫面・見現場</span></div></div><span class="tag"><b>65"</b> · MAIN · UE 即時 3D</span><span class="route" style="--pc:var(--hdmi)">HDMI 直出</span></div>
 <div class="cell" data-id="s2"><div class="frame"><iframe srcdoc="&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;zh-Hant&quot; data-mode=&quot;idle&quot; style=&quot;--sy:52%;--sr:-24deg&quot;&gt;
+&lt;html lang=&quot;zh-Hant&quot; data-mode=&quot;idle&quot; style=&quot;--ax:74%;--ar:-16deg&quot;&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;utf-8&quot;&gt;
 &lt;meta name=&quot;viewport&quot; content=&quot;width=1920&quot;&gt;
 &lt;title&gt;E 區副螢 S2 · 系統卡&lt;/title&gt;
 &lt;style&gt;
-  :root{--ink:#06080B;--air:#F2F1EC;--haze:#9AA3AE;--dim:#6A7480;--line:rgba(242,241,236,.14)}
-  html[data-mode=idle]{--h:#E9E7DF}
+  :root{--ink:#0A1322;--air:#F2F5FA;--haze:#93A2B8;--dim:#5F6E85;--line:rgba(242,245,250,.14)}
+  html[data-mode=idle]{--h:#3FB4F0}
   html[data-mode=life]{--h:#FFA61A}
   html[data-mode=bim] {--h:#FF2E1E}
   html[data-mode=data]{--h:#18DCB9}
@@ -720,44 +766,52 @@ function connect(){
   html,body{margin:0;width:1920px;height:1080px;overflow:hidden;background:var(--ink);color:var(--air);
     font-family:-apple-system,&quot;PingFang TC&quot;,&quot;Noto Sans TC&quot;,sans-serif;-webkit-font-smoothing:antialiased}
 
-  /* ── 光場:色調沉底+光縫+光暈(全部隨模式色 1s 過渡) ── */
+  /* ── 光場 v2「光刃・透視」:深藍夜空+垂直光軸+弧刃+消失點光扇 ── */
   #field{position:absolute;inset:0;overflow:hidden}
-  #field i{position:absolute;display:block;transition:background 1s ease,opacity 1s ease}
+  #field i{position:absolute;display:block;transition:background 1s ease,opacity 1s ease,box-shadow 1s ease}
+  .ground{inset:0;background:linear-gradient(180deg,#08101E 0%,#0C1930 50%,#1D3054 100%)}
   .tint{inset:0;background:
-    radial-gradient(120% 95% at 82% 6%, color-mix(in oklab, var(--h) 15%, transparent), transparent 60%),
-    radial-gradient(150% 110% at 6% 44%, color-mix(in oklab, var(--h) 8%, transparent), transparent 56%)}
-  .bloom{left:-14%;bottom:-30%;width:76%;height:88%;
-    background:radial-gradient(closest-side, color-mix(in oklab, var(--h) 58%, #FFFFFF 16%),
-      color-mix(in oklab, var(--h) 24%, transparent) 48%, transparent 74%);
-    opacity:.32;filter:blur(34px)}
-  .seam{left:-30%;top:calc(var(--sy) - 17%);width:160%;height:34%;
-    transform:rotate(var(--sr));
-    background:linear-gradient(to bottom, transparent 0%,
-      color-mix(in oklab, var(--h) 30%, transparent) 33%,
-      color-mix(in oklab, var(--h) 52%, #FFF 26%) 49%,
-      rgba(255,255,255,.82) 50%,
-      color-mix(in oklab, var(--h) 52%, #FFF 26%) 51%,
-      color-mix(in oklab, var(--h) 30%, transparent) 67%, transparent 100%);
-    opacity:.44;filter:blur(28px);animation:breath 9s ease-in-out infinite}
-  .core{left:-30%;top:calc(var(--sy) - .8%);width:160%;height:1.6%;
-    transform:rotate(var(--sr));
-    background:linear-gradient(90deg, transparent 4%, rgba(255,255,255,.92) 30% 70%, transparent 96%);
-    opacity:.6;filter:blur(4px);animation:breath 9s ease-in-out infinite}
-  @keyframes breath{0%,100%{opacity:.5}50%{opacity:.26}}
-  .veil{inset:0;background:linear-gradient(180deg, rgba(6,8,11,.52), rgba(6,8,11,.08) 42%, rgba(6,8,11,.42) 94%)}
+    radial-gradient(130% 85% at 76% 0%, color-mix(in oklab, var(--h) 20%, transparent), transparent 58%),
+    radial-gradient(130% 70% at var(--ax) 100%, color-mix(in oklab, var(--h) 16%, transparent), transparent 60%)}
+  .fan{left:-25%;right:-25%;top:0;bottom:-30%;opacity:.34;filter:blur(2px);
+    background:
+      radial-gradient(52% 40% at var(--ax) 86%, color-mix(in oklab, var(--h) 34%, #FFF 8%), transparent 70%),
+      repeating-conic-gradient(from 240deg at var(--ax) 86%,
+        transparent 0deg 9deg,
+        color-mix(in oklab, var(--h) 15%, transparent) 9.6deg 10.4deg,
+        transparent 11deg 20deg)}
+  .axis{top:-4%;bottom:-4%;left:calc(var(--ax) - 90px);width:180px;opacity:.62;filter:blur(7px);
+    background:linear-gradient(90deg, transparent 0%,
+      color-mix(in oklab, var(--h) 30%, transparent) 36%,
+      color-mix(in oklab, var(--h) 58%, #FFF 26%) 49%,
+      rgba(255,255,255,.9) 50%,
+      color-mix(in oklab, var(--h) 58%, #FFF 26%) 51%,
+      color-mix(in oklab, var(--h) 30%, transparent) 64%, transparent 100%);
+    animation:brA 8s ease-in-out infinite}
+  .core{top:-4%;bottom:-4%;left:calc(var(--ax) - 1.5px);width:3px;opacity:.85;filter:blur(.6px);
+    background:linear-gradient(180deg,transparent 2%,rgba(255,255,255,.96) 20% 80%,transparent 98%);
+    animation:brA 8s ease-in-out infinite}
+  .arc{width:320%;aspect-ratio:1;border-radius:50%;left:calc(var(--ax) - 235%);top:-26%;
+    border-top:3px solid rgba(255,255,255,.82);opacity:.5;filter:blur(1.6px);
+    box-shadow:0 -8px 30px color-mix(in oklab, var(--h) 65%, transparent),
+               0 -2px 10px color-mix(in oklab, var(--h) 80%, #FFF 10%);
+    transform:rotate(var(--ar));animation:brB 8s ease-in-out infinite}
+  @keyframes brA{0%,100%{opacity:.62}50%{opacity:.34}}
+  @keyframes brB{0%,100%{opacity:.5}50%{opacity:.24}}
+  .veil{inset:0;background:linear-gradient(180deg, rgba(8,14,26,.55), rgba(8,14,26,.1) 40%, rgba(8,14,26,.48) 94%)}
 
   section{position:absolute;inset:0;opacity:0;transition:opacity .7s ease;pointer-events:none}
   html[data-mode=idle] section.idle, html[data-mode=life] section.life,
   html[data-mode=bim]  section.bim,  html[data-mode=data] section.data{opacity:1}
 
-  .eyebrow{font-size:25px;letter-spacing:.52em;color:var(--h);transition:color 1s}
+  .eyebrow{font-size:25px;letter-spacing:.52em;color:var(--h);transition:color 1s;font-weight:500}
   .en{font-size:23px;letter-spacing:.56em;color:var(--haze)}
   .idstamp{position:absolute;right:46px;bottom:38px;font-size:17px;letter-spacing:.3em;color:var(--dim);z-index:5}
   .num{font-variant-numeric:tabular-nums}
   @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 
   section{display:flex;flex-direction:column;justify-content:center;padding:0 130px}
-  .tt{margin:30px 0 0;font-size:104px;font-weight:200;letter-spacing:.12em;line-height:1.1}
+  .tt{margin:30px 0 0;font-size:104px;font-weight:600;letter-spacing:.1em;line-height:1.1}
   .en3{margin-top:22px;font-size:23px;letter-spacing:.56em;color:var(--haze)}
   .kv{margin-top:64px;display:flex;align-items:baseline;gap:26px}
   .kv b{font-size:170px;font-weight:100;line-height:1}
@@ -767,14 +821,13 @@ function connect(){
   .rows span{display:block;font-size:20px;letter-spacing:.3em;color:var(--haze);margin-bottom:12px}
   .badge{position:absolute;right:130px;top:110px;font-size:24px;letter-spacing:.4em;color:var(--h);
     border:1px solid color-mix(in oklab, var(--h) 55%, transparent);padding:16px 30px;transition:color 1s,border-color 1s}
-  /* 待機感測牌 */
   .sv{margin-top:24px;font-size:330px;font-weight:100;line-height:1}
   .sv em{font-style:normal;font-size:70px;color:var(--haze);font-weight:200;margin-left:18px}
   .sl{margin-top:40px;font-size:34px;letter-spacing:.5em;color:var(--haze)}
 &lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
-&lt;div id=&quot;field&quot;&gt;&lt;i class=&quot;tint&quot;&gt;&lt;/i&gt;&lt;i class=&quot;bloom&quot;&gt;&lt;/i&gt;&lt;i class=&quot;seam&quot;&gt;&lt;/i&gt;&lt;i class=&quot;core&quot;&gt;&lt;/i&gt;&lt;i class=&quot;veil&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+&lt;div id=&quot;field&quot;&gt;&lt;i class=&quot;ground&quot;&gt;&lt;/i&gt;&lt;i class=&quot;tint&quot;&gt;&lt;/i&gt;&lt;i class=&quot;fan&quot;&gt;&lt;/i&gt;&lt;i class=&quot;axis&quot;&gt;&lt;/i&gt;&lt;i class=&quot;core&quot;&gt;&lt;/i&gt;&lt;i class=&quot;arc&quot;&gt;&lt;/i&gt;&lt;i class=&quot;veil&quot;&gt;&lt;/i&gt;&lt;/div&gt;
 &lt;section class=&quot;idle&quot;&gt;
   &lt;span class=&quot;eyebrow&quot;&gt;AMBIENT · HUMIDITY&lt;/span&gt;
   &lt;div class=&quot;sv num&quot;&gt;62&lt;em&gt;%&lt;/em&gt;&lt;/div&gt;
@@ -822,14 +875,14 @@ function connect(){
 &lt;/html&gt;
 "></iframe></div><span class="tag"><b>27"</b> · S2 · 系統卡 2</span><span class="route" style="--pc:var(--dp2)">DP2 · B-2</span></div>
 <div class="cell" data-id="s3"><div class="frame"><iframe srcdoc="&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;zh-Hant&quot; data-mode=&quot;idle&quot; style=&quot;--sy:52%;--sr:-24deg&quot;&gt;
+&lt;html lang=&quot;zh-Hant&quot; data-mode=&quot;idle&quot; style=&quot;--ax:74%;--ar:-16deg&quot;&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;utf-8&quot;&gt;
 &lt;meta name=&quot;viewport&quot; content=&quot;width=1920&quot;&gt;
 &lt;title&gt;E 區副螢 S3 · 系統卡&lt;/title&gt;
 &lt;style&gt;
-  :root{--ink:#06080B;--air:#F2F1EC;--haze:#9AA3AE;--dim:#6A7480;--line:rgba(242,241,236,.14)}
-  html[data-mode=idle]{--h:#E9E7DF}
+  :root{--ink:#0A1322;--air:#F2F5FA;--haze:#93A2B8;--dim:#5F6E85;--line:rgba(242,245,250,.14)}
+  html[data-mode=idle]{--h:#3FB4F0}
   html[data-mode=life]{--h:#FFA61A}
   html[data-mode=bim] {--h:#FF2E1E}
   html[data-mode=data]{--h:#18DCB9}
@@ -837,44 +890,52 @@ function connect(){
   html,body{margin:0;width:1920px;height:1080px;overflow:hidden;background:var(--ink);color:var(--air);
     font-family:-apple-system,&quot;PingFang TC&quot;,&quot;Noto Sans TC&quot;,sans-serif;-webkit-font-smoothing:antialiased}
 
-  /* ── 光場:色調沉底+光縫+光暈(全部隨模式色 1s 過渡) ── */
+  /* ── 光場 v2「光刃・透視」:深藍夜空+垂直光軸+弧刃+消失點光扇 ── */
   #field{position:absolute;inset:0;overflow:hidden}
-  #field i{position:absolute;display:block;transition:background 1s ease,opacity 1s ease}
+  #field i{position:absolute;display:block;transition:background 1s ease,opacity 1s ease,box-shadow 1s ease}
+  .ground{inset:0;background:linear-gradient(180deg,#08101E 0%,#0C1930 50%,#1D3054 100%)}
   .tint{inset:0;background:
-    radial-gradient(120% 95% at 82% 6%, color-mix(in oklab, var(--h) 15%, transparent), transparent 60%),
-    radial-gradient(150% 110% at 6% 44%, color-mix(in oklab, var(--h) 8%, transparent), transparent 56%)}
-  .bloom{left:-14%;bottom:-30%;width:76%;height:88%;
-    background:radial-gradient(closest-side, color-mix(in oklab, var(--h) 58%, #FFFFFF 16%),
-      color-mix(in oklab, var(--h) 24%, transparent) 48%, transparent 74%);
-    opacity:.32;filter:blur(34px)}
-  .seam{left:-30%;top:calc(var(--sy) - 17%);width:160%;height:34%;
-    transform:rotate(var(--sr));
-    background:linear-gradient(to bottom, transparent 0%,
-      color-mix(in oklab, var(--h) 30%, transparent) 33%,
-      color-mix(in oklab, var(--h) 52%, #FFF 26%) 49%,
-      rgba(255,255,255,.82) 50%,
-      color-mix(in oklab, var(--h) 52%, #FFF 26%) 51%,
-      color-mix(in oklab, var(--h) 30%, transparent) 67%, transparent 100%);
-    opacity:.44;filter:blur(28px);animation:breath 9s ease-in-out infinite}
-  .core{left:-30%;top:calc(var(--sy) - .8%);width:160%;height:1.6%;
-    transform:rotate(var(--sr));
-    background:linear-gradient(90deg, transparent 4%, rgba(255,255,255,.92) 30% 70%, transparent 96%);
-    opacity:.6;filter:blur(4px);animation:breath 9s ease-in-out infinite}
-  @keyframes breath{0%,100%{opacity:.5}50%{opacity:.26}}
-  .veil{inset:0;background:linear-gradient(180deg, rgba(6,8,11,.52), rgba(6,8,11,.08) 42%, rgba(6,8,11,.42) 94%)}
+    radial-gradient(130% 85% at 76% 0%, color-mix(in oklab, var(--h) 20%, transparent), transparent 58%),
+    radial-gradient(130% 70% at var(--ax) 100%, color-mix(in oklab, var(--h) 16%, transparent), transparent 60%)}
+  .fan{left:-25%;right:-25%;top:0;bottom:-30%;opacity:.34;filter:blur(2px);
+    background:
+      radial-gradient(52% 40% at var(--ax) 86%, color-mix(in oklab, var(--h) 34%, #FFF 8%), transparent 70%),
+      repeating-conic-gradient(from 240deg at var(--ax) 86%,
+        transparent 0deg 9deg,
+        color-mix(in oklab, var(--h) 15%, transparent) 9.6deg 10.4deg,
+        transparent 11deg 20deg)}
+  .axis{top:-4%;bottom:-4%;left:calc(var(--ax) - 90px);width:180px;opacity:.62;filter:blur(7px);
+    background:linear-gradient(90deg, transparent 0%,
+      color-mix(in oklab, var(--h) 30%, transparent) 36%,
+      color-mix(in oklab, var(--h) 58%, #FFF 26%) 49%,
+      rgba(255,255,255,.9) 50%,
+      color-mix(in oklab, var(--h) 58%, #FFF 26%) 51%,
+      color-mix(in oklab, var(--h) 30%, transparent) 64%, transparent 100%);
+    animation:brA 8s ease-in-out infinite}
+  .core{top:-4%;bottom:-4%;left:calc(var(--ax) - 1.5px);width:3px;opacity:.85;filter:blur(.6px);
+    background:linear-gradient(180deg,transparent 2%,rgba(255,255,255,.96) 20% 80%,transparent 98%);
+    animation:brA 8s ease-in-out infinite}
+  .arc{width:320%;aspect-ratio:1;border-radius:50%;left:calc(var(--ax) - 235%);top:-26%;
+    border-top:3px solid rgba(255,255,255,.82);opacity:.5;filter:blur(1.6px);
+    box-shadow:0 -8px 30px color-mix(in oklab, var(--h) 65%, transparent),
+               0 -2px 10px color-mix(in oklab, var(--h) 80%, #FFF 10%);
+    transform:rotate(var(--ar));animation:brB 8s ease-in-out infinite}
+  @keyframes brA{0%,100%{opacity:.62}50%{opacity:.34}}
+  @keyframes brB{0%,100%{opacity:.5}50%{opacity:.24}}
+  .veil{inset:0;background:linear-gradient(180deg, rgba(8,14,26,.55), rgba(8,14,26,.1) 40%, rgba(8,14,26,.48) 94%)}
 
   section{position:absolute;inset:0;opacity:0;transition:opacity .7s ease;pointer-events:none}
   html[data-mode=idle] section.idle, html[data-mode=life] section.life,
   html[data-mode=bim]  section.bim,  html[data-mode=data] section.data{opacity:1}
 
-  .eyebrow{font-size:25px;letter-spacing:.52em;color:var(--h);transition:color 1s}
+  .eyebrow{font-size:25px;letter-spacing:.52em;color:var(--h);transition:color 1s;font-weight:500}
   .en{font-size:23px;letter-spacing:.56em;color:var(--haze)}
   .idstamp{position:absolute;right:46px;bottom:38px;font-size:17px;letter-spacing:.3em;color:var(--dim);z-index:5}
   .num{font-variant-numeric:tabular-nums}
   @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 
   section{display:flex;flex-direction:column;justify-content:center;padding:0 130px}
-  .tt{margin:30px 0 0;font-size:104px;font-weight:200;letter-spacing:.12em;line-height:1.1}
+  .tt{margin:30px 0 0;font-size:104px;font-weight:600;letter-spacing:.1em;line-height:1.1}
   .en3{margin-top:22px;font-size:23px;letter-spacing:.56em;color:var(--haze)}
   .kv{margin-top:64px;display:flex;align-items:baseline;gap:26px}
   .kv b{font-size:170px;font-weight:100;line-height:1}
@@ -884,14 +945,13 @@ function connect(){
   .rows span{display:block;font-size:20px;letter-spacing:.3em;color:var(--haze);margin-bottom:12px}
   .badge{position:absolute;right:130px;top:110px;font-size:24px;letter-spacing:.4em;color:var(--h);
     border:1px solid color-mix(in oklab, var(--h) 55%, transparent);padding:16px 30px;transition:color 1s,border-color 1s}
-  /* 待機感測牌 */
   .sv{margin-top:24px;font-size:330px;font-weight:100;line-height:1}
   .sv em{font-style:normal;font-size:70px;color:var(--haze);font-weight:200;margin-left:18px}
   .sl{margin-top:40px;font-size:34px;letter-spacing:.5em;color:var(--haze)}
 &lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
-&lt;div id=&quot;field&quot;&gt;&lt;i class=&quot;tint&quot;&gt;&lt;/i&gt;&lt;i class=&quot;bloom&quot;&gt;&lt;/i&gt;&lt;i class=&quot;seam&quot;&gt;&lt;/i&gt;&lt;i class=&quot;core&quot;&gt;&lt;/i&gt;&lt;i class=&quot;veil&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+&lt;div id=&quot;field&quot;&gt;&lt;i class=&quot;ground&quot;&gt;&lt;/i&gt;&lt;i class=&quot;tint&quot;&gt;&lt;/i&gt;&lt;i class=&quot;fan&quot;&gt;&lt;/i&gt;&lt;i class=&quot;axis&quot;&gt;&lt;/i&gt;&lt;i class=&quot;core&quot;&gt;&lt;/i&gt;&lt;i class=&quot;arc&quot;&gt;&lt;/i&gt;&lt;i class=&quot;veil&quot;&gt;&lt;/i&gt;&lt;/div&gt;
 &lt;section class=&quot;idle&quot;&gt;
   &lt;span class=&quot;eyebrow&quot;&gt;AMBIENT · CO₂&lt;/span&gt;
   &lt;div class=&quot;sv num&quot;&gt;486&lt;em&gt;ppm&lt;/em&gt;&lt;/div&gt;
@@ -939,14 +999,14 @@ function connect(){
 &lt;/html&gt;
 "></iframe></div><span class="tag"><b>27"</b> · S3 · 系統卡 3</span><span class="route" style="--pc:var(--dp2)">DP2 · B-3</span></div>
 <div class="cell" data-id="s4"><div class="frame"><iframe srcdoc="&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;zh-Hant&quot; data-mode=&quot;idle&quot; style=&quot;--sy:52%;--sr:-24deg&quot;&gt;
+&lt;html lang=&quot;zh-Hant&quot; data-mode=&quot;idle&quot; style=&quot;--ax:74%;--ar:-16deg&quot;&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;utf-8&quot;&gt;
 &lt;meta name=&quot;viewport&quot; content=&quot;width=1920&quot;&gt;
 &lt;title&gt;E 區副螢 S4 · 系統卡&lt;/title&gt;
 &lt;style&gt;
-  :root{--ink:#06080B;--air:#F2F1EC;--haze:#9AA3AE;--dim:#6A7480;--line:rgba(242,241,236,.14)}
-  html[data-mode=idle]{--h:#E9E7DF}
+  :root{--ink:#0A1322;--air:#F2F5FA;--haze:#93A2B8;--dim:#5F6E85;--line:rgba(242,245,250,.14)}
+  html[data-mode=idle]{--h:#3FB4F0}
   html[data-mode=life]{--h:#FFA61A}
   html[data-mode=bim] {--h:#FF2E1E}
   html[data-mode=data]{--h:#18DCB9}
@@ -954,44 +1014,52 @@ function connect(){
   html,body{margin:0;width:1920px;height:1080px;overflow:hidden;background:var(--ink);color:var(--air);
     font-family:-apple-system,&quot;PingFang TC&quot;,&quot;Noto Sans TC&quot;,sans-serif;-webkit-font-smoothing:antialiased}
 
-  /* ── 光場:色調沉底+光縫+光暈(全部隨模式色 1s 過渡) ── */
+  /* ── 光場 v2「光刃・透視」:深藍夜空+垂直光軸+弧刃+消失點光扇 ── */
   #field{position:absolute;inset:0;overflow:hidden}
-  #field i{position:absolute;display:block;transition:background 1s ease,opacity 1s ease}
+  #field i{position:absolute;display:block;transition:background 1s ease,opacity 1s ease,box-shadow 1s ease}
+  .ground{inset:0;background:linear-gradient(180deg,#08101E 0%,#0C1930 50%,#1D3054 100%)}
   .tint{inset:0;background:
-    radial-gradient(120% 95% at 82% 6%, color-mix(in oklab, var(--h) 15%, transparent), transparent 60%),
-    radial-gradient(150% 110% at 6% 44%, color-mix(in oklab, var(--h) 8%, transparent), transparent 56%)}
-  .bloom{left:-14%;bottom:-30%;width:76%;height:88%;
-    background:radial-gradient(closest-side, color-mix(in oklab, var(--h) 58%, #FFFFFF 16%),
-      color-mix(in oklab, var(--h) 24%, transparent) 48%, transparent 74%);
-    opacity:.32;filter:blur(34px)}
-  .seam{left:-30%;top:calc(var(--sy) - 17%);width:160%;height:34%;
-    transform:rotate(var(--sr));
-    background:linear-gradient(to bottom, transparent 0%,
-      color-mix(in oklab, var(--h) 30%, transparent) 33%,
-      color-mix(in oklab, var(--h) 52%, #FFF 26%) 49%,
-      rgba(255,255,255,.82) 50%,
-      color-mix(in oklab, var(--h) 52%, #FFF 26%) 51%,
-      color-mix(in oklab, var(--h) 30%, transparent) 67%, transparent 100%);
-    opacity:.44;filter:blur(28px);animation:breath 9s ease-in-out infinite}
-  .core{left:-30%;top:calc(var(--sy) - .8%);width:160%;height:1.6%;
-    transform:rotate(var(--sr));
-    background:linear-gradient(90deg, transparent 4%, rgba(255,255,255,.92) 30% 70%, transparent 96%);
-    opacity:.6;filter:blur(4px);animation:breath 9s ease-in-out infinite}
-  @keyframes breath{0%,100%{opacity:.5}50%{opacity:.26}}
-  .veil{inset:0;background:linear-gradient(180deg, rgba(6,8,11,.52), rgba(6,8,11,.08) 42%, rgba(6,8,11,.42) 94%)}
+    radial-gradient(130% 85% at 76% 0%, color-mix(in oklab, var(--h) 20%, transparent), transparent 58%),
+    radial-gradient(130% 70% at var(--ax) 100%, color-mix(in oklab, var(--h) 16%, transparent), transparent 60%)}
+  .fan{left:-25%;right:-25%;top:0;bottom:-30%;opacity:.34;filter:blur(2px);
+    background:
+      radial-gradient(52% 40% at var(--ax) 86%, color-mix(in oklab, var(--h) 34%, #FFF 8%), transparent 70%),
+      repeating-conic-gradient(from 240deg at var(--ax) 86%,
+        transparent 0deg 9deg,
+        color-mix(in oklab, var(--h) 15%, transparent) 9.6deg 10.4deg,
+        transparent 11deg 20deg)}
+  .axis{top:-4%;bottom:-4%;left:calc(var(--ax) - 90px);width:180px;opacity:.62;filter:blur(7px);
+    background:linear-gradient(90deg, transparent 0%,
+      color-mix(in oklab, var(--h) 30%, transparent) 36%,
+      color-mix(in oklab, var(--h) 58%, #FFF 26%) 49%,
+      rgba(255,255,255,.9) 50%,
+      color-mix(in oklab, var(--h) 58%, #FFF 26%) 51%,
+      color-mix(in oklab, var(--h) 30%, transparent) 64%, transparent 100%);
+    animation:brA 8s ease-in-out infinite}
+  .core{top:-4%;bottom:-4%;left:calc(var(--ax) - 1.5px);width:3px;opacity:.85;filter:blur(.6px);
+    background:linear-gradient(180deg,transparent 2%,rgba(255,255,255,.96) 20% 80%,transparent 98%);
+    animation:brA 8s ease-in-out infinite}
+  .arc{width:320%;aspect-ratio:1;border-radius:50%;left:calc(var(--ax) - 235%);top:-26%;
+    border-top:3px solid rgba(255,255,255,.82);opacity:.5;filter:blur(1.6px);
+    box-shadow:0 -8px 30px color-mix(in oklab, var(--h) 65%, transparent),
+               0 -2px 10px color-mix(in oklab, var(--h) 80%, #FFF 10%);
+    transform:rotate(var(--ar));animation:brB 8s ease-in-out infinite}
+  @keyframes brA{0%,100%{opacity:.62}50%{opacity:.34}}
+  @keyframes brB{0%,100%{opacity:.5}50%{opacity:.24}}
+  .veil{inset:0;background:linear-gradient(180deg, rgba(8,14,26,.55), rgba(8,14,26,.1) 40%, rgba(8,14,26,.48) 94%)}
 
   section{position:absolute;inset:0;opacity:0;transition:opacity .7s ease;pointer-events:none}
   html[data-mode=idle] section.idle, html[data-mode=life] section.life,
   html[data-mode=bim]  section.bim,  html[data-mode=data] section.data{opacity:1}
 
-  .eyebrow{font-size:25px;letter-spacing:.52em;color:var(--h);transition:color 1s}
+  .eyebrow{font-size:25px;letter-spacing:.52em;color:var(--h);transition:color 1s;font-weight:500}
   .en{font-size:23px;letter-spacing:.56em;color:var(--haze)}
   .idstamp{position:absolute;right:46px;bottom:38px;font-size:17px;letter-spacing:.3em;color:var(--dim);z-index:5}
   .num{font-variant-numeric:tabular-nums}
   @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 
   section{display:flex;flex-direction:column;justify-content:center;padding:0 130px}
-  .tt{margin:30px 0 0;font-size:104px;font-weight:200;letter-spacing:.12em;line-height:1.1}
+  .tt{margin:30px 0 0;font-size:104px;font-weight:600;letter-spacing:.1em;line-height:1.1}
   .en3{margin-top:22px;font-size:23px;letter-spacing:.56em;color:var(--haze)}
   .kv{margin-top:64px;display:flex;align-items:baseline;gap:26px}
   .kv b{font-size:170px;font-weight:100;line-height:1}
@@ -1001,14 +1069,13 @@ function connect(){
   .rows span{display:block;font-size:20px;letter-spacing:.3em;color:var(--haze);margin-bottom:12px}
   .badge{position:absolute;right:130px;top:110px;font-size:24px;letter-spacing:.4em;color:var(--h);
     border:1px solid color-mix(in oklab, var(--h) 55%, transparent);padding:16px 30px;transition:color 1s,border-color 1s}
-  /* 待機感測牌 */
   .sv{margin-top:24px;font-size:330px;font-weight:100;line-height:1}
   .sv em{font-style:normal;font-size:70px;color:var(--haze);font-weight:200;margin-left:18px}
   .sl{margin-top:40px;font-size:34px;letter-spacing:.5em;color:var(--haze)}
 &lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
-&lt;div id=&quot;field&quot;&gt;&lt;i class=&quot;tint&quot;&gt;&lt;/i&gt;&lt;i class=&quot;bloom&quot;&gt;&lt;/i&gt;&lt;i class=&quot;seam&quot;&gt;&lt;/i&gt;&lt;i class=&quot;core&quot;&gt;&lt;/i&gt;&lt;i class=&quot;veil&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+&lt;div id=&quot;field&quot;&gt;&lt;i class=&quot;ground&quot;&gt;&lt;/i&gt;&lt;i class=&quot;tint&quot;&gt;&lt;/i&gt;&lt;i class=&quot;fan&quot;&gt;&lt;/i&gt;&lt;i class=&quot;axis&quot;&gt;&lt;/i&gt;&lt;i class=&quot;core&quot;&gt;&lt;/i&gt;&lt;i class=&quot;arc&quot;&gt;&lt;/i&gt;&lt;i class=&quot;veil&quot;&gt;&lt;/i&gt;&lt;/div&gt;
 &lt;section class=&quot;idle&quot;&gt;
   &lt;span class=&quot;eyebrow&quot;&gt;AMBIENT · POWER&lt;/span&gt;
   &lt;div class=&quot;sv num&quot;&gt;3.2&lt;em&gt;kW&lt;/em&gt;&lt;/div&gt;
@@ -1056,14 +1123,14 @@ function connect(){
 &lt;/html&gt;
 "></iframe></div><span class="tag"><b>27"</b> · S4 · 系統卡 4</span><span class="route" style="--pc:var(--dp2)">DP2 · B-4</span></div>
 <div class="cell" data-id="s5"><div class="frame"><iframe srcdoc="&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;zh-Hant&quot; data-mode=&quot;idle&quot; style=&quot;--sy:50%;--sr:-64deg&quot;&gt;
+&lt;html lang=&quot;zh-Hant&quot; data-mode=&quot;idle&quot; style=&quot;--ax:58%;--ar:-14deg&quot;&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;utf-8&quot;&gt;
 &lt;meta name=&quot;viewport&quot; content=&quot;width=1920&quot;&gt;
 &lt;title&gt;E 區副螢 S5 · 系統卡&lt;/title&gt;
 &lt;style&gt;
-  :root{--ink:#06080B;--air:#F2F1EC;--haze:#9AA3AE;--dim:#6A7480;--line:rgba(242,241,236,.14)}
-  html[data-mode=idle]{--h:#E9E7DF}
+  :root{--ink:#0A1322;--air:#F2F5FA;--haze:#93A2B8;--dim:#5F6E85;--line:rgba(242,245,250,.14)}
+  html[data-mode=idle]{--h:#3FB4F0}
   html[data-mode=life]{--h:#FFA61A}
   html[data-mode=bim] {--h:#FF2E1E}
   html[data-mode=data]{--h:#18DCB9}
@@ -1071,37 +1138,45 @@ function connect(){
   html,body{margin:0;width:1920px;height:1080px;overflow:hidden;background:var(--ink);color:var(--air);
     font-family:-apple-system,&quot;PingFang TC&quot;,&quot;Noto Sans TC&quot;,sans-serif;-webkit-font-smoothing:antialiased}
 
-  /* ── 光場:色調沉底+光縫+光暈(全部隨模式色 1s 過渡) ── */
+  /* ── 光場 v2「光刃・透視」:深藍夜空+垂直光軸+弧刃+消失點光扇 ── */
   #field{position:absolute;inset:0;overflow:hidden}
-  #field i{position:absolute;display:block;transition:background 1s ease,opacity 1s ease}
+  #field i{position:absolute;display:block;transition:background 1s ease,opacity 1s ease,box-shadow 1s ease}
+  .ground{inset:0;background:linear-gradient(180deg,#08101E 0%,#0C1930 50%,#1D3054 100%)}
   .tint{inset:0;background:
-    radial-gradient(120% 95% at 82% 6%, color-mix(in oklab, var(--h) 15%, transparent), transparent 60%),
-    radial-gradient(150% 110% at 6% 44%, color-mix(in oklab, var(--h) 8%, transparent), transparent 56%)}
-  .bloom{left:-14%;bottom:-30%;width:76%;height:88%;
-    background:radial-gradient(closest-side, color-mix(in oklab, var(--h) 58%, #FFFFFF 16%),
-      color-mix(in oklab, var(--h) 24%, transparent) 48%, transparent 74%);
-    opacity:.32;filter:blur(34px)}
-  .seam{left:-30%;top:calc(var(--sy) - 17%);width:160%;height:34%;
-    transform:rotate(var(--sr));
-    background:linear-gradient(to bottom, transparent 0%,
-      color-mix(in oklab, var(--h) 30%, transparent) 33%,
-      color-mix(in oklab, var(--h) 52%, #FFF 26%) 49%,
-      rgba(255,255,255,.82) 50%,
-      color-mix(in oklab, var(--h) 52%, #FFF 26%) 51%,
-      color-mix(in oklab, var(--h) 30%, transparent) 67%, transparent 100%);
-    opacity:.44;filter:blur(28px);animation:breath 9s ease-in-out infinite}
-  .core{left:-30%;top:calc(var(--sy) - .8%);width:160%;height:1.6%;
-    transform:rotate(var(--sr));
-    background:linear-gradient(90deg, transparent 4%, rgba(255,255,255,.92) 30% 70%, transparent 96%);
-    opacity:.6;filter:blur(4px);animation:breath 9s ease-in-out infinite}
-  @keyframes breath{0%,100%{opacity:.5}50%{opacity:.26}}
-  .veil{inset:0;background:linear-gradient(180deg, rgba(6,8,11,.52), rgba(6,8,11,.08) 42%, rgba(6,8,11,.42) 94%)}
+    radial-gradient(130% 85% at 76% 0%, color-mix(in oklab, var(--h) 20%, transparent), transparent 58%),
+    radial-gradient(130% 70% at var(--ax) 100%, color-mix(in oklab, var(--h) 16%, transparent), transparent 60%)}
+  .fan{left:-25%;right:-25%;top:0;bottom:-30%;opacity:.34;filter:blur(2px);
+    background:
+      radial-gradient(52% 40% at var(--ax) 86%, color-mix(in oklab, var(--h) 34%, #FFF 8%), transparent 70%),
+      repeating-conic-gradient(from 240deg at var(--ax) 86%,
+        transparent 0deg 9deg,
+        color-mix(in oklab, var(--h) 15%, transparent) 9.6deg 10.4deg,
+        transparent 11deg 20deg)}
+  .axis{top:-4%;bottom:-4%;left:calc(var(--ax) - 90px);width:180px;opacity:.62;filter:blur(7px);
+    background:linear-gradient(90deg, transparent 0%,
+      color-mix(in oklab, var(--h) 30%, transparent) 36%,
+      color-mix(in oklab, var(--h) 58%, #FFF 26%) 49%,
+      rgba(255,255,255,.9) 50%,
+      color-mix(in oklab, var(--h) 58%, #FFF 26%) 51%,
+      color-mix(in oklab, var(--h) 30%, transparent) 64%, transparent 100%);
+    animation:brA 8s ease-in-out infinite}
+  .core{top:-4%;bottom:-4%;left:calc(var(--ax) - 1.5px);width:3px;opacity:.85;filter:blur(.6px);
+    background:linear-gradient(180deg,transparent 2%,rgba(255,255,255,.96) 20% 80%,transparent 98%);
+    animation:brA 8s ease-in-out infinite}
+  .arc{width:320%;aspect-ratio:1;border-radius:50%;left:calc(var(--ax) - 235%);top:-26%;
+    border-top:3px solid rgba(255,255,255,.82);opacity:.5;filter:blur(1.6px);
+    box-shadow:0 -8px 30px color-mix(in oklab, var(--h) 65%, transparent),
+               0 -2px 10px color-mix(in oklab, var(--h) 80%, #FFF 10%);
+    transform:rotate(var(--ar));animation:brB 8s ease-in-out infinite}
+  @keyframes brA{0%,100%{opacity:.62}50%{opacity:.34}}
+  @keyframes brB{0%,100%{opacity:.5}50%{opacity:.24}}
+  .veil{inset:0;background:linear-gradient(180deg, rgba(8,14,26,.55), rgba(8,14,26,.1) 40%, rgba(8,14,26,.48) 94%)}
 
   section{position:absolute;inset:0;opacity:0;transition:opacity .7s ease;pointer-events:none}
   html[data-mode=idle] section.idle, html[data-mode=life] section.life,
   html[data-mode=bim]  section.bim,  html[data-mode=data] section.data{opacity:1}
 
-  .eyebrow{font-size:25px;letter-spacing:.52em;color:var(--h);transition:color 1s}
+  .eyebrow{font-size:25px;letter-spacing:.52em;color:var(--h);transition:color 1s;font-weight:500}
   .en{font-size:23px;letter-spacing:.56em;color:var(--haze)}
   .idstamp{position:absolute;right:46px;bottom:38px;font-size:17px;letter-spacing:.3em;color:var(--dim);z-index:5}
   .num{font-variant-numeric:tabular-nums}
@@ -1109,8 +1184,9 @@ function connect(){
 
   #rotor{position:absolute;left:50%;top:50%;width:1080px;height:1920px;
     transform:translate(-50%,-50%) rotate(-90deg)}
+  #rotor #field{position:absolute;inset:0}
   section{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:0 110px}
-  .tt{margin:36px 0 0;font-size:96px;font-weight:200;letter-spacing:.14em;line-height:1.2;
+  .tt{margin:36px 0 0;font-size:96px;font-weight:600;letter-spacing:.12em;line-height:1.2;
     writing-mode:vertical-rl;height:520px}
   .en3{margin-top:26px;font-size:22px;letter-spacing:.5em;color:var(--haze)}
   .kv{margin-top:56px;display:flex;align-items:baseline;gap:22px}
@@ -1127,8 +1203,8 @@ function connect(){
 &lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
-&lt;div id=&quot;field&quot;&gt;&lt;i class=&quot;tint&quot;&gt;&lt;/i&gt;&lt;i class=&quot;bloom&quot;&gt;&lt;/i&gt;&lt;i class=&quot;seam&quot;&gt;&lt;/i&gt;&lt;i class=&quot;core&quot;&gt;&lt;/i&gt;&lt;i class=&quot;veil&quot;&gt;&lt;/i&gt;&lt;/div&gt;
-&lt;div id=&quot;rotor&quot;&gt;&lt;section class=&quot;idle&quot;&gt;
+
+&lt;div id=&quot;rotor&quot;&gt;&lt;div id=&quot;field&quot;&gt;&lt;i class=&quot;ground&quot;&gt;&lt;/i&gt;&lt;i class=&quot;tint&quot;&gt;&lt;/i&gt;&lt;i class=&quot;fan&quot;&gt;&lt;/i&gt;&lt;i class=&quot;axis&quot;&gt;&lt;/i&gt;&lt;i class=&quot;core&quot;&gt;&lt;/i&gt;&lt;i class=&quot;arc&quot;&gt;&lt;/i&gt;&lt;i class=&quot;veil&quot;&gt;&lt;/i&gt;&lt;/div&gt;&lt;section class=&quot;idle&quot;&gt;
   &lt;span class=&quot;eyebrow&quot;&gt;AMBIENT · SOLAR&lt;/span&gt;
   &lt;div class=&quot;sv num&quot;&gt;142&lt;em&gt;kWh&lt;/em&gt;&lt;/div&gt;
   &lt;div class=&quot;sl&quot;&gt;今日發電&lt;/div&gt;
@@ -1175,14 +1251,14 @@ function connect(){
 &lt;/html&gt;
 "></iframe></div><span class="tag"><b>27"</b> · S5 · 系統卡 5</span><span class="route" style="--pc:var(--dp3)">DP3 · C-1</span></div>
 <div class="cell" data-id="s6"><div class="frame"><iframe srcdoc="&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;zh-Hant&quot; data-mode=&quot;idle&quot; style=&quot;--sy:50%;--sr:-64deg&quot;&gt;
+&lt;html lang=&quot;zh-Hant&quot; data-mode=&quot;idle&quot; style=&quot;--ax:58%;--ar:-14deg&quot;&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;utf-8&quot;&gt;
 &lt;meta name=&quot;viewport&quot; content=&quot;width=1920&quot;&gt;
 &lt;title&gt;E 區副螢 S6 · 系統卡&lt;/title&gt;
 &lt;style&gt;
-  :root{--ink:#06080B;--air:#F2F1EC;--haze:#9AA3AE;--dim:#6A7480;--line:rgba(242,241,236,.14)}
-  html[data-mode=idle]{--h:#E9E7DF}
+  :root{--ink:#0A1322;--air:#F2F5FA;--haze:#93A2B8;--dim:#5F6E85;--line:rgba(242,245,250,.14)}
+  html[data-mode=idle]{--h:#3FB4F0}
   html[data-mode=life]{--h:#FFA61A}
   html[data-mode=bim] {--h:#FF2E1E}
   html[data-mode=data]{--h:#18DCB9}
@@ -1190,37 +1266,45 @@ function connect(){
   html,body{margin:0;width:1920px;height:1080px;overflow:hidden;background:var(--ink);color:var(--air);
     font-family:-apple-system,&quot;PingFang TC&quot;,&quot;Noto Sans TC&quot;,sans-serif;-webkit-font-smoothing:antialiased}
 
-  /* ── 光場:色調沉底+光縫+光暈(全部隨模式色 1s 過渡) ── */
+  /* ── 光場 v2「光刃・透視」:深藍夜空+垂直光軸+弧刃+消失點光扇 ── */
   #field{position:absolute;inset:0;overflow:hidden}
-  #field i{position:absolute;display:block;transition:background 1s ease,opacity 1s ease}
+  #field i{position:absolute;display:block;transition:background 1s ease,opacity 1s ease,box-shadow 1s ease}
+  .ground{inset:0;background:linear-gradient(180deg,#08101E 0%,#0C1930 50%,#1D3054 100%)}
   .tint{inset:0;background:
-    radial-gradient(120% 95% at 82% 6%, color-mix(in oklab, var(--h) 15%, transparent), transparent 60%),
-    radial-gradient(150% 110% at 6% 44%, color-mix(in oklab, var(--h) 8%, transparent), transparent 56%)}
-  .bloom{left:-14%;bottom:-30%;width:76%;height:88%;
-    background:radial-gradient(closest-side, color-mix(in oklab, var(--h) 58%, #FFFFFF 16%),
-      color-mix(in oklab, var(--h) 24%, transparent) 48%, transparent 74%);
-    opacity:.32;filter:blur(34px)}
-  .seam{left:-30%;top:calc(var(--sy) - 17%);width:160%;height:34%;
-    transform:rotate(var(--sr));
-    background:linear-gradient(to bottom, transparent 0%,
-      color-mix(in oklab, var(--h) 30%, transparent) 33%,
-      color-mix(in oklab, var(--h) 52%, #FFF 26%) 49%,
-      rgba(255,255,255,.82) 50%,
-      color-mix(in oklab, var(--h) 52%, #FFF 26%) 51%,
-      color-mix(in oklab, var(--h) 30%, transparent) 67%, transparent 100%);
-    opacity:.44;filter:blur(28px);animation:breath 9s ease-in-out infinite}
-  .core{left:-30%;top:calc(var(--sy) - .8%);width:160%;height:1.6%;
-    transform:rotate(var(--sr));
-    background:linear-gradient(90deg, transparent 4%, rgba(255,255,255,.92) 30% 70%, transparent 96%);
-    opacity:.6;filter:blur(4px);animation:breath 9s ease-in-out infinite}
-  @keyframes breath{0%,100%{opacity:.5}50%{opacity:.26}}
-  .veil{inset:0;background:linear-gradient(180deg, rgba(6,8,11,.52), rgba(6,8,11,.08) 42%, rgba(6,8,11,.42) 94%)}
+    radial-gradient(130% 85% at 76% 0%, color-mix(in oklab, var(--h) 20%, transparent), transparent 58%),
+    radial-gradient(130% 70% at var(--ax) 100%, color-mix(in oklab, var(--h) 16%, transparent), transparent 60%)}
+  .fan{left:-25%;right:-25%;top:0;bottom:-30%;opacity:.34;filter:blur(2px);
+    background:
+      radial-gradient(52% 40% at var(--ax) 86%, color-mix(in oklab, var(--h) 34%, #FFF 8%), transparent 70%),
+      repeating-conic-gradient(from 240deg at var(--ax) 86%,
+        transparent 0deg 9deg,
+        color-mix(in oklab, var(--h) 15%, transparent) 9.6deg 10.4deg,
+        transparent 11deg 20deg)}
+  .axis{top:-4%;bottom:-4%;left:calc(var(--ax) - 90px);width:180px;opacity:.62;filter:blur(7px);
+    background:linear-gradient(90deg, transparent 0%,
+      color-mix(in oklab, var(--h) 30%, transparent) 36%,
+      color-mix(in oklab, var(--h) 58%, #FFF 26%) 49%,
+      rgba(255,255,255,.9) 50%,
+      color-mix(in oklab, var(--h) 58%, #FFF 26%) 51%,
+      color-mix(in oklab, var(--h) 30%, transparent) 64%, transparent 100%);
+    animation:brA 8s ease-in-out infinite}
+  .core{top:-4%;bottom:-4%;left:calc(var(--ax) - 1.5px);width:3px;opacity:.85;filter:blur(.6px);
+    background:linear-gradient(180deg,transparent 2%,rgba(255,255,255,.96) 20% 80%,transparent 98%);
+    animation:brA 8s ease-in-out infinite}
+  .arc{width:320%;aspect-ratio:1;border-radius:50%;left:calc(var(--ax) - 235%);top:-26%;
+    border-top:3px solid rgba(255,255,255,.82);opacity:.5;filter:blur(1.6px);
+    box-shadow:0 -8px 30px color-mix(in oklab, var(--h) 65%, transparent),
+               0 -2px 10px color-mix(in oklab, var(--h) 80%, #FFF 10%);
+    transform:rotate(var(--ar));animation:brB 8s ease-in-out infinite}
+  @keyframes brA{0%,100%{opacity:.62}50%{opacity:.34}}
+  @keyframes brB{0%,100%{opacity:.5}50%{opacity:.24}}
+  .veil{inset:0;background:linear-gradient(180deg, rgba(8,14,26,.55), rgba(8,14,26,.1) 40%, rgba(8,14,26,.48) 94%)}
 
   section{position:absolute;inset:0;opacity:0;transition:opacity .7s ease;pointer-events:none}
   html[data-mode=idle] section.idle, html[data-mode=life] section.life,
   html[data-mode=bim]  section.bim,  html[data-mode=data] section.data{opacity:1}
 
-  .eyebrow{font-size:25px;letter-spacing:.52em;color:var(--h);transition:color 1s}
+  .eyebrow{font-size:25px;letter-spacing:.52em;color:var(--h);transition:color 1s;font-weight:500}
   .en{font-size:23px;letter-spacing:.56em;color:var(--haze)}
   .idstamp{position:absolute;right:46px;bottom:38px;font-size:17px;letter-spacing:.3em;color:var(--dim);z-index:5}
   .num{font-variant-numeric:tabular-nums}
@@ -1228,8 +1312,9 @@ function connect(){
 
   #rotor{position:absolute;left:50%;top:50%;width:1080px;height:1920px;
     transform:translate(-50%,-50%) rotate(-90deg)}
+  #rotor #field{position:absolute;inset:0}
   section{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:0 110px}
-  .tt{margin:36px 0 0;font-size:96px;font-weight:200;letter-spacing:.14em;line-height:1.2;
+  .tt{margin:36px 0 0;font-size:96px;font-weight:600;letter-spacing:.12em;line-height:1.2;
     writing-mode:vertical-rl;height:520px}
   .en3{margin-top:26px;font-size:22px;letter-spacing:.5em;color:var(--haze)}
   .kv{margin-top:56px;display:flex;align-items:baseline;gap:22px}
@@ -1246,8 +1331,8 @@ function connect(){
 &lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
-&lt;div id=&quot;field&quot;&gt;&lt;i class=&quot;tint&quot;&gt;&lt;/i&gt;&lt;i class=&quot;bloom&quot;&gt;&lt;/i&gt;&lt;i class=&quot;seam&quot;&gt;&lt;/i&gt;&lt;i class=&quot;core&quot;&gt;&lt;/i&gt;&lt;i class=&quot;veil&quot;&gt;&lt;/i&gt;&lt;/div&gt;
-&lt;div id=&quot;rotor&quot;&gt;&lt;section class=&quot;idle&quot;&gt;
+
+&lt;div id=&quot;rotor&quot;&gt;&lt;div id=&quot;field&quot;&gt;&lt;i class=&quot;ground&quot;&gt;&lt;/i&gt;&lt;i class=&quot;tint&quot;&gt;&lt;/i&gt;&lt;i class=&quot;fan&quot;&gt;&lt;/i&gt;&lt;i class=&quot;axis&quot;&gt;&lt;/i&gt;&lt;i class=&quot;core&quot;&gt;&lt;/i&gt;&lt;i class=&quot;arc&quot;&gt;&lt;/i&gt;&lt;i class=&quot;veil&quot;&gt;&lt;/i&gt;&lt;/div&gt;&lt;section class=&quot;idle&quot;&gt;
   &lt;span class=&quot;eyebrow&quot;&gt;AMBIENT · VISITORS&lt;/span&gt;
   &lt;div class=&quot;sv num&quot;&gt;36&lt;em&gt;人&lt;/em&gt;&lt;/div&gt;
   &lt;div class=&quot;sl&quot;&gt;在館人數&lt;/div&gt;
@@ -1294,7 +1379,7 @@ function connect(){
 &lt;/html&gt;
 "></iframe></div><span class="tag"><b>27"</b> · S6 · 系統卡 6</span><span class="route" style="--pc:var(--dp3)">DP3 · C-2</span></div>
 <div class="cell" data-id="ipad"><div class="frame"><iframe srcdoc="&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;zh-Hant&quot; data-mode=&quot;idle&quot; style=&quot;--sy:46%;--sr:-24deg&quot;&gt;
+&lt;html lang=&quot;zh-Hant&quot; data-mode=&quot;idle&quot; style=&quot;--ax:60%;--ar:-16deg&quot;&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;utf-8&quot;&gt;
 &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover&quot;&gt;
@@ -1306,8 +1391,8 @@ function connect(){
   /* 輸出用介面 — 導覽端正式對外版(iPad 橫式 1194×834)。
      「光縫」視覺系統,與十面副螢同一套語言;功能只留三件事:切模式、拉年份、回全景。
      模式高亮全走 CSS(html[data-mode]),外部(導播牆展示版)直接改 dataset 即可驅動。 */
-  :root{--ink:#06080B;--air:#F2F1EC;--haze:#9AA3AE;--dim:#6A7480;--line:rgba(242,241,236,.14);--ok:#57C99B}
-  html[data-mode=idle]{--h:#E9E7DF}
+  :root{--ink:#0A1322;--air:#F2F5FA;--haze:#93A2B8;--dim:#5F6E85;--line:rgba(242,245,250,.14);--ok:#57C99B}
+  html[data-mode=idle]{--h:#3FB4F0}
   html[data-mode=life]{--h:#FFA61A}
   html[data-mode=bim] {--h:#FF2E1E}
   html[data-mode=data]{--h:#18DCB9}
@@ -1319,29 +1404,37 @@ function connect(){
     user-select:none;-webkit-user-select:none;touch-action:manipulation;cursor:pointer}
   button:focus-visible{outline:1.5px solid var(--h);outline-offset:3px}
 
-  /* ── 光場 ── */
+  /* ── 光場 v2「光刃・透視」(CS#2 藍光語彙) ── */
   #field{position:fixed;inset:0;overflow:hidden}
-  #field i{position:absolute;display:block;transition:background 1s ease,opacity 1s ease}
+  #field i{position:absolute;display:block;transition:background 1s ease,opacity 1s ease,box-shadow 1s ease}
+  .ground{inset:0;background:linear-gradient(180deg,#08101E 0%,#0C1930 50%,#1D3054 100%)}
   .tint{inset:0;background:
-    radial-gradient(120% 95% at 82% 6%, color-mix(in oklab, var(--h) 15%, transparent), transparent 60%),
-    radial-gradient(150% 110% at 6% 44%, color-mix(in oklab, var(--h) 8%, transparent), transparent 56%)}
-  .bloom{left:-14%;bottom:-30%;width:76%;height:88%;
-    background:radial-gradient(closest-side, color-mix(in oklab, var(--h) 58%, #FFFFFF 16%),
-      color-mix(in oklab, var(--h) 24%, transparent) 48%, transparent 74%);
-    opacity:.30;filter:blur(34px)}
-  .seam{left:-30%;top:calc(var(--sy) - 17%);width:160%;height:34%;transform:rotate(var(--sr));
-    background:linear-gradient(to bottom, transparent 0%,
-      color-mix(in oklab, var(--h) 30%, transparent) 33%,
-      color-mix(in oklab, var(--h) 52%, #FFF 26%) 49%,
-      rgba(255,255,255,.82) 50%,
-      color-mix(in oklab, var(--h) 52%, #FFF 26%) 51%,
-      color-mix(in oklab, var(--h) 30%, transparent) 67%, transparent 100%);
-    opacity:.4;filter:blur(28px);animation:breath 9s ease-in-out infinite}
-  .core{left:-30%;top:calc(var(--sy) - .8%);width:160%;height:1.6%;transform:rotate(var(--sr));
-    background:linear-gradient(90deg, transparent 4%, rgba(255,255,255,.92) 30% 70%, transparent 96%);
-    opacity:.55;filter:blur(4px);animation:breath 9s ease-in-out infinite}
-  @keyframes breath{0%,100%{opacity:.46}50%{opacity:.24}}
-  .veil{inset:0;background:linear-gradient(180deg, rgba(6,8,11,.5), rgba(6,8,11,.08) 42%, rgba(6,8,11,.4) 94%)}
+    radial-gradient(130% 85% at 76% 0%, color-mix(in oklab, var(--h) 20%, transparent), transparent 58%),
+    radial-gradient(130% 70% at var(--ax) 100%, color-mix(in oklab, var(--h) 16%, transparent), transparent 60%)}
+  .fan{left:-25%;right:-25%;top:0;bottom:-30%;opacity:.3;filter:blur(2px);
+    background:
+      radial-gradient(52% 40% at var(--ax) 86%, color-mix(in oklab, var(--h) 32%, #FFF 8%), transparent 70%),
+      repeating-conic-gradient(from 240deg at var(--ax) 86%,
+        transparent 0deg 9deg,
+        color-mix(in oklab, var(--h) 14%, transparent) 9.6deg 10.4deg,
+        transparent 11deg 20deg)}
+  .axis{top:-4%;bottom:-4%;left:calc(var(--ax) - 70px);width:140px;opacity:.5;filter:blur(7px);
+    background:linear-gradient(90deg, transparent 0%,
+      color-mix(in oklab, var(--h) 30%, transparent) 36%,
+      color-mix(in oklab, var(--h) 58%, #FFF 26%) 49%,
+      rgba(255,255,255,.9) 50%,
+      color-mix(in oklab, var(--h) 58%, #FFF 26%) 51%,
+      color-mix(in oklab, var(--h) 30%, transparent) 64%, transparent 100%);
+    animation:breath 8s ease-in-out infinite}
+  .core{top:-4%;bottom:-4%;left:calc(var(--ax) - 1px);width:2px;opacity:.8;filter:blur(.5px);
+    background:linear-gradient(180deg,transparent 2%,rgba(255,255,255,.95) 20% 80%,transparent 98%);
+    animation:breath 8s ease-in-out infinite}
+  .arc{width:300%;aspect-ratio:1;border-radius:50%;left:calc(var(--ax) - 220%);top:-24%;
+    border-top:2.5px solid rgba(255,255,255,.8);opacity:.42;filter:blur(1.4px);
+    box-shadow:0 -8px 26px color-mix(in oklab, var(--h) 65%, transparent);
+    transform:rotate(var(--ar));animation:breath 8s ease-in-out infinite reverse}
+  @keyframes breath{0%,100%{opacity:.5}50%{opacity:.26}}
+  .veil{inset:0;background:linear-gradient(180deg, rgba(8,14,26,.5), rgba(8,14,26,.1) 42%, rgba(8,14,26,.42) 94%)}
 
   /* ── 骨架:左=當前輸出,右=模式選擇 ── */
   .app{position:relative;display:flex;height:100dvh}
@@ -1352,7 +1445,7 @@ function connect(){
   html[data-mode=bim]  section.bim,  html[data-mode=data] section.data{opacity:1;pointer-events:auto}
 
   .eyebrow{font-size:17px;letter-spacing:.5em;color:var(--h);transition:color 1s}
-  h1{margin:20px 0 0;font-weight:200;letter-spacing:.13em;font-size:88px;line-height:1.14}
+  h1{margin:20px 0 0;font-weight:600;letter-spacing:.1em;font-size:88px;line-height:1.14}
   .en{margin-top:16px;font-size:15px;letter-spacing:.52em;color:var(--haze)}
   .lead{margin-top:30px;display:flex;align-items:center;gap:18px;font-size:19px;
     font-weight:300;letter-spacing:.18em;color:var(--haze)}
@@ -1444,7 +1537,7 @@ function connect(){
 &lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
-&lt;div id=&quot;field&quot;&gt;&lt;i class=&quot;tint&quot;&gt;&lt;/i&gt;&lt;i class=&quot;bloom&quot;&gt;&lt;/i&gt;&lt;i class=&quot;seam&quot;&gt;&lt;/i&gt;&lt;i class=&quot;core&quot;&gt;&lt;/i&gt;&lt;i class=&quot;veil&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+&lt;div id=&quot;field&quot;&gt;&lt;i class=&quot;ground&quot;&gt;&lt;/i&gt;&lt;i class=&quot;tint&quot;&gt;&lt;/i&gt;&lt;i class=&quot;fan&quot;&gt;&lt;/i&gt;&lt;i class=&quot;axis&quot;&gt;&lt;/i&gt;&lt;i class=&quot;core&quot;&gt;&lt;/i&gt;&lt;i class=&quot;arc&quot;&gt;&lt;/i&gt;&lt;i class=&quot;veil&quot;&gt;&lt;/i&gt;&lt;/div&gt;
 
 &lt;div id=&quot;rotate&quot;&gt;
   &lt;svg viewBox=&quot;0 0 24 24&quot;&gt;&lt;rect x=&quot;5&quot; y=&quot;2.6&quot; width=&quot;14&quot; height=&quot;18.8&quot; rx=&quot;2.2&quot;/&gt;&lt;path d=&quot;M10.4 18.4h3.2&quot;/&gt;&lt;/svg&gt;
@@ -1579,7 +1672,7 @@ function connect(){
     --glass:rgba(15,19,25,.5); --glass2:rgba(255,255,255,.06);
     --life:#FFA61A; --bim:#FF2E1E; --data:#18DCB9; --warn:#E0B36A; --ok:#57C99B;
   }
-  body{--acc:#E9E7DF;--accSoft:rgba(242,241,236,.11)}
+  body{--acc:#3FB4F0;--accSoft:rgba(63,180,240,.13)}
   body[data-mode=life]{--acc:#FFA61A;--accSoft:rgba(255,166,26,.13)}
   body[data-mode=bim] {--acc:#FF5A48;--accSoft:rgba(255,46,30,.12)}
   body[data-mode=data]{--acc:#18DCB9;--accSoft:rgba(24,220,185,.13)}
@@ -2151,7 +2244,7 @@ if (location.hash){
 <div class="station">
   <span class="cap">輸出用介面 · 展場 iPad 實機畫面 · 可操作試玩</span>
   <div class="pad"><div class="cam"></div><div class="padscreen" id="outscreen"><iframe id="outframe" srcdoc="&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;zh-Hant&quot; data-mode=&quot;idle&quot; style=&quot;--sy:46%;--sr:-24deg&quot;&gt;
+&lt;html lang=&quot;zh-Hant&quot; data-mode=&quot;idle&quot; style=&quot;--ax:60%;--ar:-16deg&quot;&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;utf-8&quot;&gt;
 &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover&quot;&gt;
@@ -2163,8 +2256,8 @@ if (location.hash){
   /* 輸出用介面 — 導覽端正式對外版(iPad 橫式 1194×834)。
      「光縫」視覺系統,與十面副螢同一套語言;功能只留三件事:切模式、拉年份、回全景。
      模式高亮全走 CSS(html[data-mode]),外部(導播牆展示版)直接改 dataset 即可驅動。 */
-  :root{--ink:#06080B;--air:#F2F1EC;--haze:#9AA3AE;--dim:#6A7480;--line:rgba(242,241,236,.14);--ok:#57C99B}
-  html[data-mode=idle]{--h:#E9E7DF}
+  :root{--ink:#0A1322;--air:#F2F5FA;--haze:#93A2B8;--dim:#5F6E85;--line:rgba(242,245,250,.14);--ok:#57C99B}
+  html[data-mode=idle]{--h:#3FB4F0}
   html[data-mode=life]{--h:#FFA61A}
   html[data-mode=bim] {--h:#FF2E1E}
   html[data-mode=data]{--h:#18DCB9}
@@ -2176,29 +2269,37 @@ if (location.hash){
     user-select:none;-webkit-user-select:none;touch-action:manipulation;cursor:pointer}
   button:focus-visible{outline:1.5px solid var(--h);outline-offset:3px}
 
-  /* ── 光場 ── */
+  /* ── 光場 v2「光刃・透視」(CS#2 藍光語彙) ── */
   #field{position:fixed;inset:0;overflow:hidden}
-  #field i{position:absolute;display:block;transition:background 1s ease,opacity 1s ease}
+  #field i{position:absolute;display:block;transition:background 1s ease,opacity 1s ease,box-shadow 1s ease}
+  .ground{inset:0;background:linear-gradient(180deg,#08101E 0%,#0C1930 50%,#1D3054 100%)}
   .tint{inset:0;background:
-    radial-gradient(120% 95% at 82% 6%, color-mix(in oklab, var(--h) 15%, transparent), transparent 60%),
-    radial-gradient(150% 110% at 6% 44%, color-mix(in oklab, var(--h) 8%, transparent), transparent 56%)}
-  .bloom{left:-14%;bottom:-30%;width:76%;height:88%;
-    background:radial-gradient(closest-side, color-mix(in oklab, var(--h) 58%, #FFFFFF 16%),
-      color-mix(in oklab, var(--h) 24%, transparent) 48%, transparent 74%);
-    opacity:.30;filter:blur(34px)}
-  .seam{left:-30%;top:calc(var(--sy) - 17%);width:160%;height:34%;transform:rotate(var(--sr));
-    background:linear-gradient(to bottom, transparent 0%,
-      color-mix(in oklab, var(--h) 30%, transparent) 33%,
-      color-mix(in oklab, var(--h) 52%, #FFF 26%) 49%,
-      rgba(255,255,255,.82) 50%,
-      color-mix(in oklab, var(--h) 52%, #FFF 26%) 51%,
-      color-mix(in oklab, var(--h) 30%, transparent) 67%, transparent 100%);
-    opacity:.4;filter:blur(28px);animation:breath 9s ease-in-out infinite}
-  .core{left:-30%;top:calc(var(--sy) - .8%);width:160%;height:1.6%;transform:rotate(var(--sr));
-    background:linear-gradient(90deg, transparent 4%, rgba(255,255,255,.92) 30% 70%, transparent 96%);
-    opacity:.55;filter:blur(4px);animation:breath 9s ease-in-out infinite}
-  @keyframes breath{0%,100%{opacity:.46}50%{opacity:.24}}
-  .veil{inset:0;background:linear-gradient(180deg, rgba(6,8,11,.5), rgba(6,8,11,.08) 42%, rgba(6,8,11,.4) 94%)}
+    radial-gradient(130% 85% at 76% 0%, color-mix(in oklab, var(--h) 20%, transparent), transparent 58%),
+    radial-gradient(130% 70% at var(--ax) 100%, color-mix(in oklab, var(--h) 16%, transparent), transparent 60%)}
+  .fan{left:-25%;right:-25%;top:0;bottom:-30%;opacity:.3;filter:blur(2px);
+    background:
+      radial-gradient(52% 40% at var(--ax) 86%, color-mix(in oklab, var(--h) 32%, #FFF 8%), transparent 70%),
+      repeating-conic-gradient(from 240deg at var(--ax) 86%,
+        transparent 0deg 9deg,
+        color-mix(in oklab, var(--h) 14%, transparent) 9.6deg 10.4deg,
+        transparent 11deg 20deg)}
+  .axis{top:-4%;bottom:-4%;left:calc(var(--ax) - 70px);width:140px;opacity:.5;filter:blur(7px);
+    background:linear-gradient(90deg, transparent 0%,
+      color-mix(in oklab, var(--h) 30%, transparent) 36%,
+      color-mix(in oklab, var(--h) 58%, #FFF 26%) 49%,
+      rgba(255,255,255,.9) 50%,
+      color-mix(in oklab, var(--h) 58%, #FFF 26%) 51%,
+      color-mix(in oklab, var(--h) 30%, transparent) 64%, transparent 100%);
+    animation:breath 8s ease-in-out infinite}
+  .core{top:-4%;bottom:-4%;left:calc(var(--ax) - 1px);width:2px;opacity:.8;filter:blur(.5px);
+    background:linear-gradient(180deg,transparent 2%,rgba(255,255,255,.95) 20% 80%,transparent 98%);
+    animation:breath 8s ease-in-out infinite}
+  .arc{width:300%;aspect-ratio:1;border-radius:50%;left:calc(var(--ax) - 220%);top:-24%;
+    border-top:2.5px solid rgba(255,255,255,.8);opacity:.42;filter:blur(1.4px);
+    box-shadow:0 -8px 26px color-mix(in oklab, var(--h) 65%, transparent);
+    transform:rotate(var(--ar));animation:breath 8s ease-in-out infinite reverse}
+  @keyframes breath{0%,100%{opacity:.5}50%{opacity:.26}}
+  .veil{inset:0;background:linear-gradient(180deg, rgba(8,14,26,.5), rgba(8,14,26,.1) 42%, rgba(8,14,26,.42) 94%)}
 
   /* ── 骨架:左=當前輸出,右=模式選擇 ── */
   .app{position:relative;display:flex;height:100dvh}
@@ -2209,7 +2310,7 @@ if (location.hash){
   html[data-mode=bim]  section.bim,  html[data-mode=data] section.data{opacity:1;pointer-events:auto}
 
   .eyebrow{font-size:17px;letter-spacing:.5em;color:var(--h);transition:color 1s}
-  h1{margin:20px 0 0;font-weight:200;letter-spacing:.13em;font-size:88px;line-height:1.14}
+  h1{margin:20px 0 0;font-weight:600;letter-spacing:.1em;font-size:88px;line-height:1.14}
   .en{margin-top:16px;font-size:15px;letter-spacing:.52em;color:var(--haze)}
   .lead{margin-top:30px;display:flex;align-items:center;gap:18px;font-size:19px;
     font-weight:300;letter-spacing:.18em;color:var(--haze)}
@@ -2301,7 +2402,7 @@ if (location.hash){
 &lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
-&lt;div id=&quot;field&quot;&gt;&lt;i class=&quot;tint&quot;&gt;&lt;/i&gt;&lt;i class=&quot;bloom&quot;&gt;&lt;/i&gt;&lt;i class=&quot;seam&quot;&gt;&lt;/i&gt;&lt;i class=&quot;core&quot;&gt;&lt;/i&gt;&lt;i class=&quot;veil&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+&lt;div id=&quot;field&quot;&gt;&lt;i class=&quot;ground&quot;&gt;&lt;/i&gt;&lt;i class=&quot;tint&quot;&gt;&lt;/i&gt;&lt;i class=&quot;fan&quot;&gt;&lt;/i&gt;&lt;i class=&quot;axis&quot;&gt;&lt;/i&gt;&lt;i class=&quot;core&quot;&gt;&lt;/i&gt;&lt;i class=&quot;arc&quot;&gt;&lt;/i&gt;&lt;i class=&quot;veil&quot;&gt;&lt;/i&gt;&lt;/div&gt;
 
 &lt;div id=&quot;rotate&quot;&gt;
   &lt;svg viewBox=&quot;0 0 24 24&quot;&gt;&lt;rect x=&quot;5&quot; y=&quot;2.6&quot; width=&quot;14&quot; height=&quot;18.8&quot; rx=&quot;2.2&quot;/&gt;&lt;path d=&quot;M10.4 18.4h3.2&quot;/&gt;&lt;/svg&gt;
@@ -2461,7 +2562,7 @@ function connect(){
 const META = {a:{cm:[95.2,53.5],vp:[1920,1080],x:84,y:85,rot:0},b:{cm:[95.2,53.5],vp:[1920,1080],x:159.8,y:8,rot:0},c:{cm:[95.2,53.5],vp:[1920,1080],x:265,y:8,rot:0},d:{cm:[95.2,53.5],vp:[1920,1080],x:341,y:84,rot:0},s1:{cm:[59.8,33.6],vp:[1920,1080],x:128,y:171,rot:0},main:{cm:[143.9,80.9],vp:[0,0],x:188,y:73,rot:0},s2:{cm:[59.8,33.6],vp:[1920,1080],x:195,y:171,rot:0},s3:{cm:[59.8,33.6],vp:[1920,1080],x:262,y:171,rot:0},s4:{cm:[59.8,33.6],vp:[1920,1080],x:328,y:170,rot:0},s5:{cm:[59.8,33.6],vp:[1920,1080],x:119,y:8,rot:90},s6:{cm:[59.8,33.6],vp:[1920,1080],x:369,y:8,rot:90},ipad:{cm:[24.76,17.85],vp:[1194,834],x:423,y:186,rot:0},ipad2:{cm:[24.76,17.85],vp:[1194,834],x:449,y:186,rot:0}};
 const MODES = ['idle','life','bim','data'];
 const MODENAME = {idle:'待機', life:'全生命週期', bim:'BIM 導覽', data:'數據匯流'};
-const MODEHEX  = {idle:'#E9E7DF', life:'#FFA61A', bim:'#FF2E1E', data:'#18DCB9'};
+const MODEHEX  = {idle:'#3FB4F0', life:'#FFA61A', bim:'#FF2E1E', data:'#18DCB9'};
 const STAGE_W = 520, STAGE_H = 225;
 const stage = document.getElementById('stage');
 let SCALE = 1;
