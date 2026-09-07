@@ -29,13 +29,19 @@ body[data-view=wall].is-standby .demo-beats{display:none}
  .demo-beats{display:grid;grid-template-columns:1fr;width:100%}
 }
 
-.demo-standby-panel{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:64px;background:#05121f;isolation:isolate;overflow:hidden;color:#f2f1ec;--accent:#3FB4F0}
-.demo-standby-panel>img{width:62%;height:auto;position:relative;z-index:1}
-.demo-standby-panel>strong{font-size:96px;letter-spacing:.08em;line-height:1.4;position:relative;z-index:1}
-.demo-standby-panel>span{font-size:48px;letter-spacing:.12em;position:relative;z-index:1}
-.demo-standby-panel.portrait{gap:100px;padding:0 60px;text-align:center}
-.demo-standby-panel.portrait>img{width:86%}
-.demo-standby-panel.portrait>strong{font-size:108px;max-width:850px}
-.demo-standby-panel.portrait>span{font-size:52px;line-height:1.7}
+.panel.standby-panel{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:44px;background:#0b0e12;color:#fff;text-align:center;padding:100px;animation:standby-reveal 1s ease both;animation-play-state:running!important}
+.standby-panel>img{position:static!important;width:320px!important;height:auto!important;max-width:55%}
+.standby-panel>strong{font-size:68px;font-weight:500;letter-spacing:.12em;line-height:1.6}
+.standby-panel>span{font-size:28px;letter-spacing:.15em;color:#bac7cd}
+html[data-standby=true] .panel.standby-panel{background:#0b0e12!important}
+html[data-standby=true] .slot{border-color:#53636f;box-shadow:none}
+.standby-console{display:flex;min-height:450px;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:#0b0e12;color:white}
+.standby-console img{width:240px;height:auto}.standby-console h2{font-size:38px}
+@keyframes standby-reveal{from{opacity:0}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){.panel.standby-panel{animation:none}}
+
 html[data-standby=true] #showcase-canvas{visibility:hidden}
 html[data-standby=true] .demo-beats{display:none}
+body[data-view=ipad] #standby-screen{z-index:100;pointer-events:auto}
+body[data-view=ipad].is-standby #console{visibility:hidden;pointer-events:none}
+body[data-view=ipad].is-standby #standby-screen:not([hidden]){display:flex;visibility:visible;opacity:1}
