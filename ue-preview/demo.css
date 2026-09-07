@@ -45,3 +45,9 @@ html[data-standby=true] .demo-beats{display:none}
 body[data-view=ipad] #standby-screen{z-index:100;pointer-events:auto}
 body[data-view=ipad].is-standby #console{visibility:hidden;pointer-events:none}
 body[data-view=ipad].is-standby #standby-screen:not([hidden]){display:flex;visibility:visible;opacity:1}
+
+/* Keep wall playback controls at the top right and within reach while scrolling. */
+body[data-view=wall] main>.transport{position:sticky;top:0;z-index:20;display:flex;justify-content:flex-end;flex-wrap:wrap;gap:8px;margin:0;padding:10px 0;background:#050a10f5;border-bottom:1px solid #ffffff16;backdrop-filter:blur(12px)}
+body[data-view=wall] main>.transport button{white-space:nowrap;min-height:44px}
+body[data-view=wall] main>#story-note{display:block;color:var(--muted);font-size:14px;margin:12px 0}
+@media(max-width:700px){body[data-view=wall] main>.transport{gap:6px}body[data-view=wall] main>.transport button{font-size:14px;padding:8px 12px}}
