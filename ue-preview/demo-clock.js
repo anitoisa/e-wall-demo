@@ -3,19 +3,22 @@
  'use strict';
  const modes=['idle','life','bim','data'];
  const frames={idle:[8,20,32],life:[8,20,32],bim:[8,20,29],data:[12,32,48,68]};
- const key='anlb-ue-preview-clock-v1';
+ const key='anlb-ue-preview-clock-fast-v2';
+ const beatMilliseconds=700,offsets=[0,3,6,9];
  let memory=null;
  const fresh=()=>({mode:'idle',chapterElapsed:8,playing:false,standby:false,scenarioSeed:20260907,revision:0,changedAt:Date.now()});
  function valid(r){return r&&modes.includes(r.mode)&&Number.isFinite(r.chapterElapsed)&&r.chapterElapsed>=0&&Number.isFinite(r.changedAt)&&typeof r.playing==='boolean'&&typeof r.standby==='boolean'&&Number.isFinite(r.scenarioSeed)&&Number.isFinite(r.revision);}
  function load(){try{const r=JSON.parse(localStorage.getItem(key));if(valid(r)){memory=r;return r;}}catch{}return memory||(memory=fresh());}
  function store(r){memory=r;try{localStorage.setItem(key,JSON.stringify(r));}catch{}return r;}
  function snapshot(){
-  const r=load();let mode=r.mode,t=r.chapterElapsed+(r.playing&&!r.standby?Math.max(0,Date.now()-r.changedAt)/1000:0);
-  // Full show is 180 seconds; bounded even after a background tab returns.
-  t%=180;
-  while(t>=(mode==='data'?72:36)){t-=mode==='data'?72:36;mode=modes[(modes.indexOf(mode)+1)%4];}
-  const duration=mode==='data'?18:12,count=frames[mode].length;
-  return {...r,mode,chapterElapsed:t,segment:Math.floor(t/duration),elapsed:t%duration,segmentDuration:duration,segmentCount:count};
+  const r=load(),initialDuration=r.mode==='data'?18:12;
+  const originBeat=offsets[modes.indexOf(r.mode)]+r.chapterElapsed/initialDuration;
+  const advance=r.playing&&!r.standby?Math.max(0,Date.now()-r.changedAt)/beatMilliseconds:0;
+  const beat=((originBeat+advance+1e-10)%13+13)%13;
+  let mi=3;while(mi>0&&beat<offsets[mi])mi--;
+  const mode=modes[mi],duration=mode==='data'?18:12,count=frames[mode].length;
+  const chapterBeat=beat-offsets[mi],segment=Math.floor(chapterBeat),t=chapterBeat*duration;
+  return {...r,mode,chapterElapsed:t,segment,elapsed:t%duration,segmentDuration:duration,segmentCount:count,playbackSegmentMilliseconds:beatMilliseconds};
  }
  function command(action,mode,index){
   const s=snapshot(),r={mode:s.mode,chapterElapsed:s.chapterElapsed,playing:s.playing,standby:s.standby,scenarioSeed:s.scenarioSeed,revision:s.revision+1,changedAt:Date.now()};
@@ -31,7 +34,7 @@
    if(!Number.isInteger(index)||index<0||index>=frames[s.mode].length)return s;
    r.chapterElapsed=r.playing?index*s.segmentDuration:frames[s.mode][index];r.standby=false;
   }else if(action==='toggle'){
-   if(s.standby){r.mode='idle';r.chapterElapsed=0;r.playing=true;r.standby=false;}else r.playing=!s.playing;
+   if(s.standby){r.mode='idle';r.chapterElapsed=0;r.playing=true;r.standby=false;}else {r.playing=!s.playing;if(r.playing)r.chapterElapsed=s.segment*s.segmentDuration;}
   }else if(action==='start'){
    r.mode='idle';r.chapterElapsed=0;r.playing=true;r.standby=false;
   }else if(action==='reset'){
