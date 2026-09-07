@@ -1,0 +1,1112 @@
+{
+  "schemaVersion": 1,
+  "sampleIntervalSeconds": 1,
+  "demoSegmentMilliseconds": 1000,
+  "sourceVersion": "four-mode-v1-20260907",
+  "chapters": {
+    "idle": {
+      "segmentDuration": 12,
+      "segmentCount": 3,
+      "frames": [
+        {
+          "index": 0,
+          "segment": 1,
+          "actualSeconds": 0.516,
+          "image": "assets/ue-sequence/idle-000.webp"
+        },
+        {
+          "index": 1,
+          "segment": 1,
+          "actualSeconds": 1.516,
+          "image": "assets/ue-sequence/idle-001.webp"
+        },
+        {
+          "index": 2,
+          "segment": 1,
+          "actualSeconds": 2.5,
+          "image": "assets/ue-sequence/idle-002.webp"
+        },
+        {
+          "index": 3,
+          "segment": 1,
+          "actualSeconds": 3.5,
+          "image": "assets/ue-sequence/idle-003.webp"
+        },
+        {
+          "index": 4,
+          "segment": 1,
+          "actualSeconds": 4.531,
+          "image": "assets/ue-sequence/idle-004.webp"
+        },
+        {
+          "index": 5,
+          "segment": 1,
+          "actualSeconds": 5.5,
+          "image": "assets/ue-sequence/idle-005.webp"
+        },
+        {
+          "index": 6,
+          "segment": 1,
+          "actualSeconds": 6.516,
+          "image": "assets/ue-sequence/idle-006.webp"
+        },
+        {
+          "index": 7,
+          "segment": 1,
+          "actualSeconds": 7.516,
+          "image": "assets/ue-sequence/idle-007.webp"
+        },
+        {
+          "index": 8,
+          "segment": 1,
+          "actualSeconds": 8.516,
+          "image": "assets/ue-sequence/idle-008.webp"
+        },
+        {
+          "index": 9,
+          "segment": 1,
+          "actualSeconds": 9.516,
+          "image": "assets/ue-sequence/idle-009.webp"
+        },
+        {
+          "index": 10,
+          "segment": 1,
+          "actualSeconds": 10.516,
+          "image": "assets/ue-sequence/idle-010.webp"
+        },
+        {
+          "index": 11,
+          "segment": 1,
+          "actualSeconds": 11.5,
+          "image": "assets/ue-sequence/idle-011.webp"
+        },
+        {
+          "index": 12,
+          "segment": 2,
+          "actualSeconds": 12.516,
+          "image": "assets/ue-sequence/idle-012.webp"
+        },
+        {
+          "index": 13,
+          "segment": 2,
+          "actualSeconds": 13.5,
+          "image": "assets/ue-sequence/idle-013.webp"
+        },
+        {
+          "index": 14,
+          "segment": 2,
+          "actualSeconds": 14.5,
+          "image": "assets/ue-sequence/idle-014.webp"
+        },
+        {
+          "index": 15,
+          "segment": 2,
+          "actualSeconds": 15.516,
+          "image": "assets/ue-sequence/idle-015.webp"
+        },
+        {
+          "index": 16,
+          "segment": 2,
+          "actualSeconds": 16.516,
+          "image": "assets/ue-sequence/idle-016.webp"
+        },
+        {
+          "index": 17,
+          "segment": 2,
+          "actualSeconds": 17.516,
+          "image": "assets/ue-sequence/idle-017.webp"
+        },
+        {
+          "index": 18,
+          "segment": 2,
+          "actualSeconds": 18.516,
+          "image": "assets/ue-sequence/idle-018.webp"
+        },
+        {
+          "index": 19,
+          "segment": 2,
+          "actualSeconds": 19.516,
+          "image": "assets/ue-sequence/idle-019.webp"
+        },
+        {
+          "index": 20,
+          "segment": 2,
+          "actualSeconds": 20.5,
+          "image": "assets/ue-sequence/idle-020.webp"
+        },
+        {
+          "index": 21,
+          "segment": 2,
+          "actualSeconds": 21.516,
+          "image": "assets/ue-sequence/idle-021.webp"
+        },
+        {
+          "index": 22,
+          "segment": 2,
+          "actualSeconds": 22.516,
+          "image": "assets/ue-sequence/idle-022.webp"
+        },
+        {
+          "index": 23,
+          "segment": 2,
+          "actualSeconds": 23.516,
+          "image": "assets/ue-sequence/idle-023.webp"
+        },
+        {
+          "index": 24,
+          "segment": 3,
+          "actualSeconds": 24.5,
+          "image": "assets/ue-sequence/idle-024.webp"
+        },
+        {
+          "index": 25,
+          "segment": 3,
+          "actualSeconds": 25.516,
+          "image": "assets/ue-sequence/idle-025.webp"
+        },
+        {
+          "index": 26,
+          "segment": 3,
+          "actualSeconds": 26.516,
+          "image": "assets/ue-sequence/idle-026.webp"
+        },
+        {
+          "index": 27,
+          "segment": 3,
+          "actualSeconds": 27.531,
+          "image": "assets/ue-sequence/idle-027.webp"
+        },
+        {
+          "index": 28,
+          "segment": 3,
+          "actualSeconds": 28.5,
+          "image": "assets/ue-sequence/idle-028.webp"
+        },
+        {
+          "index": 29,
+          "segment": 3,
+          "actualSeconds": 29.516,
+          "image": "assets/ue-sequence/idle-029.webp"
+        },
+        {
+          "index": 30,
+          "segment": 3,
+          "actualSeconds": 30.5,
+          "image": "assets/ue-sequence/idle-030.webp"
+        },
+        {
+          "index": 31,
+          "segment": 3,
+          "actualSeconds": 31.516,
+          "image": "assets/ue-sequence/idle-031.webp"
+        },
+        {
+          "index": 32,
+          "segment": 3,
+          "actualSeconds": 32.516,
+          "image": "assets/ue-sequence/idle-032.webp"
+        },
+        {
+          "index": 33,
+          "segment": 3,
+          "actualSeconds": 33.5,
+          "image": "assets/ue-sequence/idle-033.webp"
+        },
+        {
+          "index": 34,
+          "segment": 3,
+          "actualSeconds": 34.531,
+          "image": "assets/ue-sequence/idle-034.webp"
+        },
+        {
+          "index": 35,
+          "segment": 3,
+          "actualSeconds": 35.516,
+          "image": "assets/ue-sequence/idle-035.webp"
+        }
+      ]
+    },
+    "life": {
+      "segmentDuration": 12,
+      "segmentCount": 3,
+      "frames": [
+        {
+          "index": 0,
+          "segment": 1,
+          "actualSeconds": 0.516,
+          "image": "assets/ue-sequence/life-000.webp"
+        },
+        {
+          "index": 1,
+          "segment": 1,
+          "actualSeconds": 1.5,
+          "image": "assets/ue-sequence/life-001.webp"
+        },
+        {
+          "index": 2,
+          "segment": 1,
+          "actualSeconds": 2.516,
+          "image": "assets/ue-sequence/life-002.webp"
+        },
+        {
+          "index": 3,
+          "segment": 1,
+          "actualSeconds": 3.5,
+          "image": "assets/ue-sequence/life-003.webp"
+        },
+        {
+          "index": 4,
+          "segment": 1,
+          "actualSeconds": 4.516,
+          "image": "assets/ue-sequence/life-004.webp"
+        },
+        {
+          "index": 5,
+          "segment": 1,
+          "actualSeconds": 5.516,
+          "image": "assets/ue-sequence/life-005.webp"
+        },
+        {
+          "index": 6,
+          "segment": 1,
+          "actualSeconds": 6.516,
+          "image": "assets/ue-sequence/life-006.webp"
+        },
+        {
+          "index": 7,
+          "segment": 1,
+          "actualSeconds": 7.532,
+          "image": "assets/ue-sequence/life-007.webp"
+        },
+        {
+          "index": 8,
+          "segment": 1,
+          "actualSeconds": 8.516,
+          "image": "assets/ue-sequence/life-008.webp"
+        },
+        {
+          "index": 9,
+          "segment": 1,
+          "actualSeconds": 9.516,
+          "image": "assets/ue-sequence/life-009.webp"
+        },
+        {
+          "index": 10,
+          "segment": 1,
+          "actualSeconds": 10.516,
+          "image": "assets/ue-sequence/life-010.webp"
+        },
+        {
+          "index": 11,
+          "segment": 1,
+          "actualSeconds": 11.516,
+          "image": "assets/ue-sequence/life-011.webp"
+        },
+        {
+          "index": 12,
+          "segment": 2,
+          "actualSeconds": 12.516,
+          "image": "assets/ue-sequence/life-012.webp"
+        },
+        {
+          "index": 13,
+          "segment": 2,
+          "actualSeconds": 13.5,
+          "image": "assets/ue-sequence/life-013.webp"
+        },
+        {
+          "index": 14,
+          "segment": 2,
+          "actualSeconds": 14.516,
+          "image": "assets/ue-sequence/life-014.webp"
+        },
+        {
+          "index": 15,
+          "segment": 2,
+          "actualSeconds": 15.532,
+          "image": "assets/ue-sequence/life-015.webp"
+        },
+        {
+          "index": 16,
+          "segment": 2,
+          "actualSeconds": 16.516,
+          "image": "assets/ue-sequence/life-016.webp"
+        },
+        {
+          "index": 17,
+          "segment": 2,
+          "actualSeconds": 17.5,
+          "image": "assets/ue-sequence/life-017.webp"
+        },
+        {
+          "index": 18,
+          "segment": 2,
+          "actualSeconds": 18.5,
+          "image": "assets/ue-sequence/life-018.webp"
+        },
+        {
+          "index": 19,
+          "segment": 2,
+          "actualSeconds": 19.516,
+          "image": "assets/ue-sequence/life-019.webp"
+        },
+        {
+          "index": 20,
+          "segment": 2,
+          "actualSeconds": 20.516,
+          "image": "assets/ue-sequence/life-020.webp"
+        },
+        {
+          "index": 21,
+          "segment": 2,
+          "actualSeconds": 21.516,
+          "image": "assets/ue-sequence/life-021.webp"
+        },
+        {
+          "index": 22,
+          "segment": 2,
+          "actualSeconds": 22.5,
+          "image": "assets/ue-sequence/life-022.webp"
+        },
+        {
+          "index": 23,
+          "segment": 2,
+          "actualSeconds": 23.5,
+          "image": "assets/ue-sequence/life-023.webp"
+        },
+        {
+          "index": 24,
+          "segment": 3,
+          "actualSeconds": 24.532,
+          "image": "assets/ue-sequence/life-024.webp"
+        },
+        {
+          "index": 25,
+          "segment": 3,
+          "actualSeconds": 25.516,
+          "image": "assets/ue-sequence/life-025.webp"
+        },
+        {
+          "index": 26,
+          "segment": 3,
+          "actualSeconds": 26.516,
+          "image": "assets/ue-sequence/life-026.webp"
+        },
+        {
+          "index": 27,
+          "segment": 3,
+          "actualSeconds": 27.5,
+          "image": "assets/ue-sequence/life-027.webp"
+        },
+        {
+          "index": 28,
+          "segment": 3,
+          "actualSeconds": 28.547,
+          "image": "assets/ue-sequence/life-028.webp"
+        },
+        {
+          "index": 29,
+          "segment": 3,
+          "actualSeconds": 29.516,
+          "image": "assets/ue-sequence/life-029.webp"
+        },
+        {
+          "index": 30,
+          "segment": 3,
+          "actualSeconds": 30.516,
+          "image": "assets/ue-sequence/life-030.webp"
+        },
+        {
+          "index": 31,
+          "segment": 3,
+          "actualSeconds": 31.5,
+          "image": "assets/ue-sequence/life-031.webp"
+        },
+        {
+          "index": 32,
+          "segment": 3,
+          "actualSeconds": 32.532,
+          "image": "assets/ue-sequence/life-032.webp"
+        },
+        {
+          "index": 33,
+          "segment": 3,
+          "actualSeconds": 33.516,
+          "image": "assets/ue-sequence/life-033.webp"
+        },
+        {
+          "index": 34,
+          "segment": 3,
+          "actualSeconds": 34.516,
+          "image": "assets/ue-sequence/life-034.webp"
+        },
+        {
+          "index": 35,
+          "segment": 3,
+          "actualSeconds": 35.516,
+          "image": "assets/ue-sequence/life-035.webp"
+        }
+      ]
+    },
+    "bim": {
+      "segmentDuration": 12,
+      "segmentCount": 3,
+      "frames": [
+        {
+          "index": 0,
+          "segment": 1,
+          "actualSeconds": 0.53,
+          "image": "assets/ue-sequence/bim-000.webp"
+        },
+        {
+          "index": 1,
+          "segment": 1,
+          "actualSeconds": 1.515,
+          "image": "assets/ue-sequence/bim-001.webp"
+        },
+        {
+          "index": 2,
+          "segment": 1,
+          "actualSeconds": 2.53,
+          "image": "assets/ue-sequence/bim-002.webp"
+        },
+        {
+          "index": 3,
+          "segment": 1,
+          "actualSeconds": 3.515,
+          "image": "assets/ue-sequence/bim-003.webp"
+        },
+        {
+          "index": 4,
+          "segment": 1,
+          "actualSeconds": 4.53,
+          "image": "assets/ue-sequence/bim-004.webp"
+        },
+        {
+          "index": 5,
+          "segment": 1,
+          "actualSeconds": 5.515,
+          "image": "assets/ue-sequence/bim-005.webp"
+        },
+        {
+          "index": 6,
+          "segment": 1,
+          "actualSeconds": 6.53,
+          "image": "assets/ue-sequence/bim-006.webp"
+        },
+        {
+          "index": 7,
+          "segment": 1,
+          "actualSeconds": 7.515,
+          "image": "assets/ue-sequence/bim-007.webp"
+        },
+        {
+          "index": 8,
+          "segment": 1,
+          "actualSeconds": 8.515,
+          "image": "assets/ue-sequence/bim-008.webp"
+        },
+        {
+          "index": 9,
+          "segment": 1,
+          "actualSeconds": 9.53,
+          "image": "assets/ue-sequence/bim-009.webp"
+        },
+        {
+          "index": 10,
+          "segment": 1,
+          "actualSeconds": 10.53,
+          "image": "assets/ue-sequence/bim-010.webp"
+        },
+        {
+          "index": 11,
+          "segment": 1,
+          "actualSeconds": 11.53,
+          "image": "assets/ue-sequence/bim-011.webp"
+        },
+        {
+          "index": 12,
+          "segment": 2,
+          "actualSeconds": 12.53,
+          "image": "assets/ue-sequence/bim-012.webp"
+        },
+        {
+          "index": 13,
+          "segment": 2,
+          "actualSeconds": 13.515,
+          "image": "assets/ue-sequence/bim-013.webp"
+        },
+        {
+          "index": 14,
+          "segment": 2,
+          "actualSeconds": 14.515,
+          "image": "assets/ue-sequence/bim-014.webp"
+        },
+        {
+          "index": 15,
+          "segment": 2,
+          "actualSeconds": 15.515,
+          "image": "assets/ue-sequence/bim-015.webp"
+        },
+        {
+          "index": 16,
+          "segment": 2,
+          "actualSeconds": 16.515,
+          "image": "assets/ue-sequence/bim-016.webp"
+        },
+        {
+          "index": 17,
+          "segment": 2,
+          "actualSeconds": 17.53,
+          "image": "assets/ue-sequence/bim-017.webp"
+        },
+        {
+          "index": 18,
+          "segment": 2,
+          "actualSeconds": 18.53,
+          "image": "assets/ue-sequence/bim-018.webp"
+        },
+        {
+          "index": 19,
+          "segment": 2,
+          "actualSeconds": 19.515,
+          "image": "assets/ue-sequence/bim-019.webp"
+        },
+        {
+          "index": 20,
+          "segment": 2,
+          "actualSeconds": 20.515,
+          "image": "assets/ue-sequence/bim-020.webp"
+        },
+        {
+          "index": 21,
+          "segment": 2,
+          "actualSeconds": 21.515,
+          "image": "assets/ue-sequence/bim-021.webp"
+        },
+        {
+          "index": 22,
+          "segment": 2,
+          "actualSeconds": 22.515,
+          "image": "assets/ue-sequence/bim-022.webp"
+        },
+        {
+          "index": 23,
+          "segment": 2,
+          "actualSeconds": 23.515,
+          "image": "assets/ue-sequence/bim-023.webp"
+        },
+        {
+          "index": 24,
+          "segment": 3,
+          "actualSeconds": 24.53,
+          "image": "assets/ue-sequence/bim-024.webp"
+        },
+        {
+          "index": 25,
+          "segment": 3,
+          "actualSeconds": 25.53,
+          "image": "assets/ue-sequence/bim-025.webp"
+        },
+        {
+          "index": 26,
+          "segment": 3,
+          "actualSeconds": 26.53,
+          "image": "assets/ue-sequence/bim-026.webp"
+        },
+        {
+          "index": 27,
+          "segment": 3,
+          "actualSeconds": 27.53,
+          "image": "assets/ue-sequence/bim-027.webp"
+        },
+        {
+          "index": 28,
+          "segment": 3,
+          "actualSeconds": 28.515,
+          "image": "assets/ue-sequence/bim-028.webp"
+        },
+        {
+          "index": 29,
+          "segment": 3,
+          "actualSeconds": 29.515,
+          "image": "assets/ue-sequence/bim-029.webp"
+        },
+        {
+          "index": 30,
+          "segment": 3,
+          "actualSeconds": 30.53,
+          "image": "assets/ue-sequence/bim-030.webp"
+        },
+        {
+          "index": 31,
+          "segment": 3,
+          "actualSeconds": 31.515,
+          "image": "assets/ue-sequence/bim-031.webp"
+        },
+        {
+          "index": 32,
+          "segment": 3,
+          "actualSeconds": 32.53,
+          "image": "assets/ue-sequence/bim-032.webp"
+        },
+        {
+          "index": 33,
+          "segment": 3,
+          "actualSeconds": 33.515,
+          "image": "assets/ue-sequence/bim-033.webp"
+        },
+        {
+          "index": 34,
+          "segment": 3,
+          "actualSeconds": 34.515,
+          "image": "assets/ue-sequence/bim-034.webp"
+        },
+        {
+          "index": 35,
+          "segment": 3,
+          "actualSeconds": 35.53,
+          "image": "assets/ue-sequence/bim-035.webp"
+        }
+      ]
+    },
+    "data": {
+      "segmentDuration": 18,
+      "segmentCount": 4,
+      "frames": [
+        {
+          "index": 0,
+          "segment": 1,
+          "actualSeconds": 0.516,
+          "image": "assets/ue-sequence/data-000.webp"
+        },
+        {
+          "index": 1,
+          "segment": 1,
+          "actualSeconds": 1.532,
+          "image": "assets/ue-sequence/data-001.webp"
+        },
+        {
+          "index": 2,
+          "segment": 1,
+          "actualSeconds": 2.532,
+          "image": "assets/ue-sequence/data-002.webp"
+        },
+        {
+          "index": 3,
+          "segment": 1,
+          "actualSeconds": 3.548,
+          "image": "assets/ue-sequence/data-003.webp"
+        },
+        {
+          "index": 4,
+          "segment": 1,
+          "actualSeconds": 4.516,
+          "image": "assets/ue-sequence/data-004.webp"
+        },
+        {
+          "index": 5,
+          "segment": 1,
+          "actualSeconds": 5.501,
+          "image": "assets/ue-sequence/data-005.webp"
+        },
+        {
+          "index": 6,
+          "segment": 1,
+          "actualSeconds": 6.516,
+          "image": "assets/ue-sequence/data-006.webp"
+        },
+        {
+          "index": 7,
+          "segment": 1,
+          "actualSeconds": 7.501,
+          "image": "assets/ue-sequence/data-007.webp"
+        },
+        {
+          "index": 8,
+          "segment": 1,
+          "actualSeconds": 8.532,
+          "image": "assets/ue-sequence/data-008.webp"
+        },
+        {
+          "index": 9,
+          "segment": 1,
+          "actualSeconds": 9.501,
+          "image": "assets/ue-sequence/data-009.webp"
+        },
+        {
+          "index": 10,
+          "segment": 1,
+          "actualSeconds": 10.501,
+          "image": "assets/ue-sequence/data-010.webp"
+        },
+        {
+          "index": 11,
+          "segment": 1,
+          "actualSeconds": 11.516,
+          "image": "assets/ue-sequence/data-011.webp"
+        },
+        {
+          "index": 12,
+          "segment": 1,
+          "actualSeconds": 12.548,
+          "image": "assets/ue-sequence/data-012.webp"
+        },
+        {
+          "index": 13,
+          "segment": 1,
+          "actualSeconds": 13.516,
+          "image": "assets/ue-sequence/data-013.webp"
+        },
+        {
+          "index": 14,
+          "segment": 1,
+          "actualSeconds": 14.516,
+          "image": "assets/ue-sequence/data-014.webp"
+        },
+        {
+          "index": 15,
+          "segment": 1,
+          "actualSeconds": 15.516,
+          "image": "assets/ue-sequence/data-015.webp"
+        },
+        {
+          "index": 16,
+          "segment": 1,
+          "actualSeconds": 16.532,
+          "image": "assets/ue-sequence/data-016.webp"
+        },
+        {
+          "index": 17,
+          "segment": 1,
+          "actualSeconds": 17.516,
+          "image": "assets/ue-sequence/data-017.webp"
+        },
+        {
+          "index": 18,
+          "segment": 2,
+          "actualSeconds": 18.516,
+          "image": "assets/ue-sequence/data-018.webp"
+        },
+        {
+          "index": 19,
+          "segment": 2,
+          "actualSeconds": 19.532,
+          "image": "assets/ue-sequence/data-019.webp"
+        },
+        {
+          "index": 20,
+          "segment": 2,
+          "actualSeconds": 20.516,
+          "image": "assets/ue-sequence/data-020.webp"
+        },
+        {
+          "index": 21,
+          "segment": 2,
+          "actualSeconds": 21.501,
+          "image": "assets/ue-sequence/data-021.webp"
+        },
+        {
+          "index": 22,
+          "segment": 2,
+          "actualSeconds": 22.516,
+          "image": "assets/ue-sequence/data-022.webp"
+        },
+        {
+          "index": 23,
+          "segment": 2,
+          "actualSeconds": 23.501,
+          "image": "assets/ue-sequence/data-023.webp"
+        },
+        {
+          "index": 24,
+          "segment": 2,
+          "actualSeconds": 24.516,
+          "image": "assets/ue-sequence/data-024.webp"
+        },
+        {
+          "index": 25,
+          "segment": 2,
+          "actualSeconds": 25.548,
+          "image": "assets/ue-sequence/data-025.webp"
+        },
+        {
+          "index": 26,
+          "segment": 2,
+          "actualSeconds": 26.516,
+          "image": "assets/ue-sequence/data-026.webp"
+        },
+        {
+          "index": 27,
+          "segment": 2,
+          "actualSeconds": 27.532,
+          "image": "assets/ue-sequence/data-027.webp"
+        },
+        {
+          "index": 28,
+          "segment": 2,
+          "actualSeconds": 28.532,
+          "image": "assets/ue-sequence/data-028.webp"
+        },
+        {
+          "index": 29,
+          "segment": 2,
+          "actualSeconds": 29.501,
+          "image": "assets/ue-sequence/data-029.webp"
+        },
+        {
+          "index": 30,
+          "segment": 2,
+          "actualSeconds": 30.532,
+          "image": "assets/ue-sequence/data-030.webp"
+        },
+        {
+          "index": 31,
+          "segment": 2,
+          "actualSeconds": 31.657,
+          "image": "assets/ue-sequence/data-031.webp"
+        },
+        {
+          "index": 32,
+          "segment": 2,
+          "actualSeconds": 32.516,
+          "image": "assets/ue-sequence/data-032.webp"
+        },
+        {
+          "index": 33,
+          "segment": 2,
+          "actualSeconds": 33.516,
+          "image": "assets/ue-sequence/data-033.webp"
+        },
+        {
+          "index": 34,
+          "segment": 2,
+          "actualSeconds": 34.501,
+          "image": "assets/ue-sequence/data-034.webp"
+        },
+        {
+          "index": 35,
+          "segment": 2,
+          "actualSeconds": 35.501,
+          "image": "assets/ue-sequence/data-035.webp"
+        },
+        {
+          "index": 36,
+          "segment": 3,
+          "actualSeconds": 36.532,
+          "image": "assets/ue-sequence/data-036.webp"
+        },
+        {
+          "index": 37,
+          "segment": 3,
+          "actualSeconds": 37.516,
+          "image": "assets/ue-sequence/data-037.webp"
+        },
+        {
+          "index": 38,
+          "segment": 3,
+          "actualSeconds": 38.516,
+          "image": "assets/ue-sequence/data-038.webp"
+        },
+        {
+          "index": 39,
+          "segment": 3,
+          "actualSeconds": 39.501,
+          "image": "assets/ue-sequence/data-039.webp"
+        },
+        {
+          "index": 40,
+          "segment": 3,
+          "actualSeconds": 40.501,
+          "image": "assets/ue-sequence/data-040.webp"
+        },
+        {
+          "index": 41,
+          "segment": 3,
+          "actualSeconds": 41.516,
+          "image": "assets/ue-sequence/data-041.webp"
+        },
+        {
+          "index": 42,
+          "segment": 3,
+          "actualSeconds": 42.532,
+          "image": "assets/ue-sequence/data-042.webp"
+        },
+        {
+          "index": 43,
+          "segment": 3,
+          "actualSeconds": 43.501,
+          "image": "assets/ue-sequence/data-043.webp"
+        },
+        {
+          "index": 44,
+          "segment": 3,
+          "actualSeconds": 44.532,
+          "image": "assets/ue-sequence/data-044.webp"
+        },
+        {
+          "index": 45,
+          "segment": 3,
+          "actualSeconds": 45.516,
+          "image": "assets/ue-sequence/data-045.webp"
+        },
+        {
+          "index": 46,
+          "segment": 3,
+          "actualSeconds": 46.532,
+          "image": "assets/ue-sequence/data-046.webp"
+        },
+        {
+          "index": 47,
+          "segment": 3,
+          "actualSeconds": 47.501,
+          "image": "assets/ue-sequence/data-047.webp"
+        },
+        {
+          "index": 48,
+          "segment": 3,
+          "actualSeconds": 48.563,
+          "image": "assets/ue-sequence/data-048.webp"
+        },
+        {
+          "index": 49,
+          "segment": 3,
+          "actualSeconds": 49.501,
+          "image": "assets/ue-sequence/data-049.webp"
+        },
+        {
+          "index": 50,
+          "segment": 3,
+          "actualSeconds": 50.532,
+          "image": "assets/ue-sequence/data-050.webp"
+        },
+        {
+          "index": 51,
+          "segment": 3,
+          "actualSeconds": 51.532,
+          "image": "assets/ue-sequence/data-051.webp"
+        },
+        {
+          "index": 52,
+          "segment": 3,
+          "actualSeconds": 52.501,
+          "image": "assets/ue-sequence/data-052.webp"
+        },
+        {
+          "index": 53,
+          "segment": 3,
+          "actualSeconds": 53.501,
+          "image": "assets/ue-sequence/data-053.webp"
+        },
+        {
+          "index": 54,
+          "segment": 4,
+          "actualSeconds": 54.516,
+          "image": "assets/ue-sequence/data-054.webp"
+        },
+        {
+          "index": 55,
+          "segment": 4,
+          "actualSeconds": 55.501,
+          "image": "assets/ue-sequence/data-055.webp"
+        },
+        {
+          "index": 56,
+          "segment": 4,
+          "actualSeconds": 56.563,
+          "image": "assets/ue-sequence/data-056.webp"
+        },
+        {
+          "index": 57,
+          "segment": 4,
+          "actualSeconds": 57.501,
+          "image": "assets/ue-sequence/data-057.webp"
+        },
+        {
+          "index": 58,
+          "segment": 4,
+          "actualSeconds": 58.501,
+          "image": "assets/ue-sequence/data-058.webp"
+        },
+        {
+          "index": 59,
+          "segment": 4,
+          "actualSeconds": 59.516,
+          "image": "assets/ue-sequence/data-059.webp"
+        },
+        {
+          "index": 60,
+          "segment": 4,
+          "actualSeconds": 60.501,
+          "image": "assets/ue-sequence/data-060.webp"
+        },
+        {
+          "index": 61,
+          "segment": 4,
+          "actualSeconds": 61.532,
+          "image": "assets/ue-sequence/data-061.webp"
+        },
+        {
+          "index": 62,
+          "segment": 4,
+          "actualSeconds": 62.516,
+          "image": "assets/ue-sequence/data-062.webp"
+        },
+        {
+          "index": 63,
+          "segment": 4,
+          "actualSeconds": 63.501,
+          "image": "assets/ue-sequence/data-063.webp"
+        },
+        {
+          "index": 64,
+          "segment": 4,
+          "actualSeconds": 64.501,
+          "image": "assets/ue-sequence/data-064.webp"
+        },
+        {
+          "index": 65,
+          "segment": 4,
+          "actualSeconds": 65.532,
+          "image": "assets/ue-sequence/data-065.webp"
+        },
+        {
+          "index": 66,
+          "segment": 4,
+          "actualSeconds": 66.501,
+          "image": "assets/ue-sequence/data-066.webp"
+        },
+        {
+          "index": 67,
+          "segment": 4,
+          "actualSeconds": 67.532,
+          "image": "assets/ue-sequence/data-067.webp"
+        },
+        {
+          "index": 68,
+          "segment": 4,
+          "actualSeconds": 68.501,
+          "image": "assets/ue-sequence/data-068.webp"
+        },
+        {
+          "index": 69,
+          "segment": 4,
+          "actualSeconds": 69.501,
+          "image": "assets/ue-sequence/data-069.webp"
+        },
+        {
+          "index": 70,
+          "segment": 4,
+          "actualSeconds": 70.501,
+          "image": "assets/ue-sequence/data-070.webp"
+        },
+        {
+          "index": 71,
+          "segment": 4,
+          "actualSeconds": 71.501,
+          "image": "assets/ue-sequence/data-071.webp"
+        }
+      ]
+    }
+  }
+}

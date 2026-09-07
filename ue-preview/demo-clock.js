@@ -3,8 +3,8 @@
  'use strict';
  const modes=['idle','life','bim','data'];
  const frames={idle:[8,20,32],life:[8,20,32],bim:[8,20,29],data:[12,32,48,68]};
- const key='anlb-ue-preview-clock-fast-v2';
- const beatMilliseconds=700,offsets=[0,3,6,9];
+ const key='anlb-ue-preview-clock-sequence-v3';
+ const beatMilliseconds=1000,offsets=[0,3,6,9];
  let memory=null;
  const fresh=()=>({mode:'idle',chapterElapsed:8,playing:false,standby:false,scenarioSeed:20260907,revision:0,changedAt:Date.now()});
  function valid(r){return r&&modes.includes(r.mode)&&Number.isFinite(r.chapterElapsed)&&r.chapterElapsed>=0&&Number.isFinite(r.changedAt)&&typeof r.playing==='boolean'&&typeof r.standby==='boolean'&&Number.isFinite(r.scenarioSeed)&&Number.isFinite(r.revision);}
