@@ -1,0 +1,30 @@
+/* Keep the exhibition artwork intact; make the public demo controls readable. */
+body[data-view=wall] .desk-header{height:auto;min-height:76px;flex-wrap:wrap;gap:12px 20px}
+body[data-view=wall] .desk-header small{font-size:12px}
+body[data-view=wall] #connection{font-size:14px;white-space:nowrap}
+.ue-recorded-badge{position:absolute;bottom:24px;left:28px;z-index:3;color:#fff;background:#03101bba;border:1px solid #ffffff33;padding:10px 20px;font-size:34px;letter-spacing:.08em;border-radius:6px}
+.full-main .image-only img{object-fit:contain!important}
+.demo-beats{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 18px}
+.demo-beats button{padding:10px 16px;border-radius:8px;font-size:14px;line-height:1.5;text-align:left}
+.demo-beats button[aria-current=true]{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,transparent)}
+.demo-beats b{font:13px Arial;margin-right:10px;color:var(--accent)}
+.desk-note{font-size:14px!important;line-height:1.8}
+body[data-view=wall] .transport button{font-size:16px;min-height:44px}
+body[data-view=wall] .transport{gap:10px}
+body[data-view=wall] #modes strong{font-size:clamp(16px,1.5vw,24px)}
+body[data-view=wall].is-standby .demo-beats{display:none}
+@media(max-width:700px){
+ body[data-view=wall] main{padding:0 12px}
+ body[data-view=wall] .desk-header img{width:86px}
+ body[data-view=wall] .desk-header a{font-size:14px}
+ body[data-view=wall] .desk-header>span{font-size:16px}
+ body[data-view=wall] .desk-header #connection{width:100%;font-size:13px}
+ body[data-view=wall] .wall-heading{gap:8px;padding:12px 0}
+ body[data-view=wall] #chapter-claim{font-size:18px}
+ body[data-view=wall] .wall-stage{margin-bottom:16px}
+ body[data-view=wall] #ipad-dock>a{font-size:10px}
+ body[data-view=wall] #modes{grid-template-columns:1fr 1fr}
+ body[data-view=wall] .transport{display:grid;grid-template-columns:1fr 1fr}
+ body[data-view=wall] .transport>span{grid-column:1/-1;font-size:14px}
+ .demo-beats{display:grid;grid-template-columns:1fr;width:100%}
+}

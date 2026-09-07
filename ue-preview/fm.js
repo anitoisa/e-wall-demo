@@ -1,0 +1,4 @@
+const functions={monitor:'系統總覽 ／ 即時監控 ／ 資料統計 ／ 消防系統 ／ 視頻監控 ／ 電梯監控 ／ 環境檢測',manage:'停車場管理 ／ 門禁控制 ／ 空調系統 ／ 照明控制 ／ 系統管理 ／ 用戶管理',custom:'定制項目：能耗管理 ／ 工單系統 ／ 會議系統 ／ 資訊發佈 ／ 機房管理 ／ 訪客管理 ／ 資產管理',maintain:'Smart FM：設備運維狀態 ／ 告警規則 ／ 告警清單 ／ 通知清單 ／ 維養記錄'};
+function select(tab){document.querySelector('#fm-functions').textContent=functions[tab];document.querySelectorAll('[data-tab]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.tab===tab));}
+document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>select(b.dataset.tab));select('monitor');
+function fit(){const s=Math.min(innerWidth/1920,innerHeight/1080),board=document.querySelector('.fm-board');board.style.transform=`scale(${s})`;board.style.left=(innerWidth-1920*s)/2+'px';board.style.top=(innerHeight-1080*s)/2+'px';}addEventListener('resize',fit);fit();

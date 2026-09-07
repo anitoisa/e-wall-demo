@@ -1,0 +1,6 @@
+{
+  "idle": {"segmentCount": 3, "segmentDuration": 12},
+  "life": {"segmentCount": 3, "segmentDuration": 12},
+  "bim": {"segmentCount": 3, "segmentDuration": 12},
+  "data": {"segmentCount": 4, "segmentDuration": 18}
+}
