@@ -8,7 +8,7 @@
   if(readyPromise)return readyPromise;
   loading=true;
   readyPromise=(async()=>{
-   const response=await fetch(base+'ue-sequence.json?v=sequence2');
+   const response=await fetch(base+'ue-sequence.json?v=capturelabel');
    if(!response.ok)throw Error('UE 圖片清單無法載入');
    manifest=await response.json();
    const queue=Object.values(manifest.chapters).flatMap(chapter=>chapter.frames);
