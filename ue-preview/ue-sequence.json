@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "sampleIntervalSeconds": 1,
-  "demoSegmentMilliseconds": 1000,
+  "demoSegmentMilliseconds": 2000,
   "sourceVersion": "four-mode-v1-20260907",
   "chapters": {
     "idle": {
