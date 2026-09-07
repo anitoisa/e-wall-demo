@@ -31,7 +31,7 @@
    if(!Number.isInteger(index)||index<0||index>=frames[s.mode].length)return s;
    r.chapterElapsed=r.playing?index*s.segmentDuration:frames[s.mode][index];r.standby=false;
   }else if(action==='toggle'){
-   if(s.standby){r.mode='idle';r.chapterElapsed=0;r.playing=true;r.standby=false;}else r.playing=!s.playing;
+   if(s.standby){r.playing=true;r.standby=false;}else r.playing=!s.playing;
   }else if(action==='start'){
    r.mode='idle';r.chapterElapsed=0;r.playing=true;r.standby=false;
   }else if(action==='reset'){
