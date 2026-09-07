@@ -81,7 +81,7 @@ function integratedPanel(id){const m=current(),seg=state.segment,s=STORY[m.id][s
  }
  return `<article class="panel ${cl}" data-id="${id}" data-mode="${m.id}" data-segment="${seg}"><div class="kv-background" aria-hidden="true"><i></i><i></i><i></i></div>${panelHeader(id)}<div class="panel-body">${body}</div>${foot(note)}</article>`;
 }
-function panel(id){const m=current(),seg=state.segment;let body='',cl='',note='概念圖解 · 非即時建物資料';
+function panel(id){if(state.standby&&!frozen)return `<article class="panel demo-standby-panel ${portrait(id)?'portrait':''}" data-id="${id}" aria-label="${id.toUpperCase()} 待機畫面"><div class="kv-background" aria-hidden="true"><i></i><i></i><i></i></div><img src="${root}assets/logo.png" alt="ANLB INSIDE"><strong>第五代住宅宣言</strong><span>AI 原生建築生命體</span></article>`;const m=current(),seg=state.segment;let body='',cl='',note='概念圖解 · 非即時建物資料';
  const revised=revisionPanel(id);if(revised!==null)return revised;
  if(['a','main','c','d','s1','s2','s3','s4'].includes(id))return integratedPanel(id);
  if(id==='b'){cl='manifesto';body=`<div class="eyebrow">寶舖建設 · 第五代住宅宣言</div><h1>第五代<br>住宅宣言</h1><p class="manifesto-line">AI 原生建築生命體</p><div class="manifesto-bottom">全透明原生健康建築<span>AI NATIVE LIVING BUILDING</span></div>`;note='品牌宣言';}
@@ -134,10 +134,10 @@ function render(){const m=current();
   let beats=document.getElementById('demo-beats');if(!beats){beats=document.createElement('nav');beats.id='demo-beats';beats.className='demo-beats';beats.setAttribute('aria-label','段落直選');document.querySelector('.transport').before(beats);}
   const bk=state.mode+':'+state.segment;if(beats.dataset.key!==bk){beats.dataset.key=bk;beats.innerHTML=m.segments.map((title,i)=>`<button data-demo-segment="${i}" aria-current="${i===state.segment}" ${frozen?'disabled':''}><b>${String(i+1).padStart(2,'0')}</b>${escapeHTML(title)}</button>`).join('');}
  }
-document.documentElement.dataset.mode=m.id;document.documentElement.style.setProperty('--accent',m.color);document.body.classList.toggle('paused',!state.playing);document.documentElement.style.setProperty('--phase',`-${state.elapsed}s`);
+document.documentElement.dataset.mode=m.id;document.documentElement.dataset.standby=String(!!state.standby);document.documentElement.style.setProperty('--accent',state.standby?'#3FB4F0':m.color);document.body.classList.toggle('paused',!state.playing);document.documentElement.style.setProperty('--phase',`-${state.elapsed}s`);
  if(view==='wall'){const waiting=false;document.body.classList.toggle('is-standby',waiting);document.getElementById('wall-standby').hidden=!waiting;for(const el of document.querySelectorAll('#wall,#modes,.wall-heading,.transport'))el.inert=waiting;if(waiting&&document.getElementById('inspect').open)document.getElementById('inspect').close();}
- if(view==='ipad'){const waiting=false;document.body.classList.toggle('is-standby',waiting);document.getElementById('console').inert=waiting;document.getElementById('standby-screen').hidden=!waiting;}
- const key=m.id+state.segment+':'+state.scenarioSeed;if(key!==lastKey){
+ if(view==='ipad'){const waiting=!!state.standby&&!frozen;document.body.classList.toggle('is-standby',waiting);document.getElementById('console').inert=waiting;document.getElementById('standby-screen').hidden=!waiting;}
+ const key=String(!!state.standby)+':'+m.id+state.segment+':'+state.scenarioSeed;if(key!==lastKey){
   if(single)patchPanel(document.getElementById('single'),single);
   if(view==='wall'){const wall=document.getElementById('wall');if(!wall.children.length)wall.innerHTML=LAYOUT.map(([id,x,y,w,h])=>`<button class="slot" data-id="${id}" aria-label="放大 ${id.toUpperCase()} 螢幕" style="left:${x/420*100}%;top:${y/208*100}%;width:${w/420*100}%;height:${h/208*100}%"></button>`).join('');wall.querySelectorAll('.slot').forEach(slot=>patchPanel(slot,slot.dataset.id));}
   if(view==='ipad'){const art=document.getElementById('console-art');const template=document.createElement('template');template.innerHTML=consoleArtwork();if(art.firstElementChild)morph(art.firstElementChild,template.content.firstElementChild);else art.appendChild(template.content.firstElementChild);}
@@ -149,6 +149,7 @@ document.documentElement.dataset.mode=m.id;document.documentElement.style.setPro
   document.querySelectorAll('button[data-mode]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.mode===m.id));
  }
  if(view==='ipad'&&m.id==='idle'){document.getElementById('chapter-claim').innerHTML='第五代住宅宣言<br>AI原生建築生命體';document.getElementById('story-note').textContent='';}
+ if(state.standby&&!single){document.getElementById('chapter-label').textContent='ANLB / 待機';document.getElementById('chapter-claim').textContent='第五代住宅宣言';document.getElementById('segment-label').textContent='全牆待機預覽';document.getElementById('story-note').textContent='按開始或選擇情境，開始展演';document.getElementById('play').textContent='▶ 開始';document.querySelectorAll('button[data-mode]').forEach(b=>b.setAttribute('aria-pressed','false'));}
  refreshScores();modelSync();
  resize();
 }

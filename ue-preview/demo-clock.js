@@ -21,7 +21,7 @@
   const s=snapshot(),r={mode:s.mode,chapterElapsed:s.chapterElapsed,playing:s.playing,standby:s.standby,scenarioSeed:s.scenarioSeed,revision:s.revision+1,changedAt:Date.now()};
   if(action==='mode'){
    if(!modes.includes(mode))return s;
-   r.mode=mode;r.chapterElapsed=r.playing?0:frames[mode][0];r.standby=false;
+   r.mode=mode;if(s.standby)r.playing=true;r.chapterElapsed=r.playing?0:frames[mode][0];r.standby=false;
   }else if(action==='next'||action==='prev'){
    let i=s.segment+(action==='next'?1:-1),mi=modes.indexOf(s.mode);
    if(i>=frames[s.mode].length){mi=(mi+1)%4;i=0;}
@@ -31,7 +31,7 @@
    if(!Number.isInteger(index)||index<0||index>=frames[s.mode].length)return s;
    r.chapterElapsed=r.playing?index*s.segmentDuration:frames[s.mode][index];r.standby=false;
   }else if(action==='toggle'){
-   if(s.standby){r.playing=true;r.standby=false;}else r.playing=!s.playing;
+   if(s.standby){r.mode='idle';r.chapterElapsed=0;r.playing=true;r.standby=false;}else r.playing=!s.playing;
   }else if(action==='start'){
    r.mode='idle';r.chapterElapsed=0;r.playing=true;r.standby=false;
   }else if(action==='reset'){
