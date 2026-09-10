@@ -130,6 +130,7 @@ function nativeMotion(now){requestAnimationFrame(nativeMotion);if(now-lastNative
 requestAnimationFrame(nativeMotion);
 addEventListener('message',event=>{if(event.origin!==location.origin||!['anlb-model-ready','anlb-model-error'].includes(event.data?.type))return;document.querySelectorAll('.model-view').forEach(frame=>{if(frame.contentWindow===event.source){frame.classList.add('ready');if(event.data.type==='anlb-model-ready')modelSync();}});});
 function render(){const m=current();
+ if(frozen)document.documentElement.style.transition='none'; // A fixed preview must start in its chapter color, not the default blue.
  if(view==='wall'){
   let beats=document.getElementById('demo-beats');if(!beats){beats=document.createElement('nav');beats.id='demo-beats';beats.className='demo-beats';beats.setAttribute('aria-label','段落直選');document.getElementById('modes').after(beats);}
   const bk=state.mode+':'+state.segment;if(beats.dataset.key!==bk){beats.dataset.key=bk;beats.innerHTML=m.segments.map((title,i)=>`<button data-demo-segment="${i}" aria-current="${i===state.segment}" ${frozen?'disabled':''}><b>${String(i+1).padStart(2,'0')}</b>${escapeHTML(title)}</button>`).join('');}
