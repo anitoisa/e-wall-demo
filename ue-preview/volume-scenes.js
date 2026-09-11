@@ -22,9 +22,11 @@ export function buildVolume(s,h){
   s.bounds={width:29,height:15};const oldUnit=new THREE.Group(),newUnit=new THREE.Group();group.add(oldUnit,newUnit);
   box(group,24,.65,10,0,-4,0,dark);for(const z of [-3,3])box(group,23,.2,.25,0,-3.5,z,metal);
   function unit(g,c){box(g,8,5.8,6,0,-.2,0,c);box(g,7.3,5,.3,0,-.2,3.2,'#152b36');for(let i=0;i<8;i++)box(g,6.7,.13,.25,0,1.8-i*.55,3.45,metal);box(g,2,1.1,.25,1.9,2,3.55,color);for(const x of [-3,3])for(const z of [-2.6,2.6])box(g,.45,1,.45,x,-3,z,metal);for(const y of [-1.5,1.5])ring(g,.55,-4.2,y,0,metal,.14).rotation.y=Math.PI/2;}
-  unit(oldUnit,'#71818b');unit(newUnit,color);
-  for(const y of [-1.5,1.5]){pipe(group,[[-12,y,0],[-7,y,0],[-7,y,-1]],'#a7c2cf',.22);ring(group,.65,-7,y,0,color,.12).rotation.y=Math.PI/2;}
-  const couplings=new THREE.Group();group.add(couplings);for(const y of [-1.5,1.5]){pipe(couplings,[[-7,y,0],[-4.2,y,0]],color,.23);for(const x of [-6.7,-4.5])ring(couplings,.45,x,y,0,metal,.1).rotation.y=Math.PI/2;}
+  // Replace the generic appliance with a removable flanged service pipe.
+  function pipeModule(g,c){pipe(g,[[-4.2,0,0],[4.2,0,0]],c,.8);for(const x of [-4.2,4.2]){ring(g,1.1,x,0,0,metal,.18).rotation.y=Math.PI/2;for(let j=0;j<8;j++){const a=j*Math.PI/4;box(g,.3,.22,.22,x,Math.cos(a)*1.08,Math.sin(a)*1.08,'#d5e0e2');}}box(g,2,.1,1.5,0,-1.3,0,metal);}
+  pipeModule(oldUnit,'#71818b');pipeModule(newUnit,color);
+  for(const side of [-1,1]){pipe(group,[[side*12,0,0],[side*7,0,0]],'#a7c2cf',.8);ring(group,1.1,side*7,0,0,color,.18).rotation.y=Math.PI/2;}
+  const couplings=new THREE.Group();group.add(couplings);for(const side of [-1,1]){pipe(couplings,[[side*7,0,0],[side*4.2,0,0]],color,.8);ring(couplings,1.1,side*4.5,0,0,metal,.18).rotation.y=Math.PI/2;}
   const archiveLink=pipe(group,[[4,0,0],[6,0,0],[6,1,0],[9,1,0]],color,.065);
   const archive=new THREE.Group();group.add(archive);for(let i=0;i<3;i++)box(archive,5,.4,4,0,-2+i*.7,0,i===2?color:metal);tick(archive,0,.3,2.2);
   add(v=>{const a=Math.min(v,1),b=Math.max(0,v-1);oldUnit.position.x=-a*10;oldUnit.position.z=a*3;oldUnit.visible=a<.98;newUnit.visible=a>.02;newUnit.position.x=(1-a)*10;newUnit.position.z=(1-a)*-3;couplings.visible=a>.98;archiveLink.visible=b>.5;archive.visible=b>.02;archive.position.set(9,1,0);archive.scale.setScalar(.15+.85*b);group.rotation.y=-.25;group.rotation.x=.08;});return true;

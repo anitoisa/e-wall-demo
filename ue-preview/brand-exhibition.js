@@ -19,13 +19,7 @@ function updateLifeAxis(now){requestAnimationFrame(updateLifeAxis);const shared=
 requestAnimationFrame(updateLifeAxis);
 const brandPreviousPanel=revisionPanel;
 // Authored exhibition fixture, not manufacturer data or live telemetry.
-const P01_EXHIBIT={id:'P-01',asset:'WFM-L06-P01',location:'L06 · 東側設備區',type:'變頻加壓泵',power:'5.5',flow:'12',pressure:'0.32',frequency:'46',runningFlow:'10.8',record:'09.06 · 14:20'};
-function detailedEquipment(segment){const e=P01_EXHIBIT,rows=[[
- ['設備類型',e.type],['電源規格','三相 380 V · 60 Hz'],['控制方式','變頻恆壓控制']
- ],[['出口壓力',e.pressure+' MPa'],['運轉頻率',e.frequency+' Hz'],['瞬時流量',e.runningFlow+' m³/h']],
- [['最近紀錄',e.record],['檢查項目','接點／振動／運轉'],['文件索引','規格書 · 操作 · 維養']]][segment];
- return `<div class="equipment-detail"><header><div><span>${e.asset}</span><strong>${e.id}</strong></div><div class="equipment-category">給水系統<br><b>${['設備建檔','運轉監測','履歷關聯'][segment]}</b></div></header><p class="equipment-location">${icon('target')}${e.location}</p><div class="equipment-section-title">${['設備規格','運轉參數','維養檔案'][segment]}</div>${rows.map(([label,value])=>`<div class="equipment-field"><span>${label}</span><strong>${value}</strong></div>`).join('')}</div><div class="equipment-spec-strip"><div><span>額定功率</span><strong>${e.power}<small>kW</small></strong></div><div><span>額定流量</span><strong>${e.flow}<small>m³/h</small></strong></div></div>`;
-}
+function detailedEquipment(segment){return typeof deviceDetails==='function'?deviceDetails(segment):'<div class="equipment-detail"><h2>P-01</h2><p>DEMO-L06-P01 · 給水設備</p><p>維養工作與文件索引</p></div>';}
 revisionPanel=function(id){const m=state.mode,s=state.segment;
  if(id==='main')return `<article class="panel clean-main full-main" data-id="main"><div class="image-only" data-key="main-image"><img src="${globalThis.UESequence?.sourceFor(state)||`${root}assets/ue/${m}-${String(s+1).padStart(2,'0')}.webp`}" alt="UE 實機畫面擷取 · 低幀率預覽：${MAIN_COPY[m][s]}"></div><span class="ue-recorded-badge">UE 實機畫面擷取 · 低幀率預覽</span><div class="main-info" data-key="main-overlay"><div class="main-copy"><span>0${MODES.findIndex(x=>x.id===m)} · ${{idle:'序章',life:'建築生命履歷',bim:'數位孿生定位',data:'建築 BOS'}[m]} <i>${s+1}/${CHAPTERS[m].segmentCount}</i></span><strong>${MAIN_COPY[m][s]}</strong></div><img data-key="main-logo" class="corner-logo" src="${root}assets/logo.png" alt="ANLB INSIDE"></div></article>`;
  if(m==='idle'){
@@ -42,7 +36,7 @@ revisionPanel=function(id){const m=state.mode,s=state.segment;
   if(id==='b')return revFrame(id,'chapter-definition',`<div class="chapter-number">01</div><h1>建築生命履歷</h1><p>從建造到維養，完整建構建築資訊</p>`,'品牌與章節主張 · 適用範圍依個案文件');
  }
  if(m==='bim'&&id==='b')return brandPreviousPanel(id).replace('找到位置，也找到紀錄','空間、設備、文件，一次定位');
- if(m==='bim'&&id==='d')return nativeFrame(id,'WELL FM｜設備資訊','空間、系統、維養檔案，一站整合',volume('bim-d',detailedEquipment(s)),'has-volume equipment-panel equipment-rich','非即時資料 · 設備參數為展演設定');
+ if(m==='bim'&&id==='d')return nativeFrame(id,'BIM設備資訊','空間、系統、維養檔案，一站整合',volume('bim-d',detailedEquipment(s)),'has-volume equipment-panel equipment-rich','非即時資料 · 設備參數為展演設定');
  if(m==='bim'&&id==='s4')return nativeFrame(id,'管線透視',['隱蔽管線，集中整合','八條管線，清晰分列','沿著給水路徑，定位 P-01'][s],volume('bim-s4',edgeLabel(65,s===0?'管線服務層':s===1?'八路管線':'給水管線 04',s===2?'→ P-01':'獨立查閱')),'has-volume','管線概念 · 非實際 BIM 座標');
  if(m==='data'&&id==='s3'){const snap=BOS.snapshot(s,revisionElapsed(),state.scenarioSeed);return nativeFrame(id,`全棟戶別｜${['溫度','濕度','CO₂ 通風','相對用電'][s]}評分`,'',householdMatrix(snap).replace(/<div class="matrix-key">[\s\S]*?<\/div>$/,''),'household-panel matrix-airy');}
  return brandPreviousPanel(id);

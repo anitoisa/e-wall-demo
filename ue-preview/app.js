@@ -55,17 +55,17 @@ function dataVisual(config,n){const seg=state.segment,kind=config.kind;
 function integratedPanel(id){const m=current(),seg=state.segment,s=STORY[m.id][seg];let cl='',body='',note='概念圖解 · 非即時建物資料';
  if(id==='a'){
   cl='anchor-panel';
-  const title={idle:'核電廠同級耐震力',life:'全品項驗證',bim:'BIM 全資產\n生命週期',data:'WELL FM\n設備狀態總覽'}[m.id];
+  const title={idle:'核電廠同級耐震力',life:'全品項驗證',bim:'BIM 全資產\n生命週期',data:'建築 BOS\n環境與用電資訊'}[m.id];
   body=m.id==='idle'?`<div class="anchor-metric">0.41<span>G</span></div>`:m.id==='life'?'<div class="anchor-kicker">SGS</div><div class="anchor-metric">100<span>%</span></div>':'';
   body+=`<h1 data-key="anchor-title">${lines(title)}</h1><div class="anchor-art" data-key="anchor-art">${m.id==='idle'?diagram('structure'):m.id==='life'?diagram('archive'):m.id==='bim'?stages(['建造','交付','維養']):`<div class="anchor-status">${[['正常',seg===2?9:8],['待確認',seg===2?0:1],['離線',1]].map(([label,count])=>`<div><b>${count}</b><span>${label}</span></div>`).join('')}</div>`}</div><div class="anchor-caption" data-key="anchor-caption">${escapeHTML(s.steps[seg])}<span>0${seg+1} / 03</span></div>`;
-  note=m.id==='idle'?'寶舖品牌主張 · 依個案結構設計文件':m.id==='life'?'SGS 品牌用語 · 驗證範圍依個案文件':m.id==='data'?'WELL FM · 展示情境資料 · 10 台設備示例':'BIM 全資產生命週期 · 概念圖解';
+  note=m.id==='idle'?'寶舖品牌主張 · 依個案結構設計文件':m.id==='life'?'SGS 品牌用語 · 驗證範圍依個案文件':m.id==='data'?'建築 BOS · 非即時資料':'BIM 全資產生命週期 · 概念圖解';
  }else if(id==='main'){
   cl='main-panel narrative-main';body=`<img data-key="main-photo" class="scene-photo" src="${root}assets/${{idle:'tower',life:'orbit',bim:'aerial',data:'tower'}[m.id]}.png" alt="既有 UE 模型參考影像"><div class="photo-shade"></div><div class="main-title"><div class="eyebrow">0${MODES.indexOf(m)} / ${m.en} · 0${seg+1}</div><h1>${lines(s.title)}</h1><p>${escapeHTML(s.sub)}</p></div><div class="main-beats">${STORY[m.id].map((b,i)=>`<span class="${i===seg?'active':''}">${String(i+1).padStart(2,'0')} ${escapeHTML(b.title.replace(/\n/g,'，'))}</span>`).join('')}</div>`;note='65″ 獨立示意 · 既有 UE 影像 · 未連接即時系統';
  }else if(id==='c'){
   cl='story-panel';body=`<h1>${lines({idle:['規格說清楚','品質看得見','維養有依據'],life:['品質從材料開始','資料，跟著房子走','紀錄，接著累積'],bim:['先縮小範圍','再看清路徑','最後讀懂履歷'],data:['建築訊號匯流','從訊號找到位置','從處理回到履歷']}[m.id][seg])}</h1><div class="story-art">${m.id==='bim'?locatorGraph(seg):m.id==='idle'&&seg===0?diagram('structure'):stages(s.steps)}</div><p class="story-caption">${escapeHTML(s.sub)}</p>`;
  }else if(id==='d'){
   if(m.id==='data'){
-   cl='bos-model-panel';body=`<h1 data-key="model-heading">WELL FM<span>全棟維養</span></h1><div class="model-stage" data-key="model-stage"><img class="model-placeholder" src="${root}assets/tower.png" alt="既有 UE 參考影像；模型載入前展示"><iframe data-key="bos-model" class="model-view" title="BOS 全棟九戶模型與輔助平面圖" src="${root}model.html?mode=data&units=1&hero=1" loading="eager"></iframe></div><div class="model-beat" data-key="model-beat"><b>0${seg+1}</b><span>${escapeHTML(s.d)}</span></div>`;note='展示情境資料 · 設備位置示意 · 戶別色不代表設備狀態';
+   cl='bos-model-panel';body=`<h1 data-key="model-heading">建築 BOS<span>環境與用電資訊</span></h1><div class="model-stage" data-key="model-stage"><img class="model-placeholder" src="${root}assets/tower.png" alt="既有 UE 參考影像；模型載入前展示"><iframe data-key="bos-model" class="model-view" title="BOS 全棟九戶模型與輔助平面圖" src="${root}model.html?mode=data&units=1&hero=1" loading="eager"></iframe></div><div class="model-beat" data-key="model-beat"><b>0${seg+1}</b><span>${escapeHTML(s.d)}</span></div>`;note='展示情境資料 · 設備位置示意 · 戶別色不代表設備狀態';
   }else if(m.id==='idle'){
    cl='photo-panel narrative-photo';body=`<img data-key="d-photo" class="scene-photo" src="${root}assets/tower.png" alt="既有 UE 模型影像，非實拍"><div class="photo-shade"></div><div class="photo-markers">${s.detail.map((t,i)=>`<div data-key="marker-${i}">${icon(['structure','check','record'][i])}<span>${escapeHTML(t)}</span></div>`).join('')}</div><div class="photo-copy"><h1>${escapeHTML(s.d)}</h1><p class="benefit">${escapeHTML(s.sub)}</p></div>`;note='既有 UE 模型參考影像 · 非建物實拍';
   }else{
@@ -76,7 +76,7 @@ function integratedPanel(id){const m=current(),seg=state.segment,s=STORY[m.id][s
   if(m.id==='idle'){
    const [ic,title,label,benefit]=CARDS.idle[n];cl='satellite intro-card';body=`<div class="eyebrow">0${n+1} / BRAND PROMISE</div><div class="sat-art ${seg===Math.min(n,2)?'emphasized':''}">${icon(ic)}</div><h1>${title}</h1><p class="sat-label">${label}</p><p class="benefit">${benefit}</p><div class="intro-state">${['規格有依據','驗證有紀錄','維養接得上'][seg]}</div>`;note='品牌主張 · 適用範圍依個案文件';
   }else{
-   const config=LOWER[m.id][n],p=config.pages[seg];cl='detail-panel';body=`<div class="eyebrow" data-key="lower-brand">${n>=2?'WELL FM':'BUILDING RECORD'} <span>0${n+1} / ${m.en}</span></div><h1 data-key="lower-title">${config.title}</h1><p class="detail-benefit" data-key="lower-benefit">${config.benefit}</p><div class="data-art" data-key="data-art">${dataVisual(config,n)}</div><div class="detail-summary" data-key="summary"><strong>${escapeHTML(p[0])}</strong><span>${escapeHTML(p[1])}</span></div>`;note=`${n>=2?'WELL FM · ':''}${m.id==='data'&&n===2?'能源管理為定制功能 · ':''}展示情境資料 · ${p[2]}`;
+   const config=LOWER[m.id][n],p=config.pages[seg];cl='detail-panel';body=`<div class="eyebrow" data-key="lower-brand">${m.id==='bim'?'BIM':'BUILDING RECORD'} <span>0${n+1} / ${m.en}</span></div><h1 data-key="lower-title">${config.title}</h1><p class="detail-benefit" data-key="lower-benefit">${config.benefit}</p><div class="data-art" data-key="data-art">${dataVisual(config,n)}</div><div class="detail-summary" data-key="summary"><strong>${escapeHTML(p[0])}</strong><span>${escapeHTML(p[1])}</span></div>`;note=`${m.id==='data'?'建築 BOS · ':''}展示情境資料 · ${p[2]}`;
   }
  }
  return `<article class="panel ${cl}" data-id="${id}" data-mode="${m.id}" data-segment="${seg}"><div class="kv-background" aria-hidden="true"><i></i><i></i><i></i></div>${panelHeader(id)}<div class="panel-body">${body}</div>${foot(note)}</article>`;

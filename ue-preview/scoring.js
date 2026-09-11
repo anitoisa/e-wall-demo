@@ -1,6 +1,6 @@
 /* Shared deterministic exhibition fixtures. NOT operational building/health data. */
 (function(scope){
- const bands=[{min:80,max:100,color:'#3FB4F0',label:'表現良好'},{min:60,max:79,color:'#24C8A5',label:'穩定運作'},{min:40,max:59,color:'#F0CC55',label:'有差距'},{min:20,max:39,color:'#F29645',label:'差距較大'},{min:0,max:19,color:'#E55C60',label:'優先查看'}];
+ const bands=[{min:80,max:100,color:'#3FB4F0',label:'較接近目標'},{min:60,max:79,color:'#24C8A5',label:'接近目標'},{min:40,max:59,color:'#F0CC55',label:'有差距'},{min:20,max:39,color:'#F29645',label:'差距較大'},{min:0,max:19,color:'#E55C60',label:'優先查看'}];
  const metrics=[
   {id:'temperature',name:'溫度',title:'日照之下，每戶不同',unit:'°C',target:'展示目標 24–26°C',rule:'每偏離 1°C，扣 20 分',limits:[20,32],source:'展演設定，非完整熱舒適標準',pair:['R06-U01','R06-U08']},
   {id:'humidity',name:'濕度',title:'看見濕度的差異',unit:'% RH',target:'參考範圍 30–50% RH',rule:'每偏離 1 個百分點，扣 4 分',limits:[20,80],source:'EPA 範圍參考；扣分為展示算法',pair:['R08-U03','R08-U09']},
