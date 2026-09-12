@@ -1,0 +1,34 @@
+.motion-upgrade .ex-stage{overflow:hidden}
+.motion-upgrade .ex-art{overflow:hidden}
+.motion-upgrade.bos-building .show-palette{bottom:4px;font-size:38px}
+.motion-upgrade.distribution-panel .ex-stage{overflow:visible}
+.motion-upgrade .ex-stage g,.motion-upgrade .ex-stage path,.motion-upgrade .ex-stage circle{transition:none}
+.motion-document{fill:#102736;stroke:var(--accent);stroke-width:3}
+.motion-link{fill:none;stroke:var(--accent);stroke-width:7;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1}
+.motion-check{fill:none;stroke:var(--accent);stroke-width:12;stroke-linejoin:round;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1}
+.motion-year-ring{fill:#102531;stroke:var(--accent);stroke-width:22}.motion-year-ring.inner{fill:none;stroke-width:5;stroke-dasharray:12 14;opacity:.5}
+.motion-upgrade .life-node.current .node-light{stroke:#fff2cd;stroke-width:6;filter:drop-shadow(0 0 12px #ffa61a)}
+.motion-upgrade .life-trail{stroke-width:16}.motion-upgrade .life-cursor ellipse{stroke-width:7}
+.motion-upgrade.life-axis-panel .life-year strong{font-size:140px}
+.motion-upgrade.life-axis-panel .life-current-icon{height:90px;margin:15px 0}
+.motion-upgrade.life-axis-panel .life-event-name{display:block;white-space:pre-line;min-height:136px;font-size:52px;line-height:1.3}
+.motion-upgrade.life-axis-panel .life-event-index{margin-top:20px}
+.motion-upgrade.life-axis-panel .life-event p{margin-top:15px}
+.motion-upgrade .motion-record{transition:none}
+.motion-upgrade .motion-record header strong{font-size:calc(85px - 37px * var(--record-open,0))}
+.motion-upgrade .record-index{top:350px}
+.motion-upgrade .maintenance-tracks>section{transition:none}
+.motion-upgrade .maintenance-tracks{position:relative;display:block}
+.motion-upgrade .maintenance-tracks>section{position:absolute;display:block;min-height:0}
+.motion-upgrade .maintenance-tracks .track-asset{width:440px;height:160px}
+.motion-upgrade .maintenance-tracks .track-path{position:absolute;right:0;height:145px}
+.motion-upgrade .maintenance-tracks>p{position:absolute;bottom:0;left:0;margin:0}
+.motion-upgrade .raw-symbol,.motion-upgrade .raw-row,.motion-upgrade .matrix-floor,.motion-upgrade .causal-reading,.motion-upgrade .causal-rule,.motion-upgrade .causal-score{transform-origin:center;transition:none}
+.motion-upgrade .matrix-floor{will-change:transform}
+.motion-upgrade .house-cell{transition:none}
+.motion-upgrade.merged-building .revision-model{transition:none}
+.motion-upgrade[data-mode=bim][data-id=s1] .edge-label{z-index:3;background:#160a07e6;padding:12px 18px}
+.motion-upgrade[data-mode=bim][data-id=a] .layer-labels{pointer-events:none}
+.motion-upgrade .icon{overflow:visible}
+.motion-upgrade .icon .draw,.motion-upgrade .icon .flow-path,.motion-upgrade .icon .pulse-dot{animation:none!important}
+@media(prefers-reduced-motion:reduce){.motion-upgrade .icon *{animation:none!important}}
