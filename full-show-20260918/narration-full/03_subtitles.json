@@ -1,0 +1,191 @@
+{
+  "version": "full-wall-20260918-v1",
+  "chapter": "03",
+  "durationMs": 31960,
+  "timeBase": "chapter-local-ms",
+  "cues": [
+    {
+      "id": "03-01",
+      "lines": [
+        "建築每天的運作，",
+        "又該怎麼理解？"
+      ],
+      "speechStartMs": 90,
+      "speechEndMs": 2740,
+      "rawStartMs": 130,
+      "rawEndMs": 2690,
+      "showMs": 90,
+      "fadeInMs": 250,
+      "fadeOutMs": 300,
+      "fadeOutStartMs": 2740,
+      "clearMs": 3040,
+      "holdAfterSpeechMs": 0,
+      "target": "d",
+      "confidence": "ASR+canonical-script+PCM-gap-candidate",
+      "reviewRequired": true,
+      "displayDelayMs": 0
+    },
+    {
+      "id": "03-02",
+      "lines": [
+        "分布各處的感測訊號，",
+        "逐步匯集，"
+      ],
+      "speechStartMs": 4050,
+      "speechEndMs": 7180,
+      "rawStartMs": 3920,
+      "rawEndMs": 7415,
+      "showMs": 4050,
+      "fadeInMs": 250,
+      "fadeOutMs": 300,
+      "fadeOutStartMs": 7180,
+      "clearMs": 7480,
+      "holdAfterSpeechMs": 0,
+      "target": "d",
+      "confidence": "ASR+canonical-script+PCM-gap-candidate",
+      "reviewRequired": true,
+      "displayDelayMs": 0
+    },
+    {
+      "id": "03-03",
+      "lines": [
+        "形成理解全棟運作的線索。"
+      ],
+      "speechStartMs": 7440,
+      "speechEndMs": 9910,
+      "rawStartMs": 7415,
+      "rawEndMs": 9760,
+      "showMs": 7480,
+      "fadeInMs": 250,
+      "fadeOutMs": 300,
+      "fadeOutStartMs": 9910,
+      "clearMs": 10210,
+      "holdAfterSpeechMs": 0,
+      "target": "d",
+      "confidence": "ASR+canonical-script+PCM-gap-candidate",
+      "reviewRequired": true,
+      "displayDelayMs": 40
+    },
+    {
+      "id": "03-04",
+      "lines": [
+        "環境讀值與用電資訊，"
+      ],
+      "speechStartMs": 11230,
+      "speechEndMs": 13330,
+      "rawStartMs": 11080,
+      "rawEndMs": 13490,
+      "showMs": 11230,
+      "fadeInMs": 250,
+      "fadeOutMs": 300,
+      "fadeOutStartMs": 13330,
+      "clearMs": 13630,
+      "holdAfterSpeechMs": 0,
+      "target": "d",
+      "confidence": "ASR+canonical-script+PCM-gap-candidate",
+      "reviewRequired": true,
+      "displayDelayMs": 0
+    },
+    {
+      "id": "03-05",
+      "lines": [
+        "回到各自的位置、條件與紀錄，"
+      ],
+      "speechStartMs": 13780,
+      "speechEndMs": 16430,
+      "rawStartMs": 13700,
+      "rawEndMs": 16520,
+      "showMs": 13780,
+      "fadeInMs": 250,
+      "fadeOutMs": 300,
+      "fadeOutStartMs": 16430,
+      "clearMs": 16730,
+      "holdAfterSpeechMs": 0,
+      "target": "d",
+      "confidence": "ASR+canonical-script+PCM-gap-candidate",
+      "reviewRequired": true,
+      "displayDelayMs": 0
+    },
+    {
+      "id": "03-06",
+      "lines": [
+        "才能看出差異，支持查核。"
+      ],
+      "speechStartMs": 16760,
+      "speechEndMs": 19260,
+      "rawStartMs": 16560,
+      "rawEndMs": 19080,
+      "showMs": 16760,
+      "fadeInMs": 250,
+      "fadeOutMs": 300,
+      "fadeOutStartMs": 19260,
+      "clearMs": 19560,
+      "holdAfterSpeechMs": 0,
+      "target": "d",
+      "confidence": "ASR+canonical-script+PCM-gap-candidate",
+      "reviewRequired": true,
+      "displayDelayMs": 0
+    },
+    {
+      "id": "03-07",
+      "lines": [
+        "從全棟到每一戶，",
+        "從當下讀值到持續觀察，"
+      ],
+      "speechStartMs": 20520,
+      "speechEndMs": 24940,
+      "rawStartMs": 20440,
+      "rawEndMs": 24680,
+      "showMs": 20520,
+      "fadeInMs": 250,
+      "fadeOutMs": 300,
+      "fadeOutStartMs": 24940,
+      "clearMs": 25240,
+      "holdAfterSpeechMs": 0,
+      "target": "d",
+      "confidence": "ASR+canonical-script+PCM-gap-candidate",
+      "reviewRequired": true,
+      "displayDelayMs": 0
+    },
+    {
+      "id": "03-08",
+      "lines": [
+        "讓健康、安全與低碳的管理目標，"
+      ],
+      "speechStartMs": 25510,
+      "speechEndMs": 28540,
+      "rawStartMs": 25050,
+      "rawEndMs": 28400,
+      "showMs": 25510,
+      "fadeInMs": 250,
+      "fadeOutMs": 300,
+      "fadeOutStartMs": 28540,
+      "clearMs": 28840,
+      "holdAfterSpeechMs": 0,
+      "target": "d",
+      "confidence": "ASR+canonical-script+PCM-gap-candidate",
+      "reviewRequired": true,
+      "displayDelayMs": 0
+    },
+    {
+      "id": "03-09",
+      "lines": [
+        "有資訊作為依據。"
+      ],
+      "speechStartMs": 29810,
+      "speechEndMs": 31560,
+      "rawStartMs": 29810,
+      "rawEndMs": 31460,
+      "showMs": 29810,
+      "fadeInMs": 250,
+      "fadeOutMs": 300,
+      "fadeOutStartMs": 31560,
+      "clearMs": 31860,
+      "holdAfterSpeechMs": 0,
+      "target": "d",
+      "confidence": "ASR+canonical-script+PCM-gap-candidate",
+      "reviewRequired": true,
+      "displayDelayMs": 0
+    }
+  ]
+}

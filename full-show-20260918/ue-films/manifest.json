@@ -1,0 +1,76 @@
+{
+  "version": "ue-web60-transition-r1-20260918",
+  "status": "local-review-awaiting-quality-choice",
+  "chapters": [
+    {
+      "chapter": 0,
+      "file": "00.mp4",
+      "duration": 44.48,
+      "sha256": "d7f793296a49c7939dbae543e3b284a56d0c5c8aea0a7b11b0fb55c9ce6d3971",
+      "encodingFps": 60,
+      "ueMeasuredFps": 59.01330752825572,
+      "ueViewport": [
+        1280,
+        720
+      ],
+      "trimStart": 1.3399422226293094,
+      "limitation": "60fps playback packaging, not 60 unique UE frames each second. Source viewport 1280x720. Approximate timecode alignment; not frame locked."
+    },
+    {
+      "chapter": 1,
+      "file": "01.mp4",
+      "duration": 32.72,
+      "trimStart": 1.3063380353152745,
+      "sha256": "c0bbac28279e12b9802f3d6ee1e934654ef0b49a9bbdd3ea38ad54c86fa03a40",
+      "encodingFps": 60,
+      "ueViewport": [
+        1280,
+        720
+      ],
+      "source": "Actual E2 UE candidate screen capture, web-transition-r1",
+      "limitation": "60fps packaging does not guarantee 60 unique rendered frames. Approximate timecode alignment; not frame locked."
+    },
+    {
+      "chapter": 2,
+      "file": "02.mp4",
+      "duration": 28.2,
+      "sha256": "3158dc5af0533d6ff4147253488f1805d91f30261786ccac3c085a74985d993b",
+      "encodingFps": 60,
+      "ueMeasuredFps": 27.89250883522304,
+      "ueViewport": [
+        1280,
+        720
+      ],
+      "trimStart": 1.1951182836847316,
+      "limitation": "60fps playback packaging, not 60 unique UE frames each second. Source viewport 1280x720. Approximate timecode alignment; not frame locked."
+    },
+    {
+      "chapter": 3,
+      "file": "03.mp4",
+      "duration": 31.96,
+      "sha256": "0665e5286ec9b2cd22eb4022d4ae30041abad3386121ef61d0f6ff837a062153",
+      "encodingFps": 60,
+      "ueMeasuredFps": 28.828875229030412,
+      "ueViewport": [
+        1280,
+        720
+      ],
+      "trimStart": 1.1068703267723325,
+      "limitation": "60fps playback packaging, not 60 unique UE frames each second. Source viewport 1280x720. Approximate timecode alignment; not frame locked."
+    },
+    {
+      "chapter": 4,
+      "file": "04.mp4",
+      "duration": 18.93,
+      "trimStart": 1.209801947121143,
+      "sha256": "191c7e36391192670b0f6b3ca0aa24e78e163a3cdaaa3017260f62199a45512b",
+      "encodingFps": 60,
+      "ueViewport": [
+        1280,
+        720
+      ],
+      "source": "Actual E2 UE candidate screen capture, web-transition-r1",
+      "limitation": "60fps packaging does not guarantee 60 unique rendered frames. Approximate timecode alignment; not frame locked."
+    }
+  ]
+}

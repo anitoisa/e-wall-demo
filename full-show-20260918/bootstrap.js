@@ -1,0 +1,44 @@
+(async()=>{
+ document.title='ANLB｜完整展演演示';
+ const publicNote=document.querySelector('.desk-note');
+ if(publicNote)publicNote.textContent='UE 實際預錄影像＋同步語音 · 此演示不控制現場硬體 · 點選副螢幕可放大';
+ const base=document.body.dataset.view==='single'?'../':'';
+ const liveStyle=document.createElement('link');liveStyle.rel='stylesheet';liveStyle.href=base+'live-standby.css?v=logo-main-size-20260918';document.head.appendChild(liveStyle);
+ if(document.body.dataset.view==='wall'){const standbyStyle=document.createElement('link');standbyStyle.rel='stylesheet';standbyStyle.href=base+'wall-standby.css';document.head.appendChild(standbyStyle);}
+ const style=document.createElement('link');style.rel='stylesheet';style.href=base+'revision.css';document.head.appendChild(style);
+ const showStyle=document.createElement('link');showStyle.rel='stylesheet';showStyle.href=base+'showcase.css';document.head.appendChild(showStyle);
+ try{const response=await fetch(base+'chapters.json',{cache:'no-store'});if(!response.ok)throw Error('章節設定無法載入');globalThis.CHAPTERS=await response.json();
+  const brandStyle=document.createElement('link');brandStyle.rel='stylesheet';brandStyle.href=base+'brand-exhibition.css';document.head.appendChild(brandStyle);
+  if(document.body.dataset.view==='ipad'){const tabletStyle=document.createElement('link');tabletStyle.rel='stylesheet';tabletStyle.href=base+'ipad-preview.css';document.head.appendChild(tabletStyle);await new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=base+'ipad-preview.js';s.onload=resolve;s.onerror=reject;document.body.appendChild(s);});}
+  const reviewStyle=document.createElement('link');reviewStyle.rel='stylesheet';reviewStyle.href=base+'source-review.css';document.head.appendChild(reviewStyle);
+  const motionStyle=document.createElement('link');motionStyle.rel='stylesheet';motionStyle.href=base+'review-motion.css';document.head.appendChild(motionStyle);
+  const vacancyStyle=document.createElement('link');vacancyStyle.rel='stylesheet';vacancyStyle.href=base+'d-vacancy.css?v=d-voice-20260914';document.head.appendChild(vacancyStyle);
+  const motionUpgrade=document.createElement('link');motionUpgrade.rel='stylesheet';motionUpgrade.href=base+'motion-upgrade.css';document.head.appendChild(motionUpgrade);
+  const holdStyle=document.createElement('link');holdStyle.rel='stylesheet';holdStyle.href=base+'hold-effects.css?v=selection-20260915';document.head.appendChild(holdStyle);
+  const staticBands=document.createElement('link');staticBands.rel='stylesheet';staticBands.href=base+'static-light-bands.css?v=sequence-20260914';document.head.appendChild(staticBands);
+  for(const file of ['scoring.js','revision.js','showcase-ui.js','brand-exhibition.js','source-review.js','review-motion.js','d-vacancy.js','motion-upgrade.js'])await new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=base+file+'?v=year-sync-20260918';s.onload=resolve;s.onerror=reject;document.body.appendChild(s);});
+  const map=document.createElement('script');map.type='importmap';map.textContent=JSON.stringify({imports:{three:new URL(base+'vendor/package/build/three.module.js',location.href).href,'three/addons/':new URL(base+'vendor/package/examples/jsm/',location.href).href}});document.head.appendChild(map);
+  await new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=base+'hold-effects.js?v=sequence-20260914';s.onload=resolve;s.onerror=reject;document.body.appendChild(s);});
+  await new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=base+'selection-pulse.js?v=selection-20260915';s.onload=resolve;s.onerror=reject;document.body.appendChild(s);});
+  await new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=base+'sequence-choreography.js?v=selection-20260915';s.onload=resolve;s.onerror=reject;document.body.appendChild(s);});
+  const ueStyle=document.createElement('link');ueStyle.rel='stylesheet';ueStyle.href=base+'ue-films.css';document.head.append(ueStyle);
+  await new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=base+'ue-films.js';s.onload=resolve;s.onerror=reject;document.body.append(s)});
+  // Register panel markup and animation ownership before the first render.
+  const narrationMode=new URLSearchParams(location.search).get('narration');
+  if(!new URLSearchParams(location.search).has('preview')&&(!narrationMode||narrationMode==='full')){
+   for(const name of ['intro-session.css','full-session.css']){const css=document.createElement('link');css.rel='stylesheet';css.href=base+name+'?v=ready-fade-20260918';document.head.append(css)}
+   globalThis.FullTiming=await import(new URL(base+'full-timing.js?v=year-sync-20260918',location.href));
+   globalThis.FullPack=await FullTiming.loadPack(new URL(base+'narration-full/',location.href));
+   globalThis.FullEnding=await import(new URL(base+'full-ending.js?v=ready-fade-20260918',location.href));
+   await new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=base+'full-session.js?v=ready-fade-20260918';s.onload=resolve;s.onerror=reject;document.body.appendChild(s)});
+  }
+  if(new URLSearchParams(location.search).get('narration')==='intro'){
+   const style=document.createElement('link');style.rel='stylesheet';style.href=base+'intro-session.css';document.head.appendChild(style);
+   await new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=base+'intro-session.js?v=chapter-intro-20260915';s.onload=resolve;s.onerror=reject;document.body.appendChild(s);});
+  }
+  await new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=base+'app.js?v=inspect-fix-20260918';s.onload=resolve;s.onerror=reject;document.body.appendChild(s);});
+  if(document.body.dataset.view==='wall'&&!globalThis.ExIntro?.enabled){const link=document.createElement('a');link.href='?narration=intro&v=audio-20260915';link.textContent='新版序章有聲聯調 ↗';link.style.fontSize='15px';document.querySelector('.desk-header').append(link);}
+  if(document.body.dataset.view!=='ipad')await new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=base+'d-narration-bridge.js?v=audio-20260915';s.onload=resolve;s.onerror=reject;document.body.appendChild(s);});
+  import(new URL(base+'showcase.js?v=selection-20260915',location.href).href).catch(error=>{document.querySelectorAll('.show-loading').forEach(el=>el.textContent='立體圖像無法載入，請重新整理');console.error(error);});
+ }catch(error){const p=document.createElement('p');p.setAttribute('role','alert');p.textContent='介面設定無法載入，請重新整理。';document.body.appendChild(p);console.error(error);}
+})();

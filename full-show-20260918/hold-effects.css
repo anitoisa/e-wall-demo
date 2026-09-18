@@ -1,0 +1,20 @@
+.cutaway-side-left{fill:#12313e;stroke:#62a9ca;stroke-width:4}.cutaway-side-right{fill:#0b2330;stroke:#62a9ca;stroke-width:4}.cutaway-slab{fill:#244b60;fill-opacity:.88;stroke:#83b8ca;stroke-width:4}.cutaway-edges{fill:none;stroke:#83b8ca;stroke-width:4}
+/* Intrinsic highlights only. Never add rectangles, backgrounds or cloned outlines. */
+.attention-text{text-shadow:none;filter:none;transition:none!important}
+svg text.attention-text{filter:none;text-shadow:none}
+.attention-icon,.attention-icon *{animation:none!important}
+.attention-icon[data-icon-kind="record"] .pulse-dot{fill-opacity:.16}
+.attention-icon{filter:drop-shadow(0 0 var(--attention-glow,0px) var(--accent));transform-origin:center;transform-box:fill-box;transition:none!important}
+.attention-surface{filter:brightness(var(--attention-light,1));transition:none!important}
+@media(prefers-reduced-motion:reduce){.attention-text,.attention-icon,.attention-surface{filter:none!important}}
+.attention-focus{stroke:var(--accent)!important;stroke-width:7!important;stroke-opacity:1!important;filter:none!important}
+svg .selection-pulse{stroke-opacity:var(--selection-alpha,1)!important;transition:none!important}
+.house-cell.chosen{transition:background-color 900ms ease!important}
+.selection-border{border-color:color-mix(in srgb,var(--accent) calc(var(--selection-alpha,1)*100%),transparent)!important;transition:none!important}
+text.attention-focus{fill:#fff!important;stroke:none!important;font-weight:700}
+.sequence-route-base{fill:none;stroke:var(--accent);stroke-width:6;stroke-opacity:.4;stroke-linecap:round;stroke-linejoin:round}
+[data-service-row]>text.large{font-size:50px}
+.history-orbit.attention-focus{stroke-width:12!important}
+.device-data-link{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;fill:none;stroke:var(--accent);stroke-width:6}
+.vertical-nav>section:not(.current) .icon,.vertical-nav>section:not(.current) .icon *{animation:none!important;stroke-dashoffset:0!important}
+.signal-packet{fill:none;stroke:#d3fff5;stroke-width:7;stroke-linecap:round;pointer-events:none}

@@ -1,0 +1,199 @@
+{
+  "version": "full-wall-20260918-v1",
+  "timeBase": "chapter-local-ms",
+  "chapters": [
+    {
+      "chapter": "00",
+      "mode": "idle",
+      "durationMs": 44480,
+      "segments": [
+        {
+          "segment": 0,
+          "startMs": 0,
+          "endMs": 14827,
+          "durationMs": 14827,
+          "label": "核電廠同級耐震力",
+          "id": "00-design"
+        },
+        {
+          "segment": 1,
+          "startMs": 14827,
+          "endMs": 29653,
+          "durationMs": 14826,
+          "label": "品質有保證",
+          "id": "00-quality"
+        },
+        {
+          "segment": 2,
+          "startMs": 29653,
+          "endMs": 44480,
+          "durationMs": 14827,
+          "label": "全透明原生健康建築",
+          "id": "00-record"
+        }
+      ],
+      "events": [
+        {
+          "atMs": 11240,
+          "id": "memory-kept"
+        },
+        {
+          "atMs": 40660,
+          "id": "governance"
+        }
+      ]
+    },
+    {
+      "chapter": "01",
+      "mode": "life",
+      "durationMs": 32720,
+      "segments": [
+        {
+          "segment": 0,
+          "startMs": 0,
+          "endMs": 11480,
+          "durationMs": 11480,
+          "label": "完工與日夜／履歷累積"
+        },
+        {
+          "segment": 1,
+          "startMs": 11480,
+          "endMs": 26230,
+          "durationMs": 14750,
+          "label": "查驗保養更新／依使用調整／120年願景"
+        },
+        {
+          "segment": 2,
+          "startMs": 26230,
+          "endMs": 32720,
+          "durationMs": 6490,
+          "label": "管理者交接／跨世代照顧"
+        }
+      ],
+      "events": [
+        {
+          "atMs": 19760,
+          "id": "year120",
+          "value": 120
+        }
+      ]
+    },
+    {
+      "chapter": "02",
+      "mode": "bim",
+      "durationMs": 28200,
+      "segments": [
+        {
+          "segment": 0,
+          "startMs": 0,
+          "endMs": 7430,
+          "durationMs": 7430,
+          "label": "全棟到樓層；C/S1承接樓層定位"
+        },
+        {
+          "segment": 1,
+          "startMs": 7430,
+          "endMs": 15110,
+          "durationMs": 7680,
+          "label": "系統路徑；S2/S4承接設備查找"
+        },
+        {
+          "segment": 2,
+          "startMs": 15110,
+          "endMs": 28200,
+          "durationMs": 13090,
+          "label": "S3設備身分／文件／履歷；空間資訊整合"
+        }
+      ],
+      "events": [
+        {
+          "atMs": 4970,
+          "id": "floor-L06"
+        },
+        {
+          "atMs": 12900,
+          "id": "water-route-to-P01"
+        },
+        {
+          "atMs": 15110,
+          "id": "equipment-documents"
+        }
+      ]
+    },
+    {
+      "chapter": "03",
+      "mode": "data",
+      "durationMs": 31960,
+      "segments": [
+        {
+          "segment": 0,
+          "startMs": 0,
+          "endMs": 11230,
+          "durationMs": 11230,
+          "label": "全棟感知與匯流概述",
+          "phase": "intro",
+          "presentation": "bos-overview"
+        },
+        {
+          "segment": 0,
+          "startMs": 11230,
+          "endMs": 13780,
+          "durationMs": 2550,
+          "label": "環境資訊示例：溫度",
+          "phase": "temperature"
+        },
+        {
+          "segment": 1,
+          "startMs": 13780,
+          "endMs": 16760,
+          "durationMs": 2980,
+          "label": "位置／條件示例：濕度",
+          "phase": "humidity"
+        },
+        {
+          "segment": 2,
+          "startMs": 16760,
+          "endMs": 20520,
+          "durationMs": 3760,
+          "label": "查核比較示例：CO2",
+          "phase": "co2"
+        },
+        {
+          "segment": 3,
+          "startMs": 20520,
+          "endMs": 25510,
+          "durationMs": 4990,
+          "label": "全棟到每戶／持續觀察：用電比較",
+          "phase": "power"
+        },
+        {
+          "segment": 3,
+          "startMs": 25510,
+          "endMs": 31960,
+          "durationMs": 6450,
+          "label": "健康安全低碳目標／資訊支持管理",
+          "phase": "summary",
+          "presentation": "bos-summary"
+        }
+      ],
+      "metricTimingSource": "editorial illustrative rotation within semantic phrases, not spoken metric-name alignment"
+    },
+    {
+      "chapter": "04",
+      "mode": "ending",
+      "durationMs": 13720,
+      "visualEndMs": 18930,
+      "segments": [],
+      "presentation": "approved-ANLB-ending"
+    }
+  ],
+  "notes": [
+    "BOS新稿未逐一點名四指標；中段輪播是配合泛稱環境/用電資訊的展示安排，不冒稱四個語詞的ASR落點。",
+    "BOS短段直接顯示可讀結果再局部循環，不等完整3D進場才顯示。",
+    "01年份需獨立依year120事件於19760ms到達120，不能沿舊固定28秒；中間年份視覺插值不冒稱口述錨點。",
+    "01C各段圈以段長減1000ms完成並保留已完成圈。",
+    "02water-route-to-P01門檻改用12900ms事件，移除舊14685硬碼；不宣稱與UE工程實體坐標已對齊。",
+    "03若牆現況需要更長閱讀可由wall調整示例輪播，但不得改動ASR錨點或音軌。",
+    "所有音軌原速原長；保留既有人工章間推進及03→04自動接續，順播僅QA。"
+  ]
+}

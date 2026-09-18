@@ -1,0 +1,19 @@
+#wall-standby{position:relative;isolation:isolate;overflow:hidden;width:100%;min-height:72vh;border-radius:24px;background:#05121f;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;color:#f2f1ec;border:1px solid #3fb4f055;--accent:#3FB4F0}
+#wall-standby[hidden]{display:none}
+#wall-standby img{width:min(54%,680px);height:auto;margin-bottom:20px}
+#wall-standby strong{font-size:clamp(30px,4vw,64px);letter-spacing:.12em}
+#wall-standby>span{font-size:clamp(22px,2.5vw,38px);letter-spacing:.16em}
+#wall-standby small{font-size:18px;color:#abc8d9;margin-top:18px}
+#wall-standby:disabled{opacity:1;cursor:wait}
+#wall-standby .kv-background i:first-child{left:42%;top:26%}
+#wall-standby .kv-background i:nth-child(2){left:-5%;top:92%;opacity:.75}
+body[data-view=wall].is-standby #wall,body[data-view=wall].is-standby #modes,body[data-view=wall].is-standby .wall-heading,body[data-view=wall].is-standby .transport,body[data-view=wall].is-standby .desk-note{display:none}
+body[data-view=wall].is-standby main{padding-top:20px}
+body.offline #wall-standby small{font-size:0}
+body.offline #wall-standby small:after{content:'連線中，請稍候';font-size:18px}
+.wall-stage{position:relative;width:min(100%,1900px);aspect-ratio:420/208;margin:auto}
+.wall-stage #wall{width:100%;max-width:none;aspect-ratio:420/208}
+.wall-stage #wall-standby{position:absolute;inset:0 25% 0 0;width:auto;min-height:0}
+#ipad-dock{position:absolute;left:76.19%;top:63.5%;width:22.38%;aspect-ratio:1300/940;z-index:5}
+#ipad-dock iframe{position:absolute;inset:0;width:1300px;height:940px;border:0;transform-origin:top left;background:transparent}
+#ipad-dock>a{position:absolute;top:100%;left:0;width:100%;text-align:center;font-size:12px;line-height:20px;color:#a9c5d8}

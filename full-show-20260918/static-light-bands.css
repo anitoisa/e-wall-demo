@@ -1,0 +1,12 @@
+/* Background-only override: two fixed broad bands; no visible longitudinal ends. */
+body:not([data-view="ipad"]) .kv-background>i:nth-child(n){
+ width:6000px!important;height:100px!important;left:76%!important;top:48%!important;
+ transform:translate(-50%,-50%) rotate(-58deg)!important;transform-origin:center!important;
+ animation:none!important;transition:none!important;opacity:.56!important;
+ background:linear-gradient(180deg,transparent 0%,color-mix(in srgb,var(--accent) 18%,transparent) 32%,color-mix(in srgb,var(--accent) 42%,transparent) 92%,color-mix(in srgb,var(--accent) 68%,transparent) 98%,transparent 100%)!important;
+ box-shadow:none!important;filter:none!important;
+}
+body:not([data-view="ipad"]) .kv-background>i:nth-child(2){
+ left:57%!important;top:77%!important;transform:translate(-50%,-50%) rotate(-19deg)!important;opacity:.44!important;
+}
+body:not([data-view="ipad"]) .kv-background>i:nth-child(n+3){display:none!important}

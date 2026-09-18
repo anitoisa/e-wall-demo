@@ -1,0 +1,171 @@
+{
+  "schemaVersion": 1,
+  "kind": "audio-aligned-preview-candidate",
+  "audio": "00_序章.wav",
+  "durationMs": 41360,
+  "timeBase": "chapter-local-audio-currentTime-ms",
+  "method": "whisper.cpp base zh + silencedetect -38dB 180ms; homophone correction from official script; not human listening certified",
+  "cues": [
+    {
+      "id": "00-01",
+      "lines": [
+        "傳統的房子，管線和維修紀錄，",
+        "往往隨著時間而流失、失憶。"
+      ],
+      "speechStartMs": 150,
+      "showMs": 150,
+      "fadeInMs": 250,
+      "speechEndMs": 5787,
+      "fadeOutMs": 300,
+      "clearMs": 6087,
+      "confidence": "machine-transcript-plus-silence-boundary-candidate",
+      "reviewRequired": false
+    },
+    {
+      "id": "00-02",
+      "lines": [
+        "而在這裡，"
+      ],
+      "speechStartMs": 6372,
+      "showMs": 6372,
+      "fadeInMs": 250,
+      "speechEndMs": 7077,
+      "fadeOutMs": 300,
+      "clearMs": 7377,
+      "confidence": "machine-transcript-plus-silence-boundary-candidate",
+      "reviewRequired": false
+    },
+    {
+      "id": "00-03",
+      "lines": [
+        "這棟建築擁有不失憶的",
+        "生命履歷與數位分身。"
+      ],
+      "speechStartMs": 8528,
+      "showMs": 8528,
+      "fadeInMs": 250,
+      "speechEndMs": 11985,
+      "fadeOutMs": 300,
+      "clearMs": 12285,
+      "confidence": "machine-transcript-plus-silence-boundary-candidate",
+      "reviewRequired": false
+    },
+    {
+      "id": "00-04",
+      "lines": [
+        "牆內的每一條管線、",
+        "每一項設備，"
+      ],
+      "speechStartMs": 13546,
+      "showMs": 13546,
+      "fadeInMs": 250,
+      "speechEndMs": 16086,
+      "fadeOutMs": 300,
+      "clearMs": 16386,
+      "confidence": "machine-transcript-plus-silence-boundary-candidate",
+      "reviewRequired": false
+    },
+    {
+      "id": "00-05",
+      "lines": [
+        "在數位世界裡都有清楚的",
+        "專屬位置與身分。"
+      ],
+      "speechStartMs": 16347,
+      "showMs": 16386,
+      "fadeInMs": 250,
+      "speechEndMs": 19791,
+      "fadeOutMs": 300,
+      "clearMs": 20091,
+      "confidence": "machine-transcript-plus-silence-boundary-candidate",
+      "reviewRequired": false
+    },
+    {
+      "id": "00-06",
+      "lines": [
+        "無論時光走過三十年，",
+        "甚至一百年，"
+      ],
+      "speechStartMs": 21245,
+      "showMs": 21245,
+      "fadeInMs": 250,
+      "speechEndMs": 24000,
+      "fadeOutMs": 300,
+      "clearMs": 24300,
+      "confidence": "machine-transcript-plus-silence-boundary-candidate",
+      "reviewRequired": true
+    },
+    {
+      "id": "00-07",
+      "lines": [
+        "不論設備如何更替，"
+      ],
+      "speechStartMs": 24511,
+      "showMs": 24511,
+      "fadeInMs": 250,
+      "speechEndMs": 26127,
+      "fadeOutMs": 300,
+      "clearMs": 26427,
+      "confidence": "machine-transcript-plus-silence-boundary-candidate",
+      "reviewRequired": true
+    },
+    {
+      "id": "00-08",
+      "lines": [
+        "所有關於家的照顧經驗，",
+        "都將被完整保留。"
+      ],
+      "speechStartMs": 27635,
+      "showMs": 27635,
+      "fadeInMs": 250,
+      "speechEndMs": 30736,
+      "fadeOutMs": 300,
+      "clearMs": 31036,
+      "confidence": "machine-transcript-plus-silence-boundary-candidate",
+      "reviewRequired": false
+    },
+    {
+      "id": "00-09",
+      "lines": [
+        "這套系統確保了每一次維修保養，",
+        "都有跡可循，"
+      ],
+      "speechStartMs": 32185,
+      "showMs": 32185,
+      "fadeInMs": 250,
+      "speechEndMs": 35879,
+      "fadeOutMs": 300,
+      "clearMs": 36179,
+      "confidence": "machine-transcript-plus-silence-boundary-candidate",
+      "reviewRequired": false
+    },
+    {
+      "id": "00-10",
+      "lines": [
+        "讓社區的治理，"
+      ],
+      "speechStartMs": 36290,
+      "showMs": 36290,
+      "fadeInMs": 250,
+      "speechEndMs": 37281,
+      "fadeOutMs": 300,
+      "clearMs": 37581,
+      "confidence": "machine-transcript-plus-silence-boundary-candidate",
+      "reviewRequired": false
+    },
+    {
+      "id": "00-11",
+      "lines": [
+        "不再每一次都必須從零開始。"
+      ],
+      "speechStartMs": 38770,
+      "showMs": 38770,
+      "fadeInMs": 250,
+      "speechEndMs": 40999,
+      "fadeOutMs": 300,
+      "clearMs": 41299,
+      "confidence": "machine-transcript-plus-silence-boundary-candidate",
+      "reviewRequired": false
+    }
+  ]
+}

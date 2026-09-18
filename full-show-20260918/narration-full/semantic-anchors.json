@@ -1,0 +1,362 @@
+{
+  "version": "full-wall-20260918-v1",
+  "timeBase": "chapter-local-ms",
+  "review": "machine-ASR+approved-script+PCM; not human-listening certified",
+  "chapters": [
+    {
+      "chapter": "00",
+      "durationMs": 44480,
+      "speechStartMs": 170,
+      "speechEndMs": 44080,
+      "anchors": [
+        {
+          "id": "design",
+          "text": "設計圖說",
+          "startMs": 1390,
+          "endMs": 2320,
+          "timingSource": "ASR-token+PCM-candidate"
+        },
+        {
+          "id": "equipment",
+          "text": "設備文件",
+          "startMs": 2740,
+          "endMs": 3670,
+          "timingSource": "ASR-token+PCM-candidate"
+        },
+        {
+          "id": "maintenance",
+          "text": "維養紀錄",
+          "startMs": 3915,
+          "endMs": 4760,
+          "timingSource": "ASR-token+PCM-candidate"
+        },
+        {
+          "id": "memory",
+          "text": "在這裡",
+          "startMs": 11240,
+          "endMs": 11860,
+          "timingSource": "ASR-token+PCM-candidate"
+        },
+        {
+          "id": "build-record",
+          "text": "從建造時留下的資料",
+          "startMs": 18000,
+          "endMs": 19890,
+          "timingSource": "ASR-token+PCM-candidate"
+        },
+        {
+          "id": "update",
+          "text": "到日後每一次保養與更新",
+          "startMs": 20300,
+          "endMs": 22890,
+          "timingSource": "ASR-token+PCM-candidate"
+        },
+        {
+          "id": "accumulate",
+          "text": "讓新的紀錄接續累積",
+          "startMs": 23310,
+          "endMs": 25350,
+          "timingSource": "ASR+PCM-refined"
+        },
+        {
+          "id": "look-back",
+          "text": "也讓過去的經驗",
+          "startMs": 26660,
+          "endMs": 28480,
+          "timingSource": "ASR-token+PCM-candidate"
+        },
+        {
+          "id": "identity",
+          "text": "當資訊有了對應的位置與身分",
+          "startMs": 30670,
+          "endMs": 33060,
+          "timingSource": "ASR+PCM-refined"
+        },
+        {
+          "id": "handover",
+          "text": "接手的人",
+          "startMs": 33380,
+          "endMs": 34230,
+          "timingSource": "ASR+PCM-refined"
+        },
+        {
+          "id": "closing",
+          "text": "社區的管理",
+          "startMs": 40660,
+          "endMs": 41680,
+          "timingSource": "ASR-token+PCM-candidate"
+        }
+      ]
+    },
+    {
+      "chapter": "01",
+      "durationMs": 32720,
+      "speechStartMs": 160,
+      "speechEndMs": 32360,
+      "anchors": [
+        {
+          "id": "start",
+          "text": "完工",
+          "startMs": 160,
+          "endMs": 500,
+          "timingSource": "ASR-token+PCM-candidate"
+        },
+        {
+          "id": "day-night",
+          "text": "日夜交替",
+          "startMs": 5180,
+          "endMs": 6020,
+          "timingSource": "ASR-token+PCM-candidate"
+        },
+        {
+          "id": "maintenance",
+          "text": "從建造查驗",
+          "startMs": 11480,
+          "endMs": 11820,
+          "timingSource": "ASR-token+PCM-candidate"
+        },
+        {
+          "id": "adjust-plan",
+          "text": "依據使用狀況",
+          "startMs": 15120,
+          "endMs": 16290,
+          "timingSource": "ASR-token+PCM-candidate"
+        },
+        {
+          "id": "year120",
+          "text": "以一百二十年的長壽建築為願景",
+          "startMs": 19760,
+          "endMs": 22370,
+          "timingSource": "ASR-token+PCM-candidate"
+        },
+        {
+          "id": "handover",
+          "text": "管理者更替",
+          "startMs": 26230,
+          "endMs": 26770,
+          "timingSource": "ASR-token+PCM-candidate"
+        },
+        {
+          "id": "generations",
+          "text": "讓照顧建築的經驗",
+          "startMs": 29470,
+          "endMs": 31360,
+          "timingSource": "ASR-token+PCM-candidate"
+        }
+      ]
+    },
+    {
+      "chapter": "02",
+      "durationMs": 28200,
+      "speechStartMs": 180,
+      "speechEndMs": 27800,
+      "anchors": [
+        {
+          "id": "intro",
+          "text": "有了紀錄",
+          "startMs": 180,
+          "endMs": 860,
+          "timingSource": "ASR-token+PCM-candidate"
+        },
+        {
+          "id": "floor",
+          "text": "從整棟建築進入樓層",
+          "startMs": 4970,
+          "endMs": 7040,
+          "timingSource": "ASR-token+PCM-candidate"
+        },
+        {
+          "id": "systems",
+          "text": "看清給水",
+          "startMs": 7430,
+          "endMs": 8240,
+          "timingSource": "ASR-token+PCM-candidate"
+        },
+        {
+          "id": "water",
+          "text": "給水",
+          "startMs": 7430,
+          "endMs": 8240,
+          "timingSource": "ASR-token+PCM-candidate"
+        },
+        {
+          "id": "drain",
+          "text": "排水",
+          "startMs": 8450,
+          "endMs": 8870,
+          "timingSource": "ASR-token+PCM-candidate"
+        },
+        {
+          "id": "fire",
+          "text": "消防",
+          "startMs": 9280,
+          "endMs": 9800,
+          "timingSource": "ASR-token+PCM-candidate"
+        },
+        {
+          "id": "equipment",
+          "text": "沿著管線找到設備",
+          "startMs": 12900,
+          "endMs": 14610,
+          "timingSource": "ASR-token+PCM-candidate"
+        },
+        {
+          "id": "documents",
+          "text": "再查閱對應的身分",
+          "startMs": 15110,
+          "endMs": 16770,
+          "timingSource": "ASR-token+PCM-candidate"
+        },
+        {
+          "id": "connection",
+          "text": "數位分身",
+          "startMs": 19730,
+          "endMs": 19900,
+          "timingSource": "ASR-token+PCM-candidate"
+        },
+        {
+          "id": "conclusion",
+          "text": "讓查找有方向",
+          "startMs": 23690,
+          "endMs": 25050,
+          "timingSource": "ASR-token+PCM-candidate"
+        }
+      ]
+    },
+    {
+      "chapter": "03",
+      "durationMs": 31960,
+      "speechStartMs": 90,
+      "speechEndMs": 31560,
+      "anchors": [
+        {
+          "id": "intro",
+          "text": "建築每天的運作",
+          "startMs": 130,
+          "endMs": 1400,
+          "timingSource": "ASR-token+PCM-candidate"
+        },
+        {
+          "id": "sensors",
+          "text": "分布各處的感測訊號",
+          "startMs": 4050,
+          "endMs": 5860,
+          "timingSource": "ASR-token+PCM-candidate"
+        },
+        {
+          "id": "converge",
+          "text": "逐步匯集",
+          "startMs": 6190,
+          "endMs": 7180,
+          "timingSource": "ASR-token+PCM-candidate"
+        },
+        {
+          "id": "whole-building",
+          "text": "形成理解全棟運作的線索",
+          "startMs": 7440,
+          "endMs": 9910,
+          "timingSource": "ASR-token+PCM-candidate"
+        },
+        {
+          "id": "readings",
+          "text": "環境讀值與用電資訊",
+          "startMs": 11230,
+          "endMs": 13330,
+          "timingSource": "ASR-token+PCM-candidate"
+        },
+        {
+          "id": "conditions",
+          "text": "回到各自的位置",
+          "startMs": 13780,
+          "endMs": 15240,
+          "timingSource": "ASR-token+PCM-candidate"
+        },
+        {
+          "id": "compare",
+          "text": "才能看出差異",
+          "startMs": 16760,
+          "endMs": 18090,
+          "timingSource": "ASR-token+PCM-candidate"
+        },
+        {
+          "id": "return",
+          "text": "從全棟到每一戶",
+          "startMs": 20520,
+          "endMs": 22270,
+          "timingSource": "ASR+PCM-refined"
+        },
+        {
+          "id": "observe",
+          "text": "從當下讀值到持續觀察",
+          "startMs": 22640,
+          "endMs": 24940,
+          "timingSource": "ASR+PCM-refined"
+        },
+        {
+          "id": "goals",
+          "text": "讓健康",
+          "startMs": 25510,
+          "endMs": 25810,
+          "timingSource": "ASR+PCM-refined"
+        },
+        {
+          "id": "closing",
+          "text": "有資訊作為依據",
+          "startMs": 29810,
+          "endMs": 31560,
+          "timingSource": "ASR-token+PCM-candidate"
+        }
+      ]
+    },
+    {
+      "chapter": "04",
+      "durationMs": 13720,
+      "speechStartMs": 100,
+      "speechEndMs": 13330,
+      "anchors": [
+        {
+          "id": "A",
+          "text": "從設計與品質",
+          "startMs": 100,
+          "endMs": 1460,
+          "timingSource": "short-clip-ASR+PCM-refined"
+        },
+        {
+          "id": "B",
+          "text": "到生命履歷",
+          "startMs": 1720,
+          "endMs": 2760,
+          "timingSource": "short-clip-ASR+PCM-refined"
+        },
+        {
+          "id": "C",
+          "text": "從空間定位",
+          "startMs": 4010,
+          "endMs": 5160,
+          "timingSource": "short-clip-ASR+PCM-refined"
+        },
+        {
+          "id": "D",
+          "text": "到日常管理",
+          "startMs": 5230,
+          "endMs": 6240,
+          "timingSource": "short-clip-ASR+PCM-refined"
+        },
+        {
+          "id": "closingFirst",
+          "text": "寶舖帶來的",
+          "startMs": 7550,
+          "endMs": 9025,
+          "timingSource": "ASR-token+PCM-candidate"
+        },
+        {
+          "id": "closingSecond",
+          "text": "也是讓安心延續的方法",
+          "startMs": 11250,
+          "endMs": 13330,
+          "timingSource": "ASR-token+PCM-candidate"
+        }
+      ]
+    }
+  ]
+}

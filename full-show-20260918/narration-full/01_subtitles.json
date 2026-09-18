@@ -1,0 +1,154 @@
+{
+  "version": "full-wall-20260918-v1",
+  "chapter": "01",
+  "durationMs": 32720,
+  "timeBase": "chapter-local-ms",
+  "cues": [
+    {
+      "id": "01-01",
+      "lines": [
+        "完工，是生活的開始，",
+        "也是長期維養的起點。"
+      ],
+      "speechStartMs": 160,
+      "speechEndMs": 3880,
+      "rawStartMs": 160,
+      "rawEndMs": 3800,
+      "showMs": 160,
+      "fadeInMs": 250,
+      "fadeOutMs": 300,
+      "fadeOutStartMs": 3880,
+      "clearMs": 4180,
+      "holdAfterSpeechMs": 0,
+      "target": "d",
+      "confidence": "ASR+canonical-script+PCM-gap-candidate",
+      "reviewRequired": true,
+      "displayDelayMs": 0
+    },
+    {
+      "id": "01-02",
+      "lines": [
+        "日夜交替，年份向前，",
+        "建築的履歷也持續累積。"
+      ],
+      "speechStartMs": 5180,
+      "speechEndMs": 10180,
+      "rawStartMs": 5040,
+      "rawEndMs": 9970,
+      "showMs": 5180,
+      "fadeInMs": 250,
+      "fadeOutMs": 300,
+      "fadeOutStartMs": 10180,
+      "clearMs": 10480,
+      "holdAfterSpeechMs": 0,
+      "target": "d",
+      "confidence": "ASR+canonical-script+PCM-gap-candidate",
+      "reviewRequired": true,
+      "displayDelayMs": 0
+    },
+    {
+      "id": "01-03",
+      "lines": [
+        "從建造查驗，",
+        "到日常保養與設備更新，"
+      ],
+      "speechStartMs": 11480,
+      "speechEndMs": 14870,
+      "rawStartMs": 11400,
+      "rawEndMs": 14960,
+      "showMs": 11480,
+      "fadeInMs": 250,
+      "fadeOutMs": 300,
+      "fadeOutStartMs": 14870,
+      "clearMs": 15170,
+      "holdAfterSpeechMs": 0,
+      "target": "d",
+      "confidence": "ASR+canonical-script+PCM-gap-candidate",
+      "reviewRequired": true,
+      "displayDelayMs": 0
+    },
+    {
+      "id": "01-04",
+      "lines": [
+        "依據使用狀況，",
+        "逐步調整維養計畫。"
+      ],
+      "speechStartMs": 15120,
+      "speechEndMs": 18430,
+      "rawStartMs": 15110,
+      "rawEndMs": 18190,
+      "showMs": 15170,
+      "fadeInMs": 250,
+      "fadeOutMs": 300,
+      "fadeOutStartMs": 18430,
+      "clearMs": 18730,
+      "holdAfterSpeechMs": 0,
+      "target": "d",
+      "confidence": "ASR+canonical-script+PCM-gap-candidate",
+      "reviewRequired": true,
+      "displayDelayMs": 50
+    },
+    {
+      "id": "01-05",
+      "lines": [
+        "以一百二十年的長壽建築為願景，",
+        "需要持續的照顧與準備。"
+      ],
+      "speechStartMs": 19760,
+      "speechEndMs": 24950,
+      "rawStartMs": 19640,
+      "rawEndMs": 24810,
+      "showMs": 19760,
+      "fadeInMs": 250,
+      "fadeOutMs": 300,
+      "fadeOutStartMs": 24950,
+      "clearMs": 25250,
+      "holdAfterSpeechMs": 0,
+      "target": "d",
+      "confidence": "ASR+canonical-script+PCM-gap-candidate",
+      "reviewRequired": true,
+      "displayDelayMs": 0
+    },
+    {
+      "id": "01-06",
+      "lines": [
+        "管理者更替，紀錄一起交接，"
+      ],
+      "speechStartMs": 26230,
+      "speechEndMs": 28810,
+      "rawStartMs": 26120,
+      "rawEndMs": 28910,
+      "showMs": 26230,
+      "fadeInMs": 250,
+      "fadeOutMs": 300,
+      "fadeOutStartMs": 28810,
+      "clearMs": 29110,
+      "holdAfterSpeechMs": 0,
+      "target": "d",
+      "confidence": "ASR+canonical-script+PCM-gap-candidate",
+      "reviewRequired": true,
+      "displayDelayMs": 0
+    },
+    {
+      "id": "01-07",
+      "lines": [
+        "讓照顧建築的經驗，",
+        "跨越世代。"
+      ],
+      "speechStartMs": 29470,
+      "speechEndMs": 32360,
+      "rawStartMs": 29520,
+      "rawEndMs": 32440,
+      "showMs": 29470,
+      "fadeInMs": 250,
+      "fadeOutMs": 300,
+      "fadeOutStartMs": 32360,
+      "clearMs": 32660,
+      "holdAfterSpeechMs": 0,
+      "target": "d",
+      "confidence": "ASR+canonical-script+PCM-gap-candidate",
+      "reviewRequired": true,
+      "displayDelayMs": 0
+    }
+  ]
+}

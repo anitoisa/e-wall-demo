@@ -1,0 +1,45 @@
+{
+  "version": "full-wall-20260918-v1",
+  "chapter": "04",
+  "durationMs": 13720,
+  "timeBase": "chapter-local-ms",
+  "cues": [
+    {
+      "id": "04-main-01",
+      "lines": [
+        "寶舖帶來的，是安心的空間，"
+      ],
+      "speechStartMs": 7550,
+      "showMs": 7550,
+      "speechEndMs": 11250,
+      "fadeInMs": 600,
+      "fadeOutStartMs": 11250,
+      "fadeOutMs": 0,
+      "clearMs": 11250,
+      "target": "main",
+      "confidence": "ASR+PCM-candidate",
+      "reviewRequired": true
+    },
+    {
+      "id": "04-main-02",
+      "lines": [
+        "寶舖帶來的，是安心的空間，",
+        "也是讓安心延續的方法。"
+      ],
+      "lineRevealMs": [
+        7550,
+        11250
+      ],
+      "speechStartMs": 11250,
+      "showMs": 11250,
+      "speechEndMs": 13330,
+      "fadeInMs": 600,
+      "fadeOutStartMs": 14130,
+      "fadeOutMs": 600,
+      "clearMs": 14730,
+      "target": "main",
+      "confidence": "ASR+PCM-candidate",
+      "reviewRequired": true
+    }
+  ]
+}

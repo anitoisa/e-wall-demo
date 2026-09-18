@@ -1,0 +1,26 @@
+{
+  "version": "rolling-20260915-intro-only",
+  "totalDurationPolicy": "flexible-no-fixed-total",
+  "introDurationAccepted": true,
+  "audio": [
+    {
+      "chapter": "00",
+      "file": "00_序章.wav",
+      "durationMs": 41360,
+      "sha256": "26cf6795c3883b1e65ef636e64935117f6b19530a59da615a3c4c2998da7d1ab",
+      "status": "received-new",
+      "subtitles": "00_序章字幕.json",
+      "envelope": "00_實際音量包絡.json"
+    }
+  ],
+  "pendingNewAudio": [
+    "01",
+    "02",
+    "03",
+    "closing"
+  ],
+  "interimPolicy": "current wall verified context: new00 audio preview holds at chapter end; 01/02/03 remain silent existing visuals because no reliable old audio mapping is available; do not apply draft subtitles to old audio",
+  "timingPolicy": "chapter-relative; recompute global offsets from actual chapter durations, existing approved gaps and animation completion; no rate compression",
+  "candidateOnly": true,
+  "integrationStatus": "wall opt-in narration=intro integrated; EVoice read-only sampler check passed; wall full 41.36s media-clock, multi-page single-audio, subtitle and controls checks passed; human listening review pending"
+}

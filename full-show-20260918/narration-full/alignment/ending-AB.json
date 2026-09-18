@@ -1,0 +1,241 @@
+{
+	"systeminfo": "WHISPER : COREML = 0 | OPENVINO = 0 | MTL : EMBED_LIBRARY = 1 | CPU : NEON = 1 | ARM_FMA = 1 | FP16_VA = 1 | MATMUL_INT8 = 1 | DOTPROD = 1 | SME = 1 | ACCELERATE = 1 | OPENMP = 1 | REPACK = 1 | ",
+	"model": {
+		"type": "base",
+		"multilingual": true,
+		"vocab": 51865,
+		"audio": {
+			"ctx": 1500,
+			"state": 512,
+			"head": 8,
+			"layer": 6
+		},
+		"text": {
+			"ctx": 448,
+			"state": 512,
+			"head": 8,
+			"layer": 6
+		},
+		"mels": 80,
+		"ftype": 1
+	},
+	"params": {
+		"model": "/tmp/anlb-ggml-base.bin",
+		"language": "zh",
+		"translate": false
+	},
+	"result": {
+		"language": "zh"
+	},
+	"transcription": [
+		{
+			"timestamps": {
+				"from": "00:00:00,000",
+				"to": "00:00:03,080"
+			},
+			"offsets": {
+				"from": 0,
+				"to": 3080
+			},
+			"text": "從設計與品質 到生命旅歷",
+			"tokens": [
+				{
+					"text": "[_BEG_]",
+					"timestamps": {
+						"from": "00:00:00,000",
+						"to": "00:00:00,000"
+					},
+					"offsets": {
+						"from": 0,
+						"to": 0
+					},
+					"id": 50364,
+					"p": 0.977374,
+					"t_dtw": -1
+				},
+				{
+					"text": "從",
+					"timestamps": {
+						"from": "00:00:00,160",
+						"to": "00:00:00,250"
+					},
+					"offsets": {
+						"from": 160,
+						"to": 250
+					},
+					"id": 21068,
+					"p": 0.888989,
+					"t_dtw": -1
+				},
+				{
+					"text": "設",
+					"timestamps": {
+						"from": "00:00:00,250",
+						"to": "00:00:00,500"
+					},
+					"offsets": {
+						"from": 250,
+						"to": 500
+					},
+					"id": 39035,
+					"p": 0.891088,
+					"t_dtw": -1
+				},
+				{
+					"text": "計",
+					"timestamps": {
+						"from": "00:00:00,500",
+						"to": "00:00:00,750"
+					},
+					"offsets": {
+						"from": 500,
+						"to": 750
+					},
+					"id": 30114,
+					"p": 0.994886,
+					"t_dtw": -1
+				},
+				{
+					"text": "與",
+					"timestamps": {
+						"from": "00:00:00,750",
+						"to": "00:00:01,000"
+					},
+					"offsets": {
+						"from": 750,
+						"to": 1000
+					},
+					"id": 34127,
+					"p": 0.891877,
+					"t_dtw": -1
+				},
+				{
+					"text": "品",
+					"timestamps": {
+						"from": "00:00:01,000",
+						"to": "00:00:01,250"
+					},
+					"offsets": {
+						"from": 1000,
+						"to": 1250
+					},
+					"id": 30246,
+					"p": 0.997027,
+					"t_dtw": -1
+				},
+				{
+					"text": "質",
+					"timestamps": {
+						"from": "00:00:01,250",
+						"to": "00:00:01,450"
+					},
+					"offsets": {
+						"from": 1250,
+						"to": 1450
+					},
+					"id": 43450,
+					"p": 0.993991,
+					"t_dtw": -1
+				},
+				{
+					"text": " ",
+					"timestamps": {
+						"from": "00:00:01,540",
+						"to": "00:00:01,540"
+					},
+					"offsets": {
+						"from": 1540,
+						"to": 1540
+					},
+					"id": 220,
+					"p": 0.414629,
+					"t_dtw": -1
+				},
+				{
+					"text": "到",
+					"timestamps": {
+						"from": "00:00:01,730",
+						"to": "00:00:01,840"
+					},
+					"offsets": {
+						"from": 1730,
+						"to": 1840
+					},
+					"id": 4511,
+					"p": 0.885144,
+					"t_dtw": -1
+				},
+				{
+					"text": "生",
+					"timestamps": {
+						"from": "00:00:01,840",
+						"to": "00:00:02,140"
+					},
+					"offsets": {
+						"from": 1840,
+						"to": 2140
+					},
+					"id": 8244,
+					"p": 0.972262,
+					"t_dtw": -1
+				},
+				{
+					"text": "命",
+					"timestamps": {
+						"from": "00:00:02,140",
+						"to": "00:00:02,410"
+					},
+					"offsets": {
+						"from": 2140,
+						"to": 2410
+					},
+					"id": 25236,
+					"p": 0.998571,
+					"t_dtw": -1
+				},
+				{
+					"text": "旅",
+					"timestamps": {
+						"from": "00:00:02,440",
+						"to": "00:00:02,720"
+					},
+					"offsets": {
+						"from": 2440,
+						"to": 2720
+					},
+					"id": 4479,
+					"p": 0.373013,
+					"t_dtw": -1
+				},
+				{
+					"text": "歷",
+					"timestamps": {
+						"from": "00:00:02,720",
+						"to": "00:00:02,990"
+					},
+					"offsets": {
+						"from": 2720,
+						"to": 2990
+					},
+					"id": 4287,
+					"p": 0.348408,
+					"t_dtw": -1
+				},
+				{
+					"text": "[_TT_154]",
+					"timestamps": {
+						"from": "00:00:03,080",
+						"to": "00:00:03,080"
+					},
+					"offsets": {
+						"from": 3080,
+						"to": 3080
+					},
+					"id": 50518,
+					"p": 0.0907138,
+					"t_dtw": -1
+				}
+			]
+		}
+	]
+}

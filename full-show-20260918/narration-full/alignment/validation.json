@@ -1,0 +1,37 @@
+[
+  {
+    "chapter": "00",
+    "maxLineChars": 15,
+    "subtitleCount": 10,
+    "asrMatch": 0.9315068493150684,
+    "pcmSpeechEndMs": 44080
+  },
+  {
+    "chapter": "01",
+    "maxLineChars": 15,
+    "subtitleCount": 7,
+    "asrMatch": 0.9369369369369369,
+    "pcmSpeechEndMs": 32360
+  },
+  {
+    "chapter": "02",
+    "maxLineChars": 12,
+    "subtitleCount": 7,
+    "asrMatch": 0.9270833333333334,
+    "pcmSpeechEndMs": 27800
+  },
+  {
+    "chapter": "03",
+    "maxLineChars": 15,
+    "subtitleCount": 9,
+    "asrMatch": 0.8857142857142857,
+    "pcmSpeechEndMs": 31560
+  },
+  {
+    "chapter": "04",
+    "maxLineChars": 13,
+    "subtitleCount": 2,
+    "asrMatch": 0.9285714285714286,
+    "pcmSpeechEndMs": 13330
+  }
+]

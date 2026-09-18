@@ -1,0 +1,153 @@
+{
+  "version": "full-wall-20260918-v1",
+  "chapter": "02",
+  "durationMs": 28200,
+  "timeBase": "chapter-local-ms",
+  "cues": [
+    {
+      "id": "02-01",
+      "lines": [
+        "有了紀錄，下一個問題是：",
+        "它在建築的哪裡？"
+      ],
+      "speechStartMs": 180,
+      "speechEndMs": 3710,
+      "rawStartMs": 180,
+      "rawEndMs": 3690,
+      "showMs": 180,
+      "fadeInMs": 250,
+      "fadeOutMs": 300,
+      "fadeOutStartMs": 3710,
+      "clearMs": 4010,
+      "holdAfterSpeechMs": 0,
+      "target": "d",
+      "confidence": "ASR+canonical-script+PCM-gap-candidate",
+      "reviewRequired": true,
+      "displayDelayMs": 0
+    },
+    {
+      "id": "02-02",
+      "lines": [
+        "從整棟建築進入樓層，"
+      ],
+      "speechStartMs": 4970,
+      "speechEndMs": 7040,
+      "rawStartMs": 4800,
+      "rawEndMs": 7000,
+      "showMs": 4970,
+      "fadeInMs": 250,
+      "fadeOutMs": 300,
+      "fadeOutStartMs": 7040,
+      "clearMs": 7340,
+      "holdAfterSpeechMs": 0,
+      "target": "d",
+      "confidence": "ASR+canonical-script+PCM-gap-candidate",
+      "reviewRequired": true,
+      "displayDelayMs": 0
+    },
+    {
+      "id": "02-03",
+      "lines": [
+        "看清給水、排水與消防系統",
+        "的空間關係。"
+      ],
+      "speechStartMs": 7430,
+      "speechEndMs": 11590,
+      "rawStartMs": 7330,
+      "rawEndMs": 11620,
+      "showMs": 7430,
+      "fadeInMs": 250,
+      "fadeOutMs": 300,
+      "fadeOutStartMs": 11590,
+      "clearMs": 11890,
+      "holdAfterSpeechMs": 0,
+      "target": "d",
+      "confidence": "ASR+canonical-script+PCM-gap-candidate",
+      "reviewRequired": true,
+      "displayDelayMs": 0
+    },
+    {
+      "id": "02-04",
+      "lines": [
+        "沿著管線找到設備，"
+      ],
+      "speechStartMs": 12900,
+      "speechEndMs": 14610,
+      "rawStartMs": 12700,
+      "rawEndMs": 14890,
+      "showMs": 12900,
+      "fadeInMs": 250,
+      "fadeOutMs": 300,
+      "fadeOutStartMs": 14610,
+      "clearMs": 14910,
+      "holdAfterSpeechMs": 0,
+      "target": "d",
+      "confidence": "ASR+canonical-script+PCM-gap-candidate",
+      "reviewRequired": true,
+      "displayDelayMs": 0
+    },
+    {
+      "id": "02-05",
+      "lines": [
+        "再查閱對應的身分、",
+        "文件與維養紀錄。"
+      ],
+      "speechStartMs": 15110,
+      "speechEndMs": 18490,
+      "rawStartMs": 15230,
+      "rawEndMs": 18350,
+      "showMs": 15110,
+      "fadeInMs": 250,
+      "fadeOutMs": 300,
+      "fadeOutStartMs": 18490,
+      "clearMs": 18790,
+      "holdAfterSpeechMs": 0,
+      "target": "d",
+      "confidence": "ASR+canonical-script+PCM-gap-candidate",
+      "reviewRequired": true,
+      "displayDelayMs": 0
+    },
+    {
+      "id": "02-06",
+      "lines": [
+        "數位分身，",
+        "把空間與資訊連在一起，"
+      ],
+      "speechStartMs": 19730,
+      "speechEndMs": 23300,
+      "rawStartMs": 19600,
+      "rawEndMs": 23110,
+      "showMs": 19730,
+      "fadeInMs": 250,
+      "fadeOutMs": 300,
+      "fadeOutStartMs": 23300,
+      "clearMs": 23600,
+      "holdAfterSpeechMs": 0,
+      "target": "d",
+      "confidence": "ASR+canonical-script+PCM-gap-candidate",
+      "reviewRequired": true,
+      "displayDelayMs": 0
+    },
+    {
+      "id": "02-07",
+      "lines": [
+        "讓查找有方向，",
+        "後續的檢查與維養有依據。"
+      ],
+      "speechStartMs": 23690,
+      "speechEndMs": 27800,
+      "rawStartMs": 23680,
+      "rawEndMs": 27730,
+      "showMs": 23690,
+      "fadeInMs": 250,
+      "fadeOutMs": 300,
+      "fadeOutStartMs": 27800,
+      "clearMs": 28100,
+      "holdAfterSpeechMs": 0,
+      "target": "d",
+      "confidence": "ASR+canonical-script+PCM-gap-candidate",
+      "reviewRequired": true,
+      "displayDelayMs": 0
+    }
+  ]
+}

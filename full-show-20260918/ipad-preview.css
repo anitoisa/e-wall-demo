@@ -1,0 +1,33 @@
+body[data-view=ipad]{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100svh;background:#080d12;padding:12px;box-sizing:border-box}
+.tablet-shell{position:relative;border-radius:38px;background:#080a0d;box-shadow:0 0 0 2px #65717b,0 0 0 5px #222930,0 25px 80px #000b;overflow:hidden;flex-shrink:0}
+.tablet-screen{position:absolute;width:1194px;height:834px;padding:23px 20px;background:#090c10;transform-origin:top left;border-radius:38px;box-sizing:content-box;overflow:hidden}
+.tablet-screen:after{content:'';position:absolute;top:9px;left:50%;width:7px;height:7px;background:#182531;border-radius:50%;pointer-events:none}
+body[data-view=ipad] #console{width:1194px;height:834px;box-sizing:border-box;border-radius:21px;overflow:auto;background:radial-gradient(ellipse at 25% 90%,#10324b,#06131e 75%);padding:28px 32px;max-width:none}
+body[data-view=ipad] .console-content{grid-template-columns:minmax(0,1fr) 300px;gap:28px;margin:24px 0 16px}
+body[data-view=ipad] .console-story{min-height:490px}
+body[data-view=ipad] .console-story h1{font-size:54px}
+body[data-view=ipad] #console .transport{flex-wrap:wrap;gap:10px}
+body[data-view=ipad] #console .transport button{font-size:26px;min-height:72px;padding:10px 18px}
+body[data-view=ipad] #console .transport a{font-size:16px;width:auto;margin-left:0}
+.tablet-caption{color:#a1b3c2;font-size:14px;letter-spacing:.12em;margin:16px 0 0}
+#standby-screen{position:absolute;inset:23px 20px;border:0;border-radius:21px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:68px;background:radial-gradient(ellipse at 50% 70%,#103b55,#06131f 70%);color:#dbeaf3;cursor:pointer}
+#standby-screen[hidden]{display:none}
+#standby-screen img{width:740px;max-width:75%;height:auto}
+#standby-screen .standby-claim{display:flex;flex-direction:column;align-items:center;gap:20px}
+#standby-screen .standby-claim strong{font-size:62px;line-height:1.25;letter-spacing:.12em}
+#standby-screen .standby-claim span{font-size:34px;line-height:1.4;letter-spacing:.16em}
+#standby-screen .standby-status{position:absolute;bottom:34px;font-size:22px;color:#a1b3c2}
+#standby-screen:disabled{cursor:wait;opacity:1}
+body.offline #standby-screen .standby-status:after{content:'連線中，請稍候'}
+body[data-view=ipad] .rotate-hint{display:none}
+body[data-view=ipad] #console,#standby-screen{isolation:isolate;position:relative}
+#standby-screen{position:absolute;overflow:hidden}
+.tablet-kv{z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 95% 0%,color-mix(in srgb,var(--accent) 32%,transparent),transparent 60%)}
+.tablet-kv i:first-child{width:1500px;height:150px;left:230px;top:220px;transform:rotate(-57deg);opacity:.85}
+.tablet-kv i:nth-child(2){width:1600px;height:125px;left:-130px;top:705px;transform:rotate(-19deg);opacity:.8}
+.tablet-kv i:nth-child(3){width:1400px;height:1px;left:130px;top:280px;transform:rotate(34deg);opacity:.4}
+#standby-screen{--accent:#3FB4F0}
+#standby-screen .standby-claim,#standby-screen>img{filter:drop-shadow(0 3px 16px #020a14)}
+html[data-mode=idle] body[data-view=ipad] #story-note{display:none}
+body[data-view=ipad] #modes button{background:#06111cd9}
+.embedded-ipad .tablet-caption,.embedded-ipad .transport a{display:none!important}

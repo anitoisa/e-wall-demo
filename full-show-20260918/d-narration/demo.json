@@ -1,0 +1,121 @@
+{
+  "kind": "visual-demo-only",
+  "fadeInMs": 250,
+  "fadeOutMs": 300,
+  "blankMs": 120,
+  "chapters": [
+    {
+      "id": "idle",
+      "name": "序章",
+      "accent": "#3FB4F0",
+      "cues": [
+        {
+          "id": "idle-1",
+          "text": "歡迎來到寶舖建築中控台。",
+          "speechMs": 4000,
+          "sourceSubtitleId": "sub-004"
+        },
+        {
+          "id": "idle-2",
+          "text": "是藏在建築裡的結構與管線，\n是建造過程留下的品質紀錄，",
+          "speechMs": 5500,
+          "sourceSubtitleId": "sub-002"
+        },
+        {
+          "id": "idle-3",
+          "text": "一座好的住宅，除了眼前看得見的空間，\n還有哪些值得我們看見？",
+          "speechMs": 6200,
+          "sourceSubtitleId": "sub-001"
+        }
+      ],
+      "en": "PROLOGUE",
+      "background": "#070e19"
+    },
+    {
+      "id": "life",
+      "name": "建築生命履歷",
+      "accent": "#FFA61A",
+      "cues": [
+        {
+          "id": "life-1",
+          "text": "並為設備更新提早準備。",
+          "speechMs": 4000,
+          "sourceSubtitleId": "sub-022"
+        },
+        {
+          "id": "life-2",
+          "text": "當管理者更替，當使用者交接，\n紀錄也應該一起留下，",
+          "speechMs": 5500,
+          "sourceSubtitleId": "sub-023"
+        },
+        {
+          "id": "life-3",
+          "text": "隨著使用，透過監測累積觀察，\n調整維養週期，",
+          "speechMs": 6200,
+          "sourceSubtitleId": "sub-021"
+        }
+      ],
+      "en": "LIFE RECORD",
+      "background": "#160e05"
+    },
+    {
+      "id": "bim",
+      "name": "數位孿生定位",
+      "accent": "#FF2E1E",
+      "cues": [
+        {
+          "id": "bim-1",
+          "text": "以及設備的位置。",
+          "speechMs": 4000,
+          "sourceSubtitleId": "sub-034"
+        },
+        {
+          "id": "bim-2",
+          "text": "請跟著畫面中的給水路徑，\n找到這次示範的 P-01設備。",
+          "speechMs": 5500,
+          "sourceSubtitleId": "sub-035"
+        },
+        {
+          "id": "bim-3",
+          "text": "當位置與資料連在一起，\n就能查看設備編碼、相關參數、",
+          "speechMs": 6200,
+          "sourceSubtitleId": "sub-036"
+        }
+      ],
+      "en": "DIGITAL TWIN",
+      "background": "#170806"
+    },
+    {
+      "id": "data",
+      "name": "建築 BOS",
+      "accent": "#18DCB9",
+      "cues": [
+        {
+          "id": "data-1",
+          "text": "接著是濕度。",
+          "speechMs": 4000,
+          "sourceSubtitleId": "sub-048"
+        },
+        {
+          "id": "data-2",
+          "text": "讓環境狀態有位置、有對照，\n聚焦需要進一步了解的地方。",
+          "speechMs": 5500,
+          "sourceSubtitleId": "sub-049"
+        },
+        {
+          "id": "data-3",
+          "text": "再來是二氧化碳與通風觀察。",
+          "speechMs": 6200,
+          "sourceSubtitleId": "sub-050"
+        }
+      ],
+      "en": "BUILDING BOS",
+      "background": "#041611"
+    }
+  ],
+  "voiceDemo": {
+    "phraseMs": 1500,
+    "pauseMs": 800,
+    "syllableMs": 280
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "version": "full-wall-20260918-v1",
+  "scope": "local-wall-and-UE-candidates-not-production",
+  "audioDurationMs": 151080,
+  "visualPostRollMs": 5210,
+  "showDurationMs": 156290,
+  "interChapterGapMs": 0,
+  "chapters": [
+    {
+      "id": "00",
+      "file": "00_序章.wav",
+      "sha256": "f57ba62faa5695a2068016741f0d98fd597ad2b49f8c990b27c1089ae4c455b2",
+      "durationMs": 44480,
+      "globalAudioStartMs": 0,
+      "globalAudioEndMs": 44480,
+      "subtitleFile": "00_subtitles.json",
+      "envelopeFile": "00_envelope.json",
+      "status": "received-machine-aligned-candidate"
+    },
+    {
+      "id": "01",
+      "file": "01_建築生命履歷.wav",
+      "sha256": "c83704b34899a7f34065b22c29f374c39ca03543537036f4e5796988be2bec9d",
+      "durationMs": 32720,
+      "globalAudioStartMs": 44480,
+      "globalAudioEndMs": 77200,
+      "subtitleFile": "01_subtitles.json",
+      "envelopeFile": "01_envelope.json",
+      "status": "received-machine-aligned-candidate"
+    },
+    {
+      "id": "02",
+      "file": "02_數位孿生定位.wav",
+      "sha256": "b725588e9cbad945532383e9ab86fbab3ec51017eb276cb315ef404694b3d116",
+      "durationMs": 28200,
+      "globalAudioStartMs": 77200,
+      "globalAudioEndMs": 105400,
+      "subtitleFile": "02_subtitles.json",
+      "envelopeFile": "02_envelope.json",
+      "status": "received-machine-aligned-candidate"
+    },
+    {
+      "id": "03",
+      "file": "03_建築BOS.wav",
+      "sha256": "6ae5b7fc5f1d0f599d3ffb5868d34ba6ada659e06939aba31141a1c2bd8426fe",
+      "durationMs": 31960,
+      "globalAudioStartMs": 105400,
+      "globalAudioEndMs": 137360,
+      "subtitleFile": "03_subtitles.json",
+      "envelopeFile": "03_envelope.json",
+      "status": "received-machine-aligned-candidate"
+    },
+    {
+      "id": "04",
+      "file": "04_結尾.wav",
+      "sha256": "927dce3354f1d0a6f3e077d2c78aad5d14342e3bd93fadf97ef0fd565cf2f904",
+      "durationMs": 13720,
+      "globalAudioStartMs": 137360,
+      "globalAudioEndMs": 151080,
+      "subtitleFile": "04_subtitles.json",
+      "envelopeFile": "04_envelope.json",
+      "status": "received-machine-aligned-candidate"
+    }
+  ],
+  "wallTimeline": "wall-timeline.json",
+  "endingCues": "ending-cues.json",
+  "semanticAnchors": "semantic-anchors.json",
+  "endingMainFadeInMs": 600,
+  "review": "machine-ASR+canonical-script+PCM; human listening pending",
+  "playbackPolicy": "preserve approved wall chapter hold/iPad controls; continuous mode QA-only",
+  "globalOffsetMeaning": "concatenated active audio excluding manual waits"
+}
