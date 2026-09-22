@@ -1,7 +1,7 @@
 {
-  "version": "full-wall-20260918-v1",
+  "version": "anlb-live-main-20260921-trim-v2",
   "chapter": "04",
-  "durationMs": 13720,
+  "durationMs": 12852.65625,
   "timeBase": "chapter-local-ms",
   "cues": [
     {
@@ -11,11 +11,11 @@
       ],
       "speechStartMs": 7550,
       "showMs": 7550,
-      "speechEndMs": 11250,
+      "speechEndMs": 10382.65625,
       "fadeInMs": 600,
-      "fadeOutStartMs": 11250,
+      "fadeOutStartMs": 10382.65625,
       "fadeOutMs": 0,
-      "clearMs": 11250,
+      "clearMs": 10382.65625,
       "target": "main",
       "confidence": "ASR+PCM-candidate",
       "reviewRequired": true
@@ -28,15 +28,15 @@
       ],
       "lineRevealMs": [
         7550,
-        11250
+        10382.65625
       ],
-      "speechStartMs": 11250,
-      "showMs": 11250,
-      "speechEndMs": 13330,
+      "speechStartMs": 10382.65625,
+      "showMs": 10382.65625,
+      "speechEndMs": 12462.65625,
       "fadeInMs": 600,
-      "fadeOutStartMs": 14130,
+      "fadeOutStartMs": 13262.65625,
       "fadeOutMs": 600,
-      "clearMs": 14730,
+      "clearMs": 13862.65625,
       "target": "main",
       "confidence": "ASR+PCM-candidate",
       "reviewRequired": true

@@ -1,215 +1,175 @@
 {
-  "version": "full-wall-20260918-v1",
+  "version": "prologue-20260922-v1",
   "chapter": "00",
-  "durationMs": 44480,
+  "durationMs": 37257.84375,
   "timeBase": "chapter-local-ms",
   "cues": [
     {
       "id": "00-01",
       "lines": [
-        "傳統的建築，",
-        "設計圖說、設備文件和維養紀錄，"
+        "傳統的房子，管線和維修紀錄",
+        "往往隨著時間而流失，"
       ],
-      "speechStartMs": 170,
-      "speechEndMs": 4760,
-      "rawStartMs": 180,
-      "rawEndMs": 4940,
-      "showMs": 170,
+      "speechStartMs": 144,
+      "speechEndMs": 5329,
+      "rawStartMs": 144,
+      "rawEndMs": 5329,
+      "showMs": 144,
       "fadeInMs": 250,
+      "fadeOutStartMs": 5329,
       "fadeOutMs": 300,
-      "fadeOutStartMs": 4760,
-      "clearMs": 5060,
+      "clearMs": 5629,
+      "displayDelayMs": 0,
       "holdAfterSpeechMs": 0,
       "target": "d",
-      "confidence": "ASR+canonical-script+PCM-gap-candidate",
-      "reviewRequired": true,
-      "displayDelayMs": 0
+      "confidence": "user-canonical-script+Whisper-base-clause-confirmation+PCM-silence-boundaries",
+      "reviewRequired": true
     },
     {
       "id": "00-02",
       "lines": [
-        "可能隨著時間與人員更替，",
-        "逐漸散失。"
+        "但在這裡，ANLB擁有不失憶的",
+        "生命履歷與數位分身。"
       ],
-      "speechStartMs": 5300,
-      "speechEndMs": 9930,
-      "rawStartMs": 5330,
-      "rawEndMs": 10860,
-      "showMs": 5300,
+      "speechStartMs": 5813,
+      "speechEndMs": 12078,
+      "rawStartMs": 5813,
+      "rawEndMs": 12078,
+      "showMs": 5813,
       "fadeInMs": 250,
+      "fadeOutStartMs": 12078,
       "fadeOutMs": 300,
-      "fadeOutStartMs": 9930,
-      "clearMs": 10230,
+      "clearMs": 12378,
+      "displayDelayMs": 0,
       "holdAfterSpeechMs": 0,
       "target": "d",
-      "confidence": "ASR+canonical-script+PCM-gap-candidate",
-      "reviewRequired": true,
-      "displayDelayMs": 0
+      "confidence": "user-canonical-script+Whisper-base-clause-confirmation+PCM-silence-boundaries",
+      "reviewRequired": true
     },
     {
       "id": "00-03",
       "lines": [
-        "在這裡，",
-        "我們用生命履歷與數位分身，"
+        "牆內的每一條管線、",
+        "每一項設備，"
       ],
-      "speechStartMs": 11240,
-      "speechEndMs": 14830,
-      "rawStartMs": 11180,
-      "rawEndMs": 15380,
-      "showMs": 11240,
+      "speechStartMs": 13587,
+      "speechEndMs": 16508,
+      "rawStartMs": 13587,
+      "rawEndMs": 16508,
+      "showMs": 13587,
       "fadeInMs": 250,
+      "fadeOutStartMs": 16508,
       "fadeOutMs": 300,
-      "fadeOutStartMs": 14830,
-      "clearMs": 15130,
+      "clearMs": 16808,
+      "displayDelayMs": 0,
       "holdAfterSpeechMs": 0,
       "target": "d",
-      "confidence": "ASR+canonical-script+PCM-gap-candidate",
-      "reviewRequired": true,
-      "displayDelayMs": 0
+      "confidence": "user-canonical-script+Whisper-base-clause-confirmation+PCM-silence-boundaries",
+      "reviewRequired": true
     },
     {
       "id": "00-04",
       "lines": [
-        "為建築保留記憶。"
+        "在數位世界裡都有清楚的位置",
+        "與專屬ID，"
       ],
-      "speechStartMs": 15160,
-      "speechEndMs": 16760,
-      "rawStartMs": 15380,
-      "rawEndMs": 17320,
-      "showMs": 15160,
+      "speechStartMs": 16819,
+      "speechEndMs": 20581,
+      "rawStartMs": 16819,
+      "rawEndMs": 20581,
+      "showMs": 16819,
       "fadeInMs": 250,
+      "fadeOutStartMs": 20581,
       "fadeOutMs": 300,
-      "fadeOutStartMs": 16760,
-      "clearMs": 17060,
+      "clearMs": 20881,
+      "displayDelayMs": 0,
       "holdAfterSpeechMs": 0,
       "target": "d",
-      "confidence": "ASR+canonical-script+PCM-gap-candidate",
-      "reviewRequired": true,
-      "displayDelayMs": 0
+      "confidence": "user-canonical-script+Whisper-base-clause-confirmation+PCM-silence-boundaries",
+      "reviewRequired": true
     },
     {
       "id": "00-05",
       "lines": [
-        "從建造時留下的資料，",
-        "到日後每一次保養與更新，"
+        "無論三十年，六十年，",
+        "甚至一百二十年，"
       ],
-      "speechStartMs": 18000,
-      "speechEndMs": 22890,
-      "rawStartMs": 17900,
-      "rawEndMs": 22850,
-      "showMs": 18000,
+      "speechStartMs": 22064,
+      "speechEndMs": 25412,
+      "rawStartMs": 22064,
+      "rawEndMs": 25412,
+      "showMs": 22064,
       "fadeInMs": 250,
+      "fadeOutStartMs": 25412,
       "fadeOutMs": 300,
-      "fadeOutStartMs": 22890,
-      "clearMs": 23190,
+      "clearMs": 25712,
+      "displayDelayMs": 0,
       "holdAfterSpeechMs": 0,
       "target": "d",
-      "confidence": "ASR+canonical-script+PCM-gap-candidate",
-      "reviewRequired": true,
-      "displayDelayMs": 0
+      "confidence": "user-canonical-script+Whisper-base-clause-confirmation+PCM-silence-boundaries",
+      "reviewRequired": true
     },
     {
       "id": "00-06",
       "lines": [
-        "讓新的紀錄接續累積，"
+        "所有關於家的照顧經驗",
+        "都將被完整收藏，"
       ],
-      "speechStartMs": 23310,
-      "speechEndMs": 25350,
-      "rawStartMs": 23080,
-      "rawEndMs": 25940,
-      "showMs": 23310,
+      "speechStartMs": 25873,
+      "speechEndMs": 29474,
+      "rawStartMs": 25873,
+      "rawEndMs": 29474,
+      "showMs": 25873,
       "fadeInMs": 250,
+      "fadeOutStartMs": 29474,
       "fadeOutMs": 300,
-      "fadeOutStartMs": 25350,
-      "clearMs": 25650,
+      "clearMs": 29774,
+      "displayDelayMs": 0,
       "holdAfterSpeechMs": 0,
       "target": "d",
-      "confidence": "ASR+canonical-script+PCM-gap-candidate",
-      "reviewRequired": true,
-      "displayDelayMs": 0
+      "confidence": "user-canonical-script+Whisper-base-clause-confirmation+PCM-silence-boundaries",
+      "reviewRequired": true
     },
     {
       "id": "00-07",
       "lines": [
-        "也讓過去的經驗",
-        "能夠回頭查閱。"
+        "確保每次維養紀錄有跡可循，"
       ],
-      "speechStartMs": 26660,
-      "speechEndMs": 29330,
-      "rawStartMs": 26500,
-      "rawEndMs": 30400,
-      "showMs": 26660,
+      "speechStartMs": 29724,
+      "speechEndMs": 32268,
+      "rawStartMs": 29724,
+      "rawEndMs": 32268,
+      "showMs": 29774,
       "fadeInMs": 250,
+      "fadeOutStartMs": 32268,
       "fadeOutMs": 300,
-      "fadeOutStartMs": 29330,
-      "clearMs": 29630,
+      "clearMs": 32568,
+      "displayDelayMs": 50,
       "holdAfterSpeechMs": 0,
       "target": "d",
-      "confidence": "ASR+canonical-script+PCM-gap-candidate",
-      "reviewRequired": true,
-      "displayDelayMs": 0
+      "confidence": "user-canonical-script+Whisper-base-clause-confirmation+PCM-silence-boundaries",
+      "reviewRequired": true
     },
     {
       "id": "00-08",
       "lines": [
-        "當資訊有了對應的位置與身分，"
+        "讓每一次社區或物業管理，",
+        "都不必打掉重練。"
       ],
-      "speechStartMs": 30670,
-      "speechEndMs": 33060,
-      "rawStartMs": 30580,
-      "rawEndMs": 33650,
-      "showMs": 30670,
+      "speechStartMs": 32811,
+      "speechEndMs": 36884,
+      "rawStartMs": 32811,
+      "rawEndMs": 36884,
+      "showMs": 32811,
       "fadeInMs": 250,
+      "fadeOutStartMs": 36884,
       "fadeOutMs": 300,
-      "fadeOutStartMs": 33060,
-      "clearMs": 33360,
+      "clearMs": 37184,
+      "displayDelayMs": 0,
       "holdAfterSpeechMs": 0,
       "target": "d",
-      "confidence": "ASR+canonical-script+PCM-gap-candidate",
-      "reviewRequired": true,
-      "displayDelayMs": 0
-    },
-    {
-      "id": "00-09",
-      "lines": [
-        "接手的人，就能理解這棟建築",
-        "曾經受到哪些照顧。"
-      ],
-      "speechStartMs": 33380,
-      "speechEndMs": 39370,
-      "rawStartMs": 33820,
-      "rawEndMs": 39980,
-      "showMs": 33380,
-      "fadeInMs": 250,
-      "fadeOutMs": 300,
-      "fadeOutStartMs": 39370,
-      "clearMs": 39670,
-      "holdAfterSpeechMs": 0,
-      "target": "d",
-      "confidence": "ASR+canonical-script+PCM-gap-candidate",
-      "reviewRequired": true,
-      "displayDelayMs": 0
-    },
-    {
-      "id": "00-10",
-      "lines": [
-        "社區的管理，",
-        "也不必每一次都從零開始。"
-      ],
-      "speechStartMs": 40660,
-      "speechEndMs": 44080,
-      "rawStartMs": 40580,
-      "rawEndMs": 44240,
-      "showMs": 40660,
-      "fadeInMs": 250,
-      "fadeOutMs": 300,
-      "fadeOutStartMs": 44080,
-      "clearMs": 44380,
-      "holdAfterSpeechMs": 0,
-      "target": "d",
-      "confidence": "ASR+canonical-script+PCM-gap-candidate",
-      "reviewRequired": true,
-      "displayDelayMs": 0
+      "confidence": "user-canonical-script+Whisper-base-clause-confirmation+PCM-silence-boundaries",
+      "reviewRequired": true
     }
   ]
 }

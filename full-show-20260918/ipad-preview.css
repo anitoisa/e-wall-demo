@@ -31,3 +31,22 @@ body[data-view=ipad] #console,#standby-screen{isolation:isolate;position:relativ
 html[data-mode=idle] body[data-view=ipad] #story-note{display:none}
 body[data-view=ipad] #modes button{background:#06111cd9}
 .embedded-ipad .tablet-caption,.embedded-ipad .transport a{display:none!important}
+/* Physical tablet: same controls and standby, without a simulated bezel. */
+html.device-ipad-root{width:100%;height:100%;overflow:hidden;background:#06131e;overscroll-behavior:none}
+html.device-ipad-root body[data-view=ipad].device-ipad{position:fixed;inset:0;width:100%;height:100%;min-height:0;overscroll-behavior:none;touch-action:pan-x pan-y}
+body[data-view=ipad] .tablet-kv,body[data-view=ipad] .tablet-kv i{animation:none!important;transition:none!important}
+body[data-view=ipad].device-ipad{padding:0;margin:0;display:block;width:100%;height:100vh;height:100dvh;min-height:0;overflow:hidden}
+.device-ipad .tablet-shell{width:100%;height:100%;border-radius:0;box-shadow:none;background:#06131e}
+.device-ipad .tablet-screen{inset:0;width:100%;height:100%;padding:0;border-radius:0;box-sizing:border-box}
+.device-ipad .tablet-screen:after,.device-ipad .tablet-caption,.device-ipad .transport a{display:none!important}
+body[data-view=ipad].device-ipad #console{width:100%;height:100%;border-radius:0;padding:max(16px,env(safe-area-inset-top)) max(22px,env(safe-area-inset-right)) max(16px,env(safe-area-inset-bottom)) max(22px,env(safe-area-inset-left));display:flex;flex-direction:column;overflow:auto}
+body[data-view=ipad].device-ipad .console-content{flex:1;min-height:0;grid-template-columns:minmax(0,1fr) minmax(230px,28%);gap:22px;margin:16px 0}
+body[data-view=ipad].device-ipad .console-story{min-height:0;overflow:auto}
+body[data-view=ipad].device-ipad .console-story h1{font-size:clamp(30px,4.4vw,54px)}
+body[data-view=ipad].device-ipad #console .transport{flex-shrink:0;gap:8px}
+body[data-view=ipad].device-ipad #console .transport button{font-size:clamp(18px,2.1vw,26px);min-height:60px;padding:8px 14px}
+.device-ipad #standby-screen{inset:0;border-radius:0;gap:clamp(28px,7vh,68px);padding:24px;box-sizing:border-box}
+.device-ipad #standby-screen img{width:62vw;max-width:740px}
+.device-ipad #standby-screen .standby-claim strong{font-size:clamp(28px,5.2vw,62px)}
+.device-ipad #standby-screen .standby-claim span{font-size:clamp(18px,2.8vw,34px)}
+@media(orientation:portrait){body[data-view=ipad].device-ipad .console-content{grid-template-columns:1fr;overflow:auto}body[data-view=ipad].device-ipad #modes{display:grid;grid-template-columns:1fr 1fr;gap:10px}body[data-view=ipad].device-ipad .console-story{overflow:visible}}

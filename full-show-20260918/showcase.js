@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import {FBXLoader} from 'three/addons/loaders/FBXLoader.js';
-import {buildVolume} from './volume-scenes.js?v=selection-20260915';
-import {holdVolume} from './hold-volume.js?v=selection-20260915';
+import {buildVolume} from './volume-scenes.js?v=web60-20260923';
+import {holdVolume} from './hold-volume.js?v=web60-20260923';
 await document.fonts.ready;
 
 // One renderer per page, independent persistent scenes, clipped to each panel.

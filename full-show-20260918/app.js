@@ -83,7 +83,7 @@ function integratedPanel(id){const m=current(),seg=state.segment,s=STORY[m.id][s
 }
 // Convert main's existing 320px design logo into each physical panel canvas.
 function standbyLogoWidth(id){const mainWidth=LAYOUT.find(r=>r[0]==='main')[3],width=LAYOUT.find(r=>r[0]===id)[3];return 320*mainWidth/width*(portrait(id)?1080:1920)/1920;}
-function panel(id){const intro=globalThis.ExIntro?.panel?.(id);if(intro)return intro;if(state.standby!==false&&!frozen)return `<article class="panel standby-panel ${id==='main'?'':'standby-logo-only'} ${portrait(id)?'portrait':''}" data-id="${id}" style="--standby-logo-width:${standbyLogoWidth(id)}px"><img src="${root}assets/logo.png" alt="ANLB INSIDE">${id==='main'?'<strong>第五代住宅宣言</strong><span>AI NATIVE LIVING BUILDING</span>':''}</article>`;if(id==='d')return vacantD();const m=current(),seg=state.segment;let body='',cl='',note='概念圖解 · 非即時建物資料';
+function panel(id){if(globalThis.Aperture?.supports(id))return Aperture.markup(id);const intro=globalThis.ExIntro?.panel?.(id);if(intro)return intro;if(state.standby!==false&&!frozen)return `<article class="panel standby-panel ${id==='main'?'':'standby-logo-only'} ${portrait(id)?'portrait':''}" data-id="${id}" style="--standby-logo-width:${standbyLogoWidth(id)}px"><img src="${root}assets/logo.png" alt="ANLB INSIDE">${id==='main'?'<strong>第五代住宅宣言</strong><span>AI NATIVE LIVING BUILDING</span>':''}</article>`;if(id==='d')return vacantD();const m=current(),seg=state.segment;let body='',cl='',note='概念圖解 · 非即時建物資料';
  const revised=revisionPanel(id);if(revised!==null)return revised;
  if(['a','main','c','d','s1','s2','s3','s4'].includes(id))return integratedPanel(id);
  if(id==='b'){cl='manifesto';body=`<div class="eyebrow">寶舖建設 · 第五代住宅宣言</div><h1>第五代<br>住宅宣言</h1><p class="manifesto-line">AI 原生建築生命體</p><div class="manifesto-bottom">全透明原生健康建築<span>AI NATIVE LIVING BUILDING</span></div>`;note='品牌宣言';}
@@ -139,7 +139,7 @@ function render(){
  const changed=transitionKey&&next!==transitionKey;transitionKey=next;
  if(changed&&!matchMedia('(prefers-reduced-motion: reduce)').matches&&document.startViewTransition){
   uiTransition?.skipTransition();uiTransition=document.startViewTransition(()=>{renderContent();globalThis.ExIntro?.paint?.()});
-  uiTransition.finished.catch(()=>{});return;
+  uiTransition.ready.catch(()=>{});uiTransition.updateCallbackDone.catch(()=>{});uiTransition.finished.catch(()=>{});return;
  }
  renderContent();
 }
@@ -163,9 +163,9 @@ function renderContent(){const m=current();const waiting=!frozen&&state.standby!
  resize();
 }
 function connection(ok){online=ok;document.body.classList.toggle('offline',!ok);const el=document.getElementById('connection');if(el)el.textContent=frozen?'固定分鏡預覽':ok?'● 已連線':'● 連線中斷 · 自動重連';document.querySelectorAll('[data-action],[data-mode]').forEach(b=>b.disabled=!ok||frozen);}
-async function poll(){if(globalThis.ExIntro?.enabled){state=ExIntro.read();render();connection(true);ExIntro.paint();setTimeout(poll,50);return;}if(frozen){render();connection(false);return}try{const r=await fetch('/api/state',{cache:'no-store',signal:AbortSignal.timeout(3000)});if(!r.ok)throw Error();state=await r.json();render();connection(true);}catch{state.playing=false;render();connection(false);}finally{setTimeout(poll,500);}}
+async function poll(){if(globalThis.ExIntro?.enabled){state=ExIntro.read();render();connection(true);ExIntro.paint();setTimeout(poll,50);return;}state.playing=false;render();connection(false);}
 let pendingCommands=[];
-async function command(action,mode){if(globalThis.ExIntro?.enabled){ExIntro.request(action,mode);return;}if(!online||frozen)return;if(action==='toggle'&&state.standby!==false)action='start';if(busy){if(['mode','reset','standby'].includes(action))pendingCommands=[];pendingCommands.push({action,mode});return;}busy=true;try{const r=await fetch('/api/command',{method:'POST',headers:{'Content-Type':'application/json','X-ANLB-Control':'v2'},body:JSON.stringify({action,mode}),signal:AbortSignal.timeout(3000)});if(!r.ok)throw Error();state=await r.json();render();connection(true);}catch{pendingCommands=[];connection(false);}finally{busy=false;if(pendingCommands.length){const next=pendingCommands.shift();command(next.action,next.mode);}}}
+async function command(action,mode){if(globalThis.ExIntro?.enabled)ExIntro.request(action,mode);}
 document.addEventListener('click',e=>{const action=e.target.closest('[data-action]'),mode=e.target.closest('[data-mode]'),slot=e.target.closest('.slot');if(action)command(action.dataset.action);if(mode&&mode.tagName==='BUTTON')command('mode',mode.dataset.mode);if(slot){detailId=slot.dataset.id;document.getElementById('detail').innerHTML=panel(detailId);document.getElementById('inspect').showModal();resize();}if(e.target.id==='close')document.getElementById('inspect').close();});
 document.getElementById('inspect')?.addEventListener('close',()=>detailId=null);
 document.addEventListener('keydown',e=>{if(single||e.target.closest('input,textarea'))return;if(['ArrowLeft','ArrowRight'].includes(e.key)){e.preventDefault();command('mode',MODES[(MODES.indexOf(current())+(e.key==='ArrowRight'?1:3))%4].id);}if(e.code==='Space'&&e.target.tagName!=='BUTTON'){e.preventDefault();command('toggle');}});

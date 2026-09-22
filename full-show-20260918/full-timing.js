@@ -23,7 +23,7 @@ export function sampleSubtitle(index,time,playing,pack){
  return {cue:cue?.id||null,text:cue?cue.lines.join('\n'):'',lines:cue?.lines||[],opacity,voice,target:cue?.target||'d',lineRevealMs:cue?.lineRevealMs};
 }
 export async function loadPack(base){
- const read=async name=>{const r=await fetch(new URL(name,base));if(!r.ok)throw Error('新語音資料無法載入：'+name);return r.json()};
+ const read=async name=>{const r=await fetch(new URL(name,base),{cache:'no-store'});if(!r.ok)throw Error('新語音資料無法載入：'+name);return r.json()};
  const [manifest,timeline,ending]=await Promise.all(['manifest.json','wall-timeline.json','ending-cues.json'].map(read));
  const subtitles=await Promise.all(manifest.chapters.map(c=>read(c.subtitleFile))),envelopes=await Promise.all(manifest.chapters.map(c=>read(c.envelopeFile)));
  return {manifest,timeline,ending,subtitles,envelopes,base};

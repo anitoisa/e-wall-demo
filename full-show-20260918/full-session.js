@@ -2,13 +2,13 @@
  * iPad, D, single screens and inspection views consume time; they never play audio. */
 globalThis.ExIntro=(()=>{
  const P=globalThis.FullPack,T=globalThis.FullTiming,E=globalThis.FullEnding;
- const base=document.body.dataset.view==='single'?'../':'',key='anlb-online-ue60-20260918',id=crypto.randomUUID();
+ const base=document.body.dataset.view==='single'?'../':'',key='anlb-online-full-20260923-v1',id=crypto.randomUUID();
  const channel=new BroadcastChannel(key),view=document.body.dataset.view;
  const qa=new URLSearchParams(location.search).get('qa')==='1';
  let owner=false,audio=null,release,serial=Promise.resolve(),ticket=0,received=0,lastSave=0,lastInteraction=performance.now(),disposed=false;
  let postAnchor=0,postTime=0,index=0,phase='standby',staff=false,qaContinuous=false,error='',completed=[];
  const mediaCache=new Map();
- function mediaURL(i){if(!mediaCache.has(i))mediaCache.set(i,(async()=>{const entry=P.manifest.chapters[i],r=await fetch(new URL('narration-full/'+entry.file,new URL(base,location.href)));if(!r.ok)throw Error('原音讀取失敗');const raw=await r.arrayBuffer(),hash=[...new Uint8Array(await crypto.subtle.digest('SHA-256',raw))].map(x=>x.toString(16).padStart(2,'0')).join('');if(hash!==entry.sha256)throw Error('原音完整性核對失敗');return URL.createObjectURL(new Blob([raw],{type:'audio/wav'}))})());return mediaCache.get(i)}
+ function mediaURL(i){if(!mediaCache.has(i))mediaCache.set(i,(async()=>{const entry=P.manifest.chapters[i],r=await fetch(new URL('narration-full/'+entry.file+'?v=web60-20260923',new URL(base,location.href)));if(!r.ok)throw Error('原音讀取失敗');const raw=await r.arrayBuffer(),hash=[...new Uint8Array(await crypto.subtle.digest('SHA-256',raw))].map(x=>x.toString(16).padStart(2,'0')).join('');if(hash!==entry.sha256)throw Error('原音完整性核對失敗');return URL.createObjectURL(new Blob([raw],{type:'audio/wav'}))})());return mediaCache.get(i)}
  let s={mode:'idle',segment:0,elapsed:0,segmentDuration:12,segmentCount:3,playing:false,standby:true,scenarioSeed:20260915,revision:0,
   narration:{version:key,chapter:0,time:0,duration:P.manifest.chapters[0].durationMs/1000,phase:'standby',ended:false},completedChapters:[]};
  try{const saved=JSON.parse(localStorage.getItem(key));if(saved?.narration?.version===key){s={...saved,playing:false};index=s.narration.chapter;phase=['playing','loading','postroll'].includes(s.narration.phase)?'paused':s.narration.phase;staff=!!s.staffMode;completed=s.completedChapters||[];postTime=s.narration.time;}}
@@ -136,7 +136,7 @@ globalThis.ExIntro=(()=>{
   badge.textContent=s.staffMode?'工作人員自由控制模式':'';badge.hidden=!s.staffMode;
   document.querySelector('.desk-header>span small')?.replaceChildren(document.createTextNode('完整展演演示 · UE 實際預錄影像 · 不連接現場硬體'));
   document.getElementById('segment-label').textContent=`${labels[n.chapter]} · ${n.time.toFixed(1)} / ${n.visualDuration||n.duration} 秒`;
-  document.getElementById('story-note').textContent=view==='ipad'?'': '正式章末等待操作 · 04 自動接續 03 · 新音時間碼候選，字詞待人工聽校';
+  document.getElementById('story-note').textContent=view==='ipad'?'': '每章播完後按下一章 · 03 自動接續尾聲 · 9/22 序章修正版';
   if(n.chapter===4&&!s.standby){document.getElementById('chapter-label').textContent='04 / 尾聲';document.getElementById('chapter-claim').textContent='ANLB'}
   if(s.mode==='bim'&&s.segment===1){document.querySelectorAll('[data-id=s4] .edge-label span').forEach(el=>el.textContent=s.waterRouteReady?'→ P-01':'管線概念')}
   const play=document.getElementById('play');play.textContent=active?'Ⅱ 暫停':phase==='standby'?'喚醒控制台':phase==='ready'?'播放序章':'▶ 繼續';play.disabled=['waiting','complete','error','loading'].includes(phase);

@@ -1,96 +1,81 @@
 {
-  "version": "full-wall-20260918-v1",
+  "version": "anlb-live-main-20260922-intro-v1",
   "timeBase": "chapter-local-ms",
   "review": "machine-ASR+approved-script+PCM; not human-listening certified",
   "chapters": [
     {
       "chapter": "00",
-      "durationMs": 44480,
-      "speechStartMs": 170,
-      "speechEndMs": 44080,
+      "version": "prologue-20260922-v1",
+      "timeBase": "00-local-ms",
+      "durationMs": 37257.84375,
+      "speechEndMs": 36884,
       "anchors": [
         {
-          "id": "design",
-          "text": "設計圖說",
-          "startMs": 1390,
-          "endMs": 2320,
-          "timingSource": "ASR-token+PCM-candidate"
+          "id": "traditional",
+          "startMs": 144,
+          "text": "傳統的房子",
+          "kind": "speech"
         },
         {
-          "id": "equipment",
-          "text": "設備文件",
-          "startMs": 2740,
-          "endMs": 3670,
-          "timingSource": "ASR-token+PCM-candidate"
+          "id": "records-lost",
+          "startMs": 1430,
+          "text": "管線和維修紀錄",
+          "kind": "ASR-approx"
         },
         {
-          "id": "maintenance",
-          "text": "維養紀錄",
-          "startMs": 3915,
-          "endMs": 4760,
-          "timingSource": "ASR-token+PCM-candidate"
+          "id": "contrast",
+          "startMs": 5813,
+          "text": "但在這裡",
+          "kind": "speech"
         },
         {
-          "id": "memory",
-          "text": "在這裡",
-          "startMs": 11240,
-          "endMs": 11860,
-          "timingSource": "ASR-token+PCM-candidate"
+          "id": "anlb-memory",
+          "startMs": 8023,
+          "text": "ANLB擁有不失憶的生命履歷與數位分身",
+          "kind": "speech"
         },
         {
-          "id": "build-record",
-          "text": "從建造時留下的資料",
-          "startMs": 18000,
-          "endMs": 19890,
-          "timingSource": "ASR-token+PCM-candidate"
+          "id": "pipe-device",
+          "startMs": 13587,
+          "text": "牆內的每一條管線、每一項設備",
+          "kind": "speech"
         },
         {
-          "id": "update",
-          "text": "到日後每一次保養與更新",
-          "startMs": 20300,
-          "endMs": 22890,
-          "timingSource": "ASR-token+PCM-candidate"
+          "id": "position-id",
+          "startMs": 16819,
+          "text": "在數位世界裡都有清楚的位置與專屬ID",
+          "kind": "speech"
         },
         {
-          "id": "accumulate",
-          "text": "讓新的紀錄接續累積",
-          "startMs": 23310,
-          "endMs": 25350,
-          "timingSource": "ASR+PCM-refined"
+          "id": "years",
+          "startMs": 22064,
+          "text": "無論三十年，六十年，甚至一百二十年",
+          "kind": "speech"
         },
         {
-          "id": "look-back",
-          "text": "也讓過去的經驗",
-          "startMs": 26660,
-          "endMs": 28480,
-          "timingSource": "ASR-token+PCM-candidate"
+          "id": "care-record",
+          "startMs": 25873,
+          "text": "所有關於家的照顧經驗都將被完整收藏",
+          "kind": "speech"
         },
         {
-          "id": "identity",
-          "text": "當資訊有了對應的位置與身分",
-          "startMs": 30670,
-          "endMs": 33060,
-          "timingSource": "ASR+PCM-refined"
+          "id": "traceability",
+          "startMs": 29724,
+          "text": "確保每次維養紀錄有跡可循",
+          "kind": "speech"
         },
         {
-          "id": "handover",
-          "text": "接手的人",
-          "startMs": 33380,
-          "endMs": 34230,
-          "timingSource": "ASR+PCM-refined"
-        },
-        {
-          "id": "closing",
-          "text": "社區的管理",
-          "startMs": 40660,
-          "endMs": 41680,
-          "timingSource": "ASR-token+PCM-candidate"
+          "id": "management",
+          "startMs": 32811,
+          "text": "讓每一次社區或物業管理，都不必打掉重練",
+          "kind": "speech"
         }
-      ]
+      ],
+      "review": "machine ASR with user canonical text and PCM clause boundaries; not human-listening certified; wall/UE visuals require current-content mapping"
     },
     {
       "chapter": "01",
-      "durationMs": 32720,
+      "durationMs": 32720.0,
       "speechStartMs": 160,
       "speechEndMs": 32360,
       "anchors": [
@@ -147,7 +132,7 @@
     },
     {
       "chapter": "02",
-      "durationMs": 28200,
+      "durationMs": 28200.0,
       "speechStartMs": 180,
       "speechEndMs": 27800,
       "anchors": [
@@ -225,9 +210,9 @@
     },
     {
       "chapter": "03",
-      "durationMs": 31960,
+      "durationMs": 31156.1875,
       "speechStartMs": 90,
-      "speechEndMs": 31560,
+      "speechEndMs": 30756.1875,
       "anchors": [
         {
           "id": "intro",
@@ -302,17 +287,17 @@
         {
           "id": "closing",
           "text": "有資訊作為依據",
-          "startMs": 29810,
-          "endMs": 31560,
+          "startMs": 29006.1875,
+          "endMs": 30756.1875,
           "timingSource": "ASR-token+PCM-candidate"
         }
       ]
     },
     {
       "chapter": "04",
-      "durationMs": 13720,
+      "durationMs": 12852.65625,
       "speechStartMs": 100,
-      "speechEndMs": 13330,
+      "speechEndMs": 12462.65625,
       "anchors": [
         {
           "id": "A",
@@ -352,8 +337,8 @@
         {
           "id": "closingSecond",
           "text": "也是讓安心延續的方法",
-          "startMs": 11250,
-          "endMs": 13330,
+          "startMs": 10382.65625,
+          "endMs": 12462.65625,
           "timingSource": "ASR-token+PCM-candidate"
         }
       ]

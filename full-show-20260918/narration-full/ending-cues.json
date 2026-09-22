@@ -1,6 +1,6 @@
 {
-  "version": "full-wall-20260918-v1",
-  "audioStatus": "new-audio-aligned-candidate",
+  "version": "anlb-live-main-20260921-trim-v2",
+  "audioStatus": "trim-v2-offline-mapped",
   "audio": "04_結尾.wav",
   "timeBase": "04-local-seconds",
   "A": 0.1,
@@ -8,20 +8,20 @@
   "C": 4.01,
   "D": 5.23,
   "closingFirst": 7.55,
-  "closingSecond": 11.25,
-  "speechEnd": 13.33,
-  "audioEnd": 13.72,
+  "closingSecond": 10.38265625,
+  "speechEnd": 12.46265625,
+  "audioEnd": 12.85265625,
   "revealDuration": 2.2,
   "subtitleHold": 0.8,
   "subtitleFade": 0.6,
   "logoFade": 1.2,
   "logoHold": 3.0,
-  "logoStart": 14.73,
-  "visualEnd": 18.93,
+  "logoStart": 13.86265625,
+  "visualEnd": 18.06265625,
   "mainSubtitleMode": "persistent-two-line-block",
   "mainLineRevealMs": [
     7550,
-    11250
+    10382.65625
   ],
-  "note": "R7品牌收尾沿用；新語音ASR＋PCM候選，非人工聽校。main第一行持續至第二行，不重複淡入。"
+  "note": "Absolute cue times mapped by exact PCM cuts; fade/hold durations unchanged. Live playback approval pending."
 }

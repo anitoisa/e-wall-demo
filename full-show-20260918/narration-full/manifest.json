@@ -1,65 +1,65 @@
 {
-  "version": "full-wall-20260918-v1",
-  "scope": "local-wall-and-UE-candidates-not-production",
-  "audioDurationMs": 151080,
+  "version": "anlb-live-main-20260922-intro-v1",
+  "scope": "E1-formal",
+  "audioDurationMs": 142186.6875,
   "visualPostRollMs": 5210,
-  "showDurationMs": 156290,
+  "showDurationMs": 147396.6875,
   "interChapterGapMs": 0,
   "chapters": [
     {
       "id": "00",
       "file": "00_序章.wav",
-      "sha256": "f57ba62faa5695a2068016741f0d98fd597ad2b49f8c990b27c1089ae4c455b2",
-      "durationMs": 44480,
+      "sha256": "41714ab94adeca9c3d98d2bfe294d18a5611a5fde1986bfbec945317b59589f7",
+      "durationMs": 37257.84375,
       "globalAudioStartMs": 0,
-      "globalAudioEndMs": 44480,
+      "globalAudioEndMs": 37257.84375,
       "subtitleFile": "00_subtitles.json",
       "envelopeFile": "00_envelope.json",
-      "status": "received-machine-aligned-candidate"
+      "status": "delivered"
     },
     {
       "id": "01",
       "file": "01_建築生命履歷.wav",
       "sha256": "c83704b34899a7f34065b22c29f374c39ca03543537036f4e5796988be2bec9d",
-      "durationMs": 32720,
-      "globalAudioStartMs": 44480,
-      "globalAudioEndMs": 77200,
+      "durationMs": 32720.0,
+      "globalAudioStartMs": 37257.84375,
+      "globalAudioEndMs": 69977.84375,
       "subtitleFile": "01_subtitles.json",
       "envelopeFile": "01_envelope.json",
-      "status": "received-machine-aligned-candidate"
+      "status": "trim-v2-offline-validated"
     },
     {
       "id": "02",
       "file": "02_數位孿生定位.wav",
       "sha256": "b725588e9cbad945532383e9ab86fbab3ec51017eb276cb315ef404694b3d116",
-      "durationMs": 28200,
-      "globalAudioStartMs": 77200,
-      "globalAudioEndMs": 105400,
+      "durationMs": 28200.0,
+      "globalAudioStartMs": 69977.84375,
+      "globalAudioEndMs": 98177.84375,
       "subtitleFile": "02_subtitles.json",
       "envelopeFile": "02_envelope.json",
-      "status": "received-machine-aligned-candidate"
+      "status": "trim-v2-offline-validated"
     },
     {
       "id": "03",
       "file": "03_建築BOS.wav",
-      "sha256": "6ae5b7fc5f1d0f599d3ffb5868d34ba6ada659e06939aba31141a1c2bd8426fe",
-      "durationMs": 31960,
-      "globalAudioStartMs": 105400,
-      "globalAudioEndMs": 137360,
+      "sha256": "0a5a1d2607561c081d4b3777860279e52d294139b0de78aea85d1088b8c21efa",
+      "durationMs": 31156.1875,
+      "globalAudioStartMs": 98177.84375,
+      "globalAudioEndMs": 129334.03125,
       "subtitleFile": "03_subtitles.json",
       "envelopeFile": "03_envelope.json",
-      "status": "received-machine-aligned-candidate"
+      "status": "trim-v2-offline-validated"
     },
     {
       "id": "04",
       "file": "04_結尾.wav",
-      "sha256": "927dce3354f1d0a6f3e077d2c78aad5d14342e3bd93fadf97ef0fd565cf2f904",
-      "durationMs": 13720,
-      "globalAudioStartMs": 137360,
-      "globalAudioEndMs": 151080,
+      "sha256": "a31041ae8b1fbac0f2ff539896bbc842064ef6bf73cbf671436ea0e0e2fed331",
+      "durationMs": 12852.65625,
+      "globalAudioStartMs": 129334.03125,
+      "globalAudioEndMs": 142186.6875,
       "subtitleFile": "04_subtitles.json",
       "envelopeFile": "04_envelope.json",
-      "status": "received-machine-aligned-candidate"
+      "status": "trim-v2-offline-validated"
     }
   ],
   "wallTimeline": "wall-timeline.json",

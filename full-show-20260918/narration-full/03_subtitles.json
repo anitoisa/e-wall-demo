@@ -1,7 +1,7 @@
 {
-  "version": "full-wall-20260918-v1",
+  "version": "anlb-live-main-20260921-trim-v2",
   "chapter": "03",
-  "durationMs": 31960,
+  "durationMs": 31156.1875,
   "timeBase": "chapter-local-ms",
   "cues": [
     {
@@ -172,15 +172,15 @@
       "lines": [
         "有資訊作為依據。"
       ],
-      "speechStartMs": 29810,
-      "speechEndMs": 31560,
-      "rawStartMs": 29810,
-      "rawEndMs": 31460,
-      "showMs": 29810,
+      "speechStartMs": 29006.1875,
+      "speechEndMs": 30756.1875,
+      "rawStartMs": 29006.1875,
+      "rawEndMs": 30656.1875,
+      "showMs": 29006.1875,
       "fadeInMs": 250,
       "fadeOutMs": 300,
-      "fadeOutStartMs": 31560,
-      "clearMs": 31860,
+      "fadeOutStartMs": 30756.1875,
+      "clearMs": 31056.1875,
       "holdAfterSpeechMs": 0,
       "target": "d",
       "confidence": "ASR+canonical-script+PCM-gap-candidate",

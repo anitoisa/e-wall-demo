@@ -1,7 +1,7 @@
 {
-  "version": "full-wall-20260918-v1",
+  "version": "anlb-live-main-20260921-trim-v2",
   "chapter": "01",
-  "durationMs": 32720,
+  "durationMs": 32720.0,
   "timeBase": "chapter-local-ms",
   "cues": [
     {

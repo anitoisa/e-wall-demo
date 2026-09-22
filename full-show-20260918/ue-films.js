@@ -3,7 +3,7 @@ globalThis.UEFilms = (() => {
  const base=document.body.dataset.view==='single'?'../':'';
  const cache=new Map(), videos=new Map();
  let manifest=null, current=-1, ready=-1, failure='', preparing=0,outgoing=null;
- const manifestReady=fetch(base+'ue-films/manifest.json').then(r=>{if(!r.ok)throw Error('UE 影片清單尚未交付');return r.json()}).then(m=>manifest=m);
+ const manifestReady=fetch(base+'ue-films/manifest.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('UE 影片清單尚未交付');return r.json()}).then(m=>manifest=m);
  function asset(i){
   if(!cache.has(i))cache.set(i,(async()=>{await manifestReady;const entry=manifest.chapters[i];if(!entry?.file)throw Error('本章 UE 影片尚未交付');
    const r=await fetch(new URL(entry.file,new URL(base+'ue-films/',location.href)));if(!r.ok)throw Error('UE 影片下載失敗');

@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import {FBXLoader} from 'three/addons/loaders/FBXLoader.js';
 import './scoring.js';
-import './selection-pulse.js?v=selection-20260915';
+import './selection-pulse.js?v=web60-20260923';
 const role=new URLSearchParams(location.search).get('role')||'exhibit',isExhibit=role==='exhibit',isDetail=role==='detail',status=document.getElementById('model-status'),label=document.getElementById('scene-label');
 let state={segment:0,elapsed:0,playing:false},received=performance.now(),ready=false,applyScene=()=>{};
 addEventListener('message',e=>{if(e.origin!==location.origin||e.data?.type!=='anlb-scene')return;const old=state.segment;state={segment:Math.max(0,Math.min(isExhibit?2:3,e.data.segment||0)),elapsed:e.data.elapsed||0,playing:!!e.data.playing};received=performance.now();if(ready)applyScene(old!==state.segment);});

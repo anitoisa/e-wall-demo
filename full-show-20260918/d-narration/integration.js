@@ -1,13 +1,13 @@
 import {createRestoredOrb} from './restored-orb.js';
 import {validState,sampleNarration} from './timeline.js';
-import {sampleIntro} from './intro-timeline.js?v=audio-20260915';
+import {sampleIntro} from './intro-timeline.js?v=web60-20260923';
 const $=id=>document.getElementById(id),embedded=parent!==window,origin=location.origin;
 const readJSON=async name=>{const r=await fetch(name,{cache:'no-store'});if(!r.ok)throw Error('D 字幕設定載入失敗');return r.json();};
 let controller,raf,last=performance.now(),received=last,signal=null,level=0,ready=false,disposed=false;
 const instance=crypto.randomUUID();
 function resize(){const r=$('viewport').getBoundingClientRect();$('stage').style.transform=`translate(-50%,-50%) scale(${Math.min(r.width/1920,r.height/1080)})`;}
 const observer=new ResizeObserver(resize);observer.observe($('viewport'));resize();
-function isFull(s){return ['anlb-full-wall-candidate-20260918','anlb-online-ue60-20260918'].includes(s?.narration?.version)}
+function isFull(s){return ['anlb-full-wall-candidate-20260918','anlb-online-full-20260923-v1','anlb-live-main-20260921-trim-v2','anlb-online-full-20260923-v1'].includes(s?.narration?.version)}
 function accept(s){const full=isFull(s);if(!validState(s)&&!(full&&Number.isFinite(s.narration.time)&&['idle','life','bim','data'].includes(s.mode)))return false;signal={...s};received=performance.now();return true;}
 function onMessage(e){if(e.origin===origin&&e.source===parent&&e.data?.type==='anlb-d-state')accept(e.data.state);}
 addEventListener('message',onMessage);

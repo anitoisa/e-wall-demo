@@ -1,52 +1,53 @@
 {
-  "version": "full-wall-20260918-v1",
+  "version": "anlb-live-main-20260922-intro-v1",
   "timeBase": "chapter-local-ms",
   "chapters": [
     {
       "chapter": "00",
       "mode": "idle",
-      "durationMs": 44480,
+      "durationMs": 37257.84375,
       "segments": [
         {
           "segment": 0,
           "startMs": 0,
-          "endMs": 14827,
-          "durationMs": 14827,
+          "endMs": 13587,
+          "durationMs": 13587,
           "label": "核電廠同級耐震力",
           "id": "00-design"
         },
         {
           "segment": 1,
-          "startMs": 14827,
-          "endMs": 29653,
-          "durationMs": 14826,
+          "startMs": 13587,
+          "endMs": 25873,
+          "durationMs": 12286,
           "label": "品質有保證",
           "id": "00-quality"
         },
         {
           "segment": 2,
-          "startMs": 29653,
-          "endMs": 44480,
-          "durationMs": 14827,
+          "startMs": 25873,
+          "endMs": 37257.84375,
+          "durationMs": 11384.84375,
           "label": "全透明原生健康建築",
           "id": "00-record"
         }
       ],
       "events": [
         {
-          "atMs": 11240,
+          "atMs": 8023,
           "id": "memory-kept"
         },
         {
-          "atMs": 40660,
+          "atMs": 32811,
           "id": "governance"
         }
-      ]
+      ],
+      "timingInterpretation": "展示編排：管線設備／照顧紀錄語意進段，不宣稱耐震品質標題被語音逐字點名。"
     },
     {
       "chapter": "01",
       "mode": "life",
-      "durationMs": 32720,
+      "durationMs": 32720.0,
       "segments": [
         {
           "segment": 0,
@@ -81,7 +82,7 @@
     {
       "chapter": "02",
       "mode": "bim",
-      "durationMs": 28200,
+      "durationMs": 28200.0,
       "segments": [
         {
           "segment": 0,
@@ -123,7 +124,7 @@
     {
       "chapter": "03",
       "mode": "data",
-      "durationMs": 31960,
+      "durationMs": 31156.1875,
       "segments": [
         {
           "segment": 0,
@@ -169,8 +170,8 @@
         {
           "segment": 3,
           "startMs": 25510,
-          "endMs": 31960,
-          "durationMs": 6450,
+          "endMs": 31156.1875,
+          "durationMs": 5646.1875,
           "label": "健康安全低碳目標／資訊支持管理",
           "phase": "summary",
           "presentation": "bos-summary"
@@ -181,8 +182,8 @@
     {
       "chapter": "04",
       "mode": "ending",
-      "durationMs": 13720,
-      "visualEndMs": 18930,
+      "durationMs": 12852.65625,
+      "visualEndMs": 18062.65625,
       "segments": [],
       "presentation": "approved-ANLB-ending"
     }
