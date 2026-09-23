@@ -67,7 +67,7 @@ body[data-view=single] .panel.ap-output{transform-origin:center center!important
 .panel.sb-panel.sb-main{gap:42px;padding:110px}
 .panel.sb-panel.sb-main>img.sb-logo{width:1080px!important;max-width:72%;z-index:3}
 .panel.sb-panel.sb-main>strong{font-size:78px;letter-spacing:.16em;z-index:3}
-.panel.sb-panel.sb-main>span{font-size:44px;letter-spacing:.12em;z-index:3;color:#b9d4e1}
+.panel.sb-panel.sb-main>span{font-size:44px;letter-spacing:.12em;z-index:3;color:#b9d4e1;transform:translateY(20px)}
 .panel.sb-main .sb-depth{animation:sb-depth 16s ease-in-out infinite}
 .ap-brand{isolation:isolate;overflow:hidden}
 .ap-brand:before{content:'';position:absolute;inset:-12% -30%;mask-image:var(--sb-glyph-0);mask-size:contain;mask-position:center;mask-repeat:no-repeat;background:#aac8d9;opacity:.065;z-index:-1}

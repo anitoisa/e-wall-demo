@@ -15,7 +15,7 @@ body[data-view=ipad] #console .transport a{font-size:16px;width:auto;margin-left
 #standby-screen img{width:740px;max-width:75%;height:auto}
 #standby-screen .standby-claim{display:flex;flex-direction:column;align-items:center;gap:20px}
 #standby-screen .standby-claim strong{font-size:62px;line-height:1.25;letter-spacing:.12em}
-#standby-screen .standby-claim span{font-size:34px;line-height:1.4;letter-spacing:.16em}
+#standby-screen .standby-claim span{font-size:34px;line-height:1.4;letter-spacing:.16em;transform:translateY(14px)}
 #standby-screen .standby-status{position:absolute;bottom:34px;font-size:22px;color:#a1b3c2}
 #standby-screen:disabled{cursor:wait;opacity:1}
 body.offline #standby-screen .standby-status:after{content:'連線中，請稍候'}

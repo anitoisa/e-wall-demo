@@ -1,4 +1,4 @@
-const apStyle=document.createElement('link');apStyle.rel='stylesheet';apStyle.href=(document.body.dataset.view==='single'?'../':'')+'aperture.css';document.head.append(apStyle);
+const apStyle=document.createElement('link');apStyle.rel='stylesheet';apStyle.href=(document.body.dataset.view==='single'?'../':'')+'aperture.css?v=standby-space-20260923';document.head.append(apStyle);
 (async()=>{
  const base=document.body.dataset.view==='single'?'../':'';
  const liveStyle=document.createElement('link');liveStyle.rel='stylesheet';liveStyle.href=base+'live-standby.css?v=web60-20260923';document.head.appendChild(liveStyle);
@@ -7,7 +7,7 @@ const apStyle=document.createElement('link');apStyle.rel='stylesheet';apStyle.hr
  const showStyle=document.createElement('link');showStyle.rel='stylesheet';showStyle.href=base+'showcase.css?v=web60-20260923';document.head.appendChild(showStyle);
  try{const response=await fetch(base+'chapters.json',{cache:'no-store'});if(!response.ok)throw Error('章節設定無法載入');globalThis.CHAPTERS=await response.json();
   const brandStyle=document.createElement('link');brandStyle.rel='stylesheet';brandStyle.href=base+'brand-exhibition.css?v=web60-20260923';document.head.appendChild(brandStyle);
-  if(document.body.dataset.view==='ipad'){const tabletStyle=document.createElement('link');tabletStyle.rel='stylesheet';tabletStyle.href=base+'ipad-preview.css?v=web60-20260923';document.head.appendChild(tabletStyle);await new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=base+'ipad-preview.js?v=web60-20260923';s.onload=resolve;s.onerror=reject;document.body.appendChild(s);});}
+  if(document.body.dataset.view==='ipad'){const tabletStyle=document.createElement('link');tabletStyle.rel='stylesheet';tabletStyle.href=base+'ipad-preview.css?v=standby-space-20260923';document.head.appendChild(tabletStyle);await new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=base+'ipad-preview.js?v=web60-20260923';s.onload=resolve;s.onerror=reject;document.body.appendChild(s);});}
   const reviewStyle=document.createElement('link');reviewStyle.rel='stylesheet';reviewStyle.href=base+'source-review.css?v=web60-20260923';document.head.appendChild(reviewStyle);
   const motionStyle=document.createElement('link');motionStyle.rel='stylesheet';motionStyle.href=base+'review-motion.css?v=web60-20260923';document.head.appendChild(motionStyle);
   const vacancyStyle=document.createElement('link');vacancyStyle.rel='stylesheet';vacancyStyle.href=base+'d-vacancy.css?v=web60-20260923';document.head.appendChild(vacancyStyle);
