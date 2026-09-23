@@ -1,128 +1,69 @@
 {
-  "version": "ue-formal-web60-20260923",
-  "status": "media-verified-local-playback-passed",
-  "source": "Actual formal E2 UE recording, 2026-09-23. No synthetic replacement images.",
-  "limitation": "60 fps CFR web encoding; not 60 unique rendered frames. UE viewport 1280x720, desktop capture 1920x1080. Audio-time-aligned, not frame locked.",
+  "version": "ue-candidate-r11-web60-20260923",
+  "source": "Actual ANLB-E2 independent R11 candidate desktop capture",
+  "dll": "897BF174AC3CB64636F10F2520BD9702272383458663A7D0A081D13751F1E783",
+  "limitation": "60fps CFR encoding is not 60 unique rendered frames. Candidate, not formal UE release or long-run certification. Historical chapter02 ~20fps remains unresolved.",
   "chapters": [
     {
       "chapter": 0,
-      "file": "00-20260923.mp4",
+      "file": "00-candidate-r11-20260923.mp4",
       "duration": 37.25784375,
-      "trimStart": 37.4125105,
-      "clockTrimStart": 37.4125105,
-      "visualAnchorCorrection": 0,
-      "visualAnchor": "01 visible year anchor correction only; other chapters retain captured E1 audio/progress pairing",
-      "offsetP05": 37.330212,
-      "offsetP95": 37.558040000000005,
-      "ueClockOffsetMedian": 37.44136238571239,
+      "trimStart": 1.284012379869818,
+      "clockTrimStart": 1.284012379869818,
+      "visualCorrection": 0,
+      "offsetP95P05": 0.2593165390193448,
       "encodingFps": 60,
-      "ueViewport": [
-        1280,
-        720
-      ],
-      "capture": [
-        1920,
-        1080
-      ],
-      "sha256": "3fce7bb4f42db0c01fc0b17ec60f4c212cff1e8e6cb4e74390760ae9c10fa7f3",
-      "bytes": 13853321,
-      "clockAlignmentResidualSeconds": -0.02885188571238473
+      "sha256": "bafc428cc9d3241751d4c029fd15e6bf8ec2407148442def40f3217f08657cab",
+      "bytes": 16004958
     },
     {
       "chapter": 1,
-      "file": "01-20260923-r2.mp4",
+      "file": "01-candidate-r11-20260923-r2.mp4",
       "duration": 32.72,
-      "trimStart": 80.014931,
-      "clockTrimStart": 79.564931,
-      "visualAnchorCorrection": 0.45,
-      "visualAnchor": "01 visible year anchor correction only; other chapters retain captured E1 audio/progress pairing",
-      "offsetP05": 79.39702299999999,
-      "offsetP95": 79.704824,
-      "ueClockOffsetMedian": 79.6136503484844,
+      "trimStart": 41.002346196770674,
+      "clockTrimStart": 40.502346196770674,
+      "visualCorrection": 0.5,
+      "offsetP95P05": 0.12289492752289988,
       "encodingFps": 60,
-      "ueViewport": [
-        1280,
-        720
-      ],
-      "capture": [
-        1920,
-        1080
-      ],
-      "sha256": "d9dc4c04affa85f10d3ade7176a119726411160ad1926504bd87d4c0a46bf9c4",
-      "bytes": 21108659,
-      "clockAlignmentResidualSeconds": 0.40128065151560577
+      "sha256": "2786884d3a642c50855c0ab31575f0c695ea12ef07df0bb63eb1614a8a2d0d0e",
+      "bytes": 35422590
     },
     {
       "chapter": 2,
-      "file": "02-20260923.mp4",
+      "file": "02-candidate-r11-20260923.mp4",
       "duration": 28.2,
-      "trimStart": 119.376785,
-      "clockTrimStart": 119.376785,
-      "visualAnchorCorrection": 0,
-      "visualAnchor": "01 visible year anchor correction only; other chapters retain captured E1 audio/progress pairing",
-      "offsetP05": 119.07290600000002,
-      "offsetP95": 119.45681300000001,
-      "ueClockOffsetMedian": 119.24630885024987,
+      "trimStart": 79.39816295226979,
+      "clockTrimStart": 79.39816295226979,
+      "visualCorrection": 0,
+      "offsetP95P05": 0.14976121816897603,
       "encodingFps": 60,
-      "ueViewport": [
-        1280,
-        720
-      ],
-      "capture": [
-        1920,
-        1080
-      ],
-      "sha256": "4858f7fb8a62bd4f1cac7936b38e025124de7f6347255ad94fe056800763f80d",
-      "bytes": 9568463,
-      "clockAlignmentResidualSeconds": 0.13047614975012323
+      "sha256": "f93edf9ae0051e5605cec08064fed116b04eb7846063ee2f40a18a66b0513304",
+      "bytes": 13745716
     },
     {
       "chapter": 3,
-      "file": "03-20260923.mp4",
+      "file": "03-candidate-r11-20260923.mp4",
       "duration": 31.1561875,
-      "trimStart": 155.89141949999998,
-      "clockTrimStart": 155.89141949999998,
-      "visualAnchorCorrection": 0,
-      "visualAnchor": "01 visible year anchor correction only; other chapters retain captured E1 audio/progress pairing",
-      "offsetP05": 155.791611,
-      "offsetP95": 155.949051,
-      "ueClockOffsetMedian": 155.90570769528625,
+      "trimStart": 112.9974154405296,
+      "clockTrimStart": 112.9974154405296,
+      "visualCorrection": 0,
+      "offsetP95P05": 0.32801720479560004,
       "encodingFps": 60,
-      "ueViewport": [
-        1280,
-        720
-      ],
-      "capture": [
-        1920,
-        1080
-      ],
-      "sha256": "f85cf3aa0697a25e59f7275039dbb69ecd581ec8e5f36e8d21e6be920129583e",
-      "bytes": 9773539,
-      "clockAlignmentResidualSeconds": -0.014288195286269456
+      "sha256": "58531bf6e54fa8db6ff4f1edda7a3043b61153d578b357cf3eb2b95e2103d252",
+      "bytes": 18215168
     },
     {
       "chapter": 4,
-      "file": "04-20260923.mp4",
+      "file": "04-candidate-r11-brand-20260923.mp4",
       "duration": 18.06265625,
-      "trimStart": 188.028596,
-      "clockTrimStart": 188.028596,
-      "visualAnchorCorrection": 0,
-      "visualAnchor": "01 visible year anchor correction only; other chapters retain captured E1 audio/progress pairing",
-      "offsetP05": 187.906854,
-      "offsetP95": 188.283002,
-      "ueClockOffsetMedian": 188.04359185357296,
+      "trimStart": 146.0803655880413,
+      "clockTrimStart": 146.0803655880413,
+      "visualCorrection": 0,
+      "offsetP95P05": 0.0680436844186545,
       "encodingFps": 60,
-      "ueViewport": [
-        1280,
-        720
-      ],
-      "capture": [
-        1920,
-        1080
-      ],
-      "sha256": "953579d93b6cf35d64ed4aa3546d6b2ef47bb23458f5bb46b9a2d0d4c841ede2",
-      "bytes": 4376312,
-      "clockAlignmentResidualSeconds": -0.014995853572969509
+      "sha256": "f6cd95cb663744da236f1342ec30e5f9222bde6bdaccf984ce78a16d66543f37",
+      "bytes": 4244205,
+      "composition": "New R11 UE orbit until 7.55s, 0.6s fade to existing branded closing graphics; original brand-only frame at9s held until9s then original closing tail. No old UE building imagery reused."
     }
   ]
 }
