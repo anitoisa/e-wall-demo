@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import {FBXLoader} from 'three/addons/loaders/FBXLoader.js';
 import {buildVolume} from './volume-scenes.js?v=web60-20260923';
 import {holdVolume} from './hold-volume.js?v=web60-20260923';
+import {bosAPose} from './bos-a-motion.js?v=bos-motion-20260924';
 await document.fonts.ready;
 
 // One renderer per page, independent persistent scenes, clipped to each panel.
@@ -58,7 +59,15 @@ function updateScene(s,state,t,now,reduced){
   if(!reduced&&now-s.retractStart<900&&state.elapsed<.1)p=mix(s.retractFrom||0,0,ease((now-s.retractStart)/900));
  }
  s.pose=p;
+ // Only 03A escapes shortBeat's forced final pose. Data still uses the
+ // original BOS snapshot clock so all screens retain identical scores/colors.
+ const continuous=s.kind==='data-a'&&state.narration?.chapter===3&&state.shortBeat;
+ if(continuous){
+  const clock=state.chapterElapsed+ (state.playing?Math.max(0,now-state.received)/1000:0);
+  s.bosPose=bosAPose(clock,state.segment,reduced);p=s.bosPose.geometry;s.pose=p;
+ }else s.bosPose=null;
  for(const fn of s.updates)fn(s.stage,t,snap,p);
+ if(s.bosPose){s.group.rotation.y=s.bosPose.angle;for(const edge of s.auxiliary.selections){edge.visible=s.bosPose.selection>0;edge.material.opacity*=s.bosPose.selection;}}
  const isBuilding=s.kind==='data-a';if(isBuilding){s.camera.position.set(0,36*p,150);s.camera.lookAt(0,6*p,0);}else{s.camera.position.set(5,4,40);s.camera.lookAt(0,0,0);s.group.scale.setScalar(1);}
  s.lastSnapshot=snap;
 }

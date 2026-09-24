@@ -38,6 +38,6 @@ const apStyle=document.createElement('link');apStyle.rel='stylesheet';apStyle.hr
   await new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=base+'app.js?v=free-20260924';s.onload=resolve;s.onerror=reject;document.body.appendChild(s);});
   if(document.body.dataset.view==='wall'&&!globalThis.ExIntro?.enabled){const link=document.createElement('a');link.href='?narration=intro&v=audio-20260915';link.textContent='新版序章有聲聯調 ↗';link.style.fontSize='15px';document.querySelector('.desk-header').append(link);}
   if(document.body.dataset.view!=='ipad')await new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=base+'d-narration-bridge.js?v=web60-20260923';s.onload=resolve;s.onerror=reject;document.body.appendChild(s);});
-  import(new URL(base+'showcase.js?v=web60-20260923',location.href).href).catch(error=>{document.querySelectorAll('.show-loading').forEach(el=>el.textContent='立體圖像無法載入，請重新整理');console.error(error);});
+  import(new URL(base+'showcase.js?v=bos-motion-20260924',location.href).href).catch(error=>{document.querySelectorAll('.show-loading').forEach(el=>el.textContent='立體圖像無法載入，請重新整理');console.error(error);});
  }catch(error){const p=document.createElement('p');p.setAttribute('role','alert');p.textContent='介面設定無法載入，請重新整理。';document.body.appendChild(p);console.error(error);}
 })();
