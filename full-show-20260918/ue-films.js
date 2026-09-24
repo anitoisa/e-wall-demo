@@ -6,8 +6,7 @@ globalThis.UEFilms = (() => {
  const manifestReady=fetch(base+'ue-films/manifest.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('UE 影片清單尚未交付');return r.json()}).then(m=>manifest=m);
  function asset(i){
   if(!cache.has(i))cache.set(i,(async()=>{await manifestReady;const entry=manifest.chapters[i];if(!entry?.file)throw Error('本章 UE 影片尚未交付');
-   const r=await fetch(new URL(entry.file,new URL(base+'ue-films/',location.href)));if(!r.ok)throw Error('UE 影片下載失敗');
-   const blob=await r.blob();return URL.createObjectURL(blob);
+   return new URL(entry.file,new URL(base+'ue-films/',location.href)).href;
   })().catch(e=>{cache.delete(i);throw e}));return cache.get(i);
  }
  function video(){const v=document.createElement('video');v.muted=true;v.defaultMuted=true;v.playsInline=true;v.preload='auto';v.setAttribute('aria-label','UE 實際錄製畫面');v.disablePictureInPicture=true;return v}

@@ -137,6 +137,16 @@ let transitionKey='',uiTransition=null;
 function render(){
  const next=[state.standby!==false,state.mode,state.segment,state.sceneKey||''].join(':');
  const changed=transitionKey&&next!==transitionKey;transitionKey=next;
+ // Native root snapshots intercept rapid chapter taps. Fade only the content
+ // in the owner-preview player; never snapshot or replace its control surface.
+ if(changed&&globalThis.ExIntro?.full){
+  renderContent();globalThis.ExIntro.paint();
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+   const target=document.getElementById('wall')||document.getElementById('console-art');
+   if(target){for(const a of target.getAnimations())if(a.id==='chapter-fade')a.cancel();const a=target.animate([{opacity:.25},{opacity:1}],{duration:650,easing:'ease-out'});a.id='chapter-fade';}
+  }
+  return;
+ }
  if(changed&&!matchMedia('(prefers-reduced-motion: reduce)').matches&&document.startViewTransition){
   uiTransition?.skipTransition();uiTransition=document.startViewTransition(()=>{renderContent();globalThis.ExIntro?.paint?.()});
   uiTransition.ready.catch(()=>{});uiTransition.updateCallbackDone.catch(()=>{});uiTransition.finished.catch(()=>{});return;

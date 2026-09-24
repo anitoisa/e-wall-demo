@@ -2,24 +2,21 @@
  * iPad, D, single screens and inspection views consume time; they never play audio. */
 globalThis.ExIntro=(()=>{
  const P=globalThis.FullPack,T=globalThis.FullTiming,E=globalThis.FullEnding;
- const base=document.body.dataset.view==='single'?'../':'',key='anlb-online-full-20260923-v1',id=crypto.randomUUID();
+ const base=document.body.dataset.view==='single'?'../':'',key='anlb-online-free-20260924-v1',id=crypto.randomUUID();
  const channel=new BroadcastChannel(key),view=document.body.dataset.view;
  const qa=new URLSearchParams(location.search).get('qa')==='1';
  let owner=false,audio=null,release,serial=Promise.resolve(),ticket=0,received=0,lastSave=0,lastInteraction=performance.now(),disposed=false;
- let postAnchor=0,postTime=0,index=0,phase='standby',staff=false,qaContinuous=false,error='',completed=[];
+ let postAnchor=0,postTime=0,index=0,phase='standby',staff=true,qaContinuous=false,error='',completed=[];
  const mediaCache=new Map();
- function mediaURL(i){if(!mediaCache.has(i))mediaCache.set(i,(async()=>{const entry=P.manifest.chapters[i],r=await fetch(new URL('narration-full/'+entry.file+'?v=web60-20260923',new URL(base,location.href)));if(!r.ok)throw Error('原音讀取失敗');const raw=await r.arrayBuffer(),hash=[...new Uint8Array(await crypto.subtle.digest('SHA-256',raw))].map(x=>x.toString(16).padStart(2,'0')).join('');if(hash!==entry.sha256)throw Error('原音完整性核對失敗');return URL.createObjectURL(new Blob([raw],{type:'audio/wav'}))})());return mediaCache.get(i)}
- let s={mode:'idle',segment:0,elapsed:0,segmentDuration:12,segmentCount:3,playing:false,standby:true,scenarioSeed:20260915,revision:0,
+ function mediaURL(i){if(!mediaCache.has(i))mediaCache.set(i,(async()=>{const entry=P.manifest.chapters[i],r=await fetch(new URL('narration-full/'+entry.file+'?v=web60-20260923',new URL(base,location.href)),{signal:AbortSignal.timeout(20000)});if(!r.ok)throw Error('原音讀取失敗');const raw=await r.arrayBuffer(),hash=[...new Uint8Array(await crypto.subtle.digest('SHA-256',raw))].map(x=>x.toString(16).padStart(2,'0')).join('');if(hash!==entry.sha256)throw Error('原音完整性核對失敗');return URL.createObjectURL(new Blob([raw],{type:'audio/wav'}))})().catch(e=>{mediaCache.delete(i);throw e}));return mediaCache.get(i)}
+ let s={mode:'idle',segment:0,elapsed:0,segmentDuration:12,segmentCount:3,playing:false,standby:true,staffMode:true,scenarioSeed:20260915,revision:0,
   narration:{version:key,chapter:0,time:0,duration:P.manifest.chapters[0].durationMs/1000,phase:'standby',ended:false},completedChapters:[]};
- try{const saved=JSON.parse(localStorage.getItem(key));if(saved?.narration?.version===key){s={...saved,playing:false};index=s.narration.chapter;phase=['playing','loading','postroll'].includes(s.narration.phase)?'paused':s.narration.phase;staff=!!s.staffMode;completed=s.completedChapters||[];postTime=s.narration.time;}}
- catch{}
  function receive(next){if(next?.narration?.version!==key||!Number.isFinite(next.narration.time))return;s=next;received=performance.now()}
  function localTime(){if(phase==='complete'&&index===4)return T.visualDuration(4,P);if(phase==='postroll')return Math.min(T.visualDuration(4,P),postTime+(performance.now()-postAnchor)/1000);if(index===4&&postTime>=(P.manifest.chapters[4].durationMs/1000)&&phase==='paused')return postTime;return audio?.currentTime??s.narration.time??0}
  function publish(){
   if(!owner)return;
   let t=localTime();if(phase==='standby'||phase==='ready')t=0;
   if(phase==='postroll'&&t>=T.visualDuration(4,P)){t=T.visualDuration(4,P);phase='complete';completed=[0,1,2,3];lastInteraction=performance.now()}
-  if(['waiting','complete','ready','paused'].includes(phase)&&performance.now()-lastInteraction>=300000){void enqueue('standby');lastInteraction=performance.now()}
   const playing=phase==='postroll'||phase==='playing'&&!!audio&&!audio.paused&&!audio.ended;
   const mapped=T.mapTime(index,t,P),sub=T.sampleSubtitle(index,t,playing,P);
   s={...s,...mapped,playing,standby:['standby','ready'].includes(phase),staffMode:staff,completedChapters:[...completed],showComplete:phase==='complete',
@@ -37,7 +34,7 @@ globalThis.ExIntro=(()=>{
    phase='waiting';lastInteraction=performance.now();publish();
    if(index===3||qaContinuous)void enqueue('chapter',index+1);
   });
-  audio.addEventListener('error',()=>{phase='error';error='音檔載入失敗，請回待機後重試';publish()});
+  audio.addEventListener('error',()=>{phase='error';error='音檔載入失敗，請重選章節重試';publish()});
  }
  async function load(i,time=0){
   ensureAudio();audio.pause();index=i;postTime=0;
@@ -58,8 +55,9 @@ globalThis.ExIntro=(()=>{
  }
  async function apply(action,value,seq){
   lastInteraction=performance.now();error='';
-  if(action==='standby'){if(!qa&&!staff&&['playing','loading','postroll'].includes(phase))return;audio?.pause();if(audio?.readyState)audio.currentTime=0;index=0;postTime=0;completed=[];phase='standby';publish();return}
-  if(action==='staff'){if(['standby','ready'].includes(phase)){staff=!staff;publish()}return}
+  if(action==='staff'){staff=true;publish();return}
+  if(action==='sync'){publish();return}
+  if(action==='standby'){audio?.pause();if(audio?.readyState)audio.currentTime=0;index=0;postTime=0;completed=[];phase='standby';publish();return}
   if(action==='continuous'){if(qa){qaContinuous=!!value;publish()}return}
   if(action==='seek'){
    if(!qa)return;const n=Number(value.chapter),t=Number(value.time);if(!Number.isInteger(n)||n<0||n>4||!Number.isFinite(t))return;
@@ -70,20 +68,17 @@ globalThis.ExIntro=(()=>{
    if(phase==='standby'){phase='ready';publish();return}
    if(phase==='playing'||phase==='postroll'){const t=localTime();audio?.pause();if(index===4&&t>=(P.manifest.chapters[4].durationMs/1000))postTime=t;phase='paused';publish();return}
    if(phase==='paused'){await load(index,s.narration.time);if(seq!==ticket)return;await play();return}
-   if(phase==='ready'){action='chapter';value=0}else return;
+   if(['waiting','complete','error','ready'].includes(phase)){action='chapter';value=Math.min(index,3)}else return;
   }
-  if(action==='next'){if(phase==='waiting'){action='chapter';value=Math.min(index+1,4)}else return}
+  if(action==='next'){action='chapter';value=(Math.min(index,3)+1)%4}
   if(action==='mode'){action='chapter';value=['idle','life','bim','data'].indexOf(value)}
-  if(action==='reset'||action==='replay'||action==='prev'){if(!qa&&!staff)return;action='chapter';value=index;completed=completed.filter(c=>c<index)}
+  if(action==='reset'||action==='replay'||action==='prev'){value=action==='reset'?0:action==='prev'?(Math.min(index,3)+3)%4:Math.min(index,3);action='chapter';completed=[]}
   if(action==='chapter'){
    const n=Number(value);if(!Number.isInteger(n)||n<0||n>4)return;
-   const expected=completed.length;
-   if(!qa&&!staff&&(!(phase==='ready'||phase==='waiting')||n!==expected))return;
-   if(phase==='loading')return;
    phase='loading';audio?.pause();publish();await load(n);if(seq!==ticket)return;publish();await play();
   }
  }
- function enqueue(action,value){const seq=++ticket;serial=serial.then(()=>apply(action,value,seq)).catch(e=>{phase='error';error=String(e.message||e);publish()});return serial}
+ function enqueue(action,value){const seq=++ticket;serial=serial.then(()=>seq===ticket?apply(action,value,seq):undefined).catch(e=>{if(seq!==ticket)return;phase='error';error=String(e.message||e);publish()});return serial}
  function request(action,value){
   if(parent!==window){parent.postMessage({type:key,action,value},location.origin);return}
   if(view!=='wall'){channel.postMessage({type:'command',action,value});return}
@@ -91,7 +86,7 @@ globalThis.ExIntro=(()=>{
   if(!navigator.locks){error='請使用支援單一播放鎖的 Chrome／Edge';return}
   void navigator.locks.request(key,{ifAvailable:true},async lock=>{
    if(!lock){channel.postMessage({type:'command',action,value});return}
-   owner=true;index=s.narration.chapter;phase=s.narration.phase;if(['playing','postroll','loading'].includes(phase))phase='paused';staff=!!s.staffMode;completed=s.completedChapters||[];
+   owner=true;index=s.narration.chapter;phase=s.narration.phase;if(['playing','postroll','loading'].includes(phase))phase='paused';staff=true;completed=[];
    await enqueue(action,value);await new Promise(resolve=>release=resolve);
   });
  }
@@ -125,26 +120,27 @@ globalThis.ExIntro=(()=>{
   const text=n.error||(['waiting','complete'].includes(phase)?(phase==='complete'?'展演結束':'請於控制板開啟下一章'):phase==='ready'?'請按序章開始展演':phase==='standby'?'輕觸螢幕進入建築':phase==='paused'?'已暫停':`${labels[n.chapter]}播放中`);
   if(s.showComplete)E.paint(n.time,P.ending,true);else if(n.chapter===4&&!s.standby)E.paint(n.time,P.ending,matchMedia('(prefers-reduced-motion: reduce)').matches);
   if(view==='single')return;
-  const connection=document.getElementById('connection');if(connection)connection.textContent=n.stale?'聲音主牆未連線':(s.staffMode?'工作人員自由控制 · ':'')+text;
+  const connection=document.getElementById('connection');if(connection)connection.textContent=n.stale?'聲音主牆未連線':'自由預覽 · '+text;
   if(view==='wall'){
    let staffButton=document.getElementById('full-staff');
    if(!staffButton){staffButton=document.createElement('button');staffButton.id='full-staff';staffButton.onclick=()=>request('staff');document.querySelector('.transport').append(staffButton)}
-   staffButton.textContent=s.staffMode?'回展演模式':'工作人員模式';staffButton.disabled=!['standby','ready'].includes(phase);staffButton.title=staffButton.disabled?'請先回待機，再切換模式':'';
+   staffButton.hidden=true;
   }
   document.body.classList.toggle('full-staff-active',!!s.staffMode);
   let badge=document.getElementById('full-staff-badge');if(!badge){badge=document.createElement('div');badge.id='full-staff-badge';badge.setAttribute('role','status');document.body.append(badge)}
-  badge.textContent=s.staffMode?'工作人員自由控制模式':'';badge.hidden=!s.staffMode;
+  badge.textContent='自由預覽 · 四章隨時切換';badge.hidden=false;
   document.querySelector('.desk-header>span small')?.replaceChildren(document.createTextNode('完整展演演示 · UE 實際預錄影像 · 不連接現場硬體'));
   document.getElementById('segment-label').textContent=`${labels[n.chapter]} · ${n.time.toFixed(1)} / ${n.visualDuration||n.duration} 秒`;
-  document.getElementById('story-note').textContent=view==='ipad'?'': '每章播完後按下一章 · 03 自動接續尾聲 · 9/22 序章修正版';
+  document.getElementById('story-note').textContent=view==='ipad'?'': '四章可隨時來回切換 · 03 播完接尾聲 · 首次點按啟用聲音';
   if(n.chapter===4&&!s.standby){document.getElementById('chapter-label').textContent='04 / 尾聲';document.getElementById('chapter-claim').textContent='ANLB'}
   if(s.mode==='bim'&&s.segment===1){document.querySelectorAll('[data-id=s4] .edge-label span').forEach(el=>el.textContent=s.waterRouteReady?'→ P-01':'管線概念')}
-  const play=document.getElementById('play');play.textContent=active?'Ⅱ 暫停':phase==='standby'?'喚醒控制台':phase==='ready'?'播放序章':'▶ 繼續';play.disabled=['waiting','complete','error','loading'].includes(phase);
+  const play=document.getElementById('play');play.textContent=phase==='loading'?'載入中…':active?'Ⅱ 暫停':['waiting','complete','error'].includes(phase)?'▶ 重播':'▶ 播放';play.disabled=phase==='loading';
   const expected=(s.completedChapters||[]).length;
-  document.querySelectorAll('[data-mode]').forEach(b=>{const i=['idle','life','bim','data'].indexOf(b.dataset.mode);b.disabled=!s.staffMode&&!(i===expected&&['ready','waiting'].includes(phase));b.classList.toggle('full-completed',(s.completedChapters||[]).includes(i));b.classList.toggle('full-next',i===expected&&phase==='waiting')});
+  document.querySelectorAll('[data-mode]').forEach(b=>{b.disabled=false;b.classList.remove('full-completed','full-next')});
   document.querySelectorAll('[data-action=prev],[data-action=reset]').forEach(b=>b.disabled=!qa&&!s.staffMode);
-  document.querySelectorAll('[data-action=next]').forEach(b=>b.disabled=phase!=='waiting');
-  document.querySelectorAll('[data-action=standby]').forEach(b=>b.disabled=active&&!qa&&!s.staffMode);
+  document.querySelectorAll('[data-action=next]').forEach(b=>{b.disabled=false;b.textContent='下一章 →'});
+  document.querySelectorAll('[data-action=prev]').forEach(b=>{b.disabled=false;b.textContent='← 上一章'});
+  document.querySelectorAll('[data-action=standby]').forEach(b=>{b.hidden=false;b.disabled=false});
   if(view==='ipad'){
    let hint=document.getElementById('ready-start-hint');
    const cover=document.getElementById('standby-screen');
@@ -155,7 +151,7 @@ globalThis.ExIntro=(()=>{
    document.getElementById('guide-cue').textContent=text;
    const art=document.getElementById('console-art');art.hidden=n.chapter===4;
    if(n.chapter===4){document.getElementById('chapter-label').textContent='04 / 尾聲';document.getElementById('chapter-claim').textContent=phase==='complete'?'展演結束':'ANLB';}
-   let exit=document.querySelector('.full-exit');if(!exit){exit=document.createElement('button');exit.className='full-exit';exit.textContent='回待機';exit.onclick=()=>request('standby');document.querySelector('.transport').append(exit)}exit.disabled=active;
+   document.querySelector('.full-exit')?.remove();
   }
   if(qa&&!document.querySelector('.full-qa')){
    const bar=document.createElement('div');bar.className='full-qa full-qa-only';bar.innerHTML='<label><input id="full-continuous" type="checkbox"> QA 連續播放（不改正式互動）</label><select id="full-chapter">'+labels.map((n,i)=>`<option value="${i}">${String(i).padStart(2,'0')} ${n}</option>`).join('')+'</select><input id="full-seek" type="range" min="0" max="41.36" step=".01" value="0"><button id="full-jump">定位／暫停</button>';document.body.append(bar);

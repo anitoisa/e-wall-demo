@@ -19,8 +19,8 @@ const apStyle=document.createElement('link');apStyle.rel='stylesheet';apStyle.hr
   await new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=base+'hold-effects.js?v=web60-20260923';s.onload=resolve;s.onerror=reject;document.body.appendChild(s);});
   await new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=base+'selection-pulse.js?v=web60-20260923';s.onload=resolve;s.onerror=reject;document.body.appendChild(s);});
   await new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=base+'sequence-choreography.js?v=web60-20260923';s.onload=resolve;s.onerror=reject;document.body.appendChild(s);});
-  const ueStyle=document.createElement('link');ueStyle.rel='stylesheet';ueStyle.href=base+'ue-films.css?v=web60-20260923';document.head.append(ueStyle);
-  await new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=base+'ue-films.js?v=web60-20260923';s.onload=resolve;s.onerror=reject;document.body.append(s)});
+  const ueStyle=document.createElement('link');ueStyle.rel='stylesheet';ueStyle.href=base+'ue-films.css?v=free-20260924';document.head.append(ueStyle);
+  await new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=base+'ue-films.js?v=free-20260924';s.onload=resolve;s.onerror=reject;document.body.append(s)});
   // Register panel markup and animation ownership before the first render.
   const narrationMode=new URLSearchParams(location.search).get('narration');
   if(!new URLSearchParams(location.search).has('preview')&&(!narrationMode||narrationMode==='full')){
@@ -28,14 +28,14 @@ const apStyle=document.createElement('link');apStyle.rel='stylesheet';apStyle.hr
    globalThis.FullTiming=await import(new URL(base+'full-timing.js?v=web60-20260923',location.href));
    globalThis.FullPack=await FullTiming.loadPack(new URL(base+'narration-full/',location.href));
    globalThis.FullEnding=await import(new URL(base+'full-ending.js?v=web60-20260923',location.href));
-   await new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=base+'full-session.js?v=web60-20260923';s.onload=resolve;s.onerror=reject;document.body.appendChild(s)});
+   await new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=base+'full-session.js?v=free-20260924';s.onload=resolve;s.onerror=reject;document.body.appendChild(s)});
   }
   if(new URLSearchParams(location.search).get('narration')==='intro'){
    const style=document.createElement('link');style.rel='stylesheet';style.href=base+'intro-session.css?v=web60-20260923';document.head.appendChild(style);
    await new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=base+'intro-session.js?v=web60-20260923';s.onload=resolve;s.onerror=reject;document.body.appendChild(s);});
   }
   await new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=base+'aperture.js?v=web60-20260923';s.onload=resolve;s.onerror=reject;document.body.append(s)});
-  await new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=base+'app.js?v=web60-20260923';s.onload=resolve;s.onerror=reject;document.body.appendChild(s);});
+  await new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=base+'app.js?v=free-20260924';s.onload=resolve;s.onerror=reject;document.body.appendChild(s);});
   if(document.body.dataset.view==='wall'&&!globalThis.ExIntro?.enabled){const link=document.createElement('a');link.href='?narration=intro&v=audio-20260915';link.textContent='新版序章有聲聯調 ↗';link.style.fontSize='15px';document.querySelector('.desk-header').append(link);}
   if(document.body.dataset.view!=='ipad')await new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=base+'d-narration-bridge.js?v=web60-20260923';s.onload=resolve;s.onerror=reject;document.body.appendChild(s);});
   import(new URL(base+'showcase.js?v=web60-20260923',location.href).href).catch(error=>{document.querySelectorAll('.show-loading').forEach(el=>el.textContent='立體圖像無法載入，請重新整理');console.error(error);});
