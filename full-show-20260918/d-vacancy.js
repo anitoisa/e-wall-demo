@@ -1,6 +1,6 @@
 /* Local integration: former D content remains redistributed; D now hosts approved v12 narration. No hardware control. */
 const beforeDVacancy=revisionPanel;
-function vacantD(){return `<article class="panel d-narration-panel" data-id="d" aria-label="D 字幕與語音球・本機暫用預覽"><iframe class="d-narration-view" data-key="d-narration-v12" title="D 字幕與語音球（暫用字幕、無聲示意）" src="${root}d-narration/index.html?v=web60-20260923" loading="eager"></iframe></article>`;}
+function vacantD(){return `<article class="panel d-narration-panel" data-id="d" aria-label="D 語音同步字幕與語音球"><iframe class="d-narration-view" data-key="d-narration-audio-clock" title="D 語音同步字幕與語音球" src="${root}d-narration/index.html?v=subtitle-sync-20260924" loading="eager"></iframe></article>`;}
 function buildingPromises(seg){
  const names=['高標準耐震設計','第三方品質把關','全生命週期維養'];
  const descriptions=['從完整建築，<br>認識安全主張','揭示樓板層次，<br>連結品質依據','設備資訊，<br>接續維養履歷'];

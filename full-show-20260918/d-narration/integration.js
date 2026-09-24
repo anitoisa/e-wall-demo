@@ -7,7 +7,9 @@ let controller,raf,last=performance.now(),received=last,signal=null,level=0,read
 const instance=crypto.randomUUID();
 function resize(){const r=$('viewport').getBoundingClientRect();$('stage').style.transform=`translate(-50%,-50%) scale(${Math.min(r.width/1920,r.height/1080)})`;}
 const observer=new ResizeObserver(resize);observer.observe($('viewport'));resize();
-function isFull(s){return ['anlb-online-free-20260924-v1','anlb-full-wall-candidate-20260918','anlb-online-full-20260923-v1','anlb-live-main-20260921-trim-v2','anlb-online-full-20260923-v1'].includes(s?.narration?.version)}
+// The audio owner supplies the measured time and sampled subtitle. Release
+// names are not a protocol: an unfamiliar release must never show demo copy.
+function isFull(s){return Number.isFinite(s?.narration?.time)&&Number.isInteger(s.narration.chapter)&&s.narration.chapter>=0&&s.narration.chapter<=4}
 function accept(s){const full=isFull(s);if(!validState(s)&&!(full&&Number.isFinite(s.narration.time)&&['idle','life','bim','data'].includes(s.mode)))return false;signal={...s};received=performance.now();return true;}
 function onMessage(e){if(e.origin===origin&&e.source===parent&&e.data?.type==='anlb-d-state')accept(e.data.state);}
 addEventListener('message',onMessage);
