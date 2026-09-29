@@ -27,15 +27,15 @@ const apStyle=document.createElement('link');apStyle.rel='stylesheet';apStyle.hr
    for(const name of ['intro-session.css','full-session.css']){const css=document.createElement('link');css.rel='stylesheet';css.href=base+name+'?v=web60-20260923';document.head.append(css)}
    globalThis.FullTiming=await import(new URL(base+'full-timing.js?v=web60-20260923',location.href));
    globalThis.FullPack=await FullTiming.loadPack(new URL(base+'narration-full/',location.href));
-   globalThis.FullEnding=await import(new URL(base+'full-ending.js?v=web60-20260923',location.href));
-   await new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=base+'full-session.js?v=free-20260924';s.onload=resolve;s.onerror=reject;document.body.appendChild(s)});
+   globalThis.FullEnding=await import(new URL(base+'full-ending.js?v=ending-fix-20260929',location.href));
+   await new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=base+'full-session.js?v=ending-fix-20260929';s.onload=resolve;s.onerror=reject;document.body.appendChild(s)});
   }
   if(new URLSearchParams(location.search).get('narration')==='intro'){
    const style=document.createElement('link');style.rel='stylesheet';style.href=base+'intro-session.css?v=web60-20260923';document.head.appendChild(style);
    await new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=base+'intro-session.js?v=web60-20260923';s.onload=resolve;s.onerror=reject;document.body.appendChild(s);});
   }
   await new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=base+'aperture.js?v=web60-20260923';s.onload=resolve;s.onerror=reject;document.body.append(s)});
-  await new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=base+'app.js?v=free-20260924';s.onload=resolve;s.onerror=reject;document.body.appendChild(s);});
+  await new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=base+'app.js?v=ending-fix-20260929';s.onload=resolve;s.onerror=reject;document.body.appendChild(s);});
   if(document.body.dataset.view==='wall'&&!globalThis.ExIntro?.enabled){const link=document.createElement('a');link.href='?narration=intro&v=audio-20260915';link.textContent='新版序章有聲聯調 ↗';link.style.fontSize='15px';document.querySelector('.desk-header').append(link);}
   if(document.body.dataset.view!=='ipad')await new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=base+'d-narration-bridge.js?v=web60-20260923';s.onload=resolve;s.onerror=reject;document.body.appendChild(s);});
   import(new URL(base+'showcase.js?v=bos-motion-20260924',location.href).href).catch(error=>{document.querySelectorAll('.show-loading').forEach(el=>el.textContent='立體圖像無法載入，請重新整理');console.error(error);});

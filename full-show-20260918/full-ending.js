@@ -14,6 +14,6 @@ export function paint(time,cues,reduced){
  document.querySelectorAll('[data-ending-id]').forEach(el=>{
   const id=el.dataset.endingId;
   if(id==='main'){/* Full formal UE ending already present in the captured video. */}
-  else if(LETTERS[id.toUpperCase()]){let v=renderers.get(el);if(!v){v=new LetterView(el.querySelector('canvas'),id.toUpperCase(),logo);renderers.set(el,v)}v.draw(time,cues,reduced);const t=time-cues[id.toUpperCase()];el.querySelector('h1').style.opacity=t<0?0:smooth(t/.25)*(1-smooth((t-.9)/1.15));const dark=smooth((time-letterExit(time,cues,id.toUpperCase()).end)/.45);el.style.setProperty('--ending-blackout',dark);el.classList.add('full-end-blackout');el.dataset.blackout=dark.toFixed(3)}
+  else if(LETTERS[id.toUpperCase()]){const canvas=el.querySelector('canvas');if(!canvas)return;let v=renderers.get(canvas);if(!v){v=new LetterView(canvas,id.toUpperCase(),logo);renderers.set(canvas,v)}v.draw(time,cues,reduced);const t=time-cues[id.toUpperCase()];el.querySelector('h1').style.opacity=t<0?0:smooth(t/.25)*(1-smooth((t-.9)/1.15));const dark=smooth((time-letterExit(time,cues,id.toUpperCase()).end)/.45);el.style.setProperty('--ending-blackout',dark);el.classList.add('full-end-blackout');el.dataset.blackout=dark.toFixed(3)}
  });
 }

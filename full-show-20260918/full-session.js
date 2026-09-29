@@ -15,7 +15,7 @@ globalThis.ExIntro=(()=>{
  function localTime(){if(phase==='complete'&&index===4)return T.visualDuration(4,P);if(phase==='postroll')return Math.min(T.visualDuration(4,P),postTime+(performance.now()-postAnchor)/1000);if(index===4&&postTime>=(P.manifest.chapters[4].durationMs/1000)&&phase==='paused')return postTime;return audio?.currentTime??s.narration.time??0}
  function publish(){
   if(!owner)return;
-  let t=localTime();if(phase==='standby'||phase==='ready')t=0;
+  let t=localTime();if(['standby','ready','loading'].includes(phase))t=0;
   if(phase==='postroll'&&t>=T.visualDuration(4,P)){t=T.visualDuration(4,P);phase='complete';completed=[0,1,2,3];lastInteraction=performance.now()}
   const playing=phase==='postroll'||phase==='playing'&&!!audio&&!audio.paused&&!audio.ended;
   const mapped=T.mapTime(index,t,P),sub=T.sampleSubtitle(index,t,playing,P);
@@ -122,6 +122,11 @@ globalThis.ExIntro=(()=>{
   if(view==='single')return;
   const connection=document.getElementById('connection');if(connection)connection.textContent=n.stale?'聲音主牆未連線':'自由預覽 · '+text;
   if(view==='wall'){
+   if(!document.getElementById('ending-preview')){
+    const endingButton=document.createElement('button');endingButton.id='ending-preview';endingButton.textContent='預覽結尾';
+    endingButton.onclick=()=>request('chapter',4);
+    document.querySelector('[data-action=reset]').after(endingButton);
+   }
    let staffButton=document.getElementById('full-staff');
    if(!staffButton){staffButton=document.createElement('button');staffButton.id='full-staff';staffButton.onclick=()=>request('staff');document.querySelector('.transport').append(staffButton)}
    staffButton.hidden=true;

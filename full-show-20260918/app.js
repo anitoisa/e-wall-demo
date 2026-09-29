@@ -141,10 +141,8 @@ function render(){
  // in the owner-preview player; never snapshot or replace its control surface.
  if(changed&&globalThis.ExIntro?.full){
   renderContent();globalThis.ExIntro.paint();
-  if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
-   const target=document.getElementById('wall')||document.getElementById('console-art');
-   if(target){for(const a of target.getAnimations())if(a.id==='chapter-fade')a.cancel();const a=target.animate([{opacity:.25},{opacity:1}],{duration:650,easing:'ease-out'});a.id='chapter-fade';}
-  }
+  // Preserve the wall, models and their continuous clocks. Changed content
+  // already has local transitions; fading the whole wall flashes every beat.
   return;
  }
  if(changed&&!matchMedia('(prefers-reduced-motion: reduce)').matches&&document.startViewTransition){
