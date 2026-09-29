@@ -216,5 +216,5 @@ globalThis.Aperture=(()=>{
 
  requestAnimationFrame(tick);
 
- return {supports:id=>ids.includes(id)||(['a','b','c','d','main','s5','s6'].includes(id)&&isBrandStandby()),markup,scene,updateMotion,getConfig:()=>config};
+ return {supports:id=>ids.includes(id)||(['a','b','c','d','main','s5','s6'].includes(id)&&isBrandStandby()),markup,brandMarkup,scene,updateMotion,getConfig:()=>config};
 })();
